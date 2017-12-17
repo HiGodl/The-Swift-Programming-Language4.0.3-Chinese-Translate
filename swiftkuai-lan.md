@@ -16,7 +16,55 @@ NOTE
 
 #### 简单值
 
-let 定义常量，var 定义变量。
+let 定义常量，var 定义变量。在编译时并不需要知道常量的值具体是多少，但是在定义常量的时候必须给常量赋值。这说明你可以通过常量来定义一个在多处使用的值。
+
+```
+var varmyVariable=42
+myVaruable = 50
+let myConstant = 42
+```
+
+在给常量或者变量赋值时，必须确保赋给常量或者变量的值类型必须同常量或变量的类型一致。但是并不是任何时候都需要明确的写出常量或者变量的类型。当定义常量或者变量的同时赋值，编译器会自动推断出常量或者变量的类型。在上面的例子中，编译器会根据赋予的整型值推断出“myVariable”是的类型是整型。
+
+如果初始化并没有提供足够的信息（或者没有初始值），在变量后面写清该变量的类型，通过冒号隔开。
+
+```
+let implicitInteger=70
+let implicitDouble = 70.0
+let explicitDouble: Double = 70
+```
+
+```
+实验
+通过写明数据类型定义一个初始值为4的Float常量
+```
+
+在Swift中不允许隐式的转换数据类型。如果需要进行数据类型转换，需要通过目标类型的转换方法来进行数据转换
+
+```
+let lable = "The width is "
+let width = 94
+let widthLable = lable + String(width)
+```
+
+```
+实验
+试着将最后一行的String转换语句删掉，直接+width，看看会出现什么错误
+```
+
+下面提供了更简单的在字符串中插入其他值的方法：将要插入字符串中的值写在圆括号中，在圆括号的最前面添加一个反斜杠"\"。如下：
+
+```
+let apples = 3
+let oranges = 5
+let appleSummary = "I have \(apples) apples."
+let fruitSummary = "I have \(apples + oranges) pieces of fruit."
+```
+
+```
+实验
+在\()中添加一个浮点数计算表达式添加到字符串，并且完成在问候语中包含某个人的姓名
+```
 
 
 
