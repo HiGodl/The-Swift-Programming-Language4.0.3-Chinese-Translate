@@ -4,5 +4,5 @@
 * [欢迎来到Swift的世界](huan-ying-lai-dao-swift-de-shi-jie.md)
 * [关于Swift](chapter1.md)
 * [版本兼容性](ban-ben-jian-rong-xing.md)
-* [Swift教程](swiftkuai-lan.md)
+* [Swift初见](swiftkuai-lan.md)
 
