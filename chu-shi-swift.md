@@ -8,11 +8,9 @@ print("Hello, World!")
 
 通过教程中如何完成多种编程任务的讲解，可以获得足够的用以开始Swift编程的信息。即使有些内容不是很清楚也无需担心——所有在此教程中提到的内容在本书后边内容中都会有详细的讲解。
 
-
->NOTE
-
->>在Mac上可以下载Playground然后双击该文件在Xcode中打开：[swift-tour](https://developer.apple.com/go/?id=swift-tour)
-
+> NOTE
+>
+> > 在Mac上可以下载Playground然后双击该文件在Xcode中打开：[swift-tour](https://developer.apple.com/go/?id=swift-tour)
 
 #### 简单值
 
@@ -34,9 +32,9 @@ let implicitDouble = 70.0
 let explicitDouble: Double = 70
 ```
 
->实验
->>通过写明数据类型定义一个初始值为4的`Float`常量
-
+> 实验
+>
+> > 通过写明数据类型定义一个初始值为4的`Float`常量
 
 在Swift中不允许隐式的转换数据类型。如果需要进行数据类型转换，需要通过目标类型的转换方法来进行数据转换
 
@@ -46,10 +44,9 @@ let width = 94
 let widthLable = lable + String(width)
 ```
 
-
->实验
->>试着将最后一行的`String`转换语句删掉，直接+width，看看会出现什么错误
-
+> 实验
+>
+> > 试着将最后一行的`String`转换语句删掉，直接+width，看看会出现什么错误
 
 下面提供了更简单的在字符串中插入其他值的方法：将要插入字符串中的值写在圆括号中，在圆括号的最前面添加一个反斜杠`\`。如下：
 
@@ -60,10 +57,9 @@ let appleSummary = "I have \(apples) apples."
 let fruitSummary = "I have \(apples + oranges) pieces of fruit."
 ```
 
-
->实验
->>在\()中添加一个浮点数计算表达式添加到字符串，并且完成在问候语中包含某个人的姓名
-
+> 实验
+>
+> > 在\(\)中添加一个浮点数计算表达式添加到字符串，并且完成在问候语中包含某个人的姓名
 
 可以使用三个双引号定义多行字符串。默认三个双引号中的多行字符串不包含缩进，如下：
 
@@ -133,9 +129,9 @@ if let name = optionalName {
 }
 ```
 
-
->试验
->>将optionalName的值设为`nil`，看看会得到什么结果？添加`else`分句当`optionalName`为`nil`时设置另外一个问候语
+> 试验
+>
+> > 将optionalName的值设为`nil`，看看会得到什么结果？添加`else`分句当`optionalName`为`nil`时设置另外一个问候语
 
 如果可选值为`nil`时，条件结果为`false`，在该分句中的代码就会跳过。如果可选值不为`nil`，就会将该值赋给`let`后边的常量，并执行分句中代码，分句代码中也可以正常使用该常量。
 
@@ -163,14 +159,34 @@ default:
 }
 ```
 
-
->试验
->>去掉`default`条件看看会有什么错误？
-
+> 试验
+>
+> > 去掉`default`条件看看会有什么错误？
 
 注意上例中如何使用 `let` 将满足筛选条件的值赋给常量的
 
 在Swift中`switch`语句在执行完第一个满足条件的语句后并不会继续执行后边的语句而是直接跳出`switch`表达式，因此在每个条件执行完之后并不需要明确写出`break`来跳出`switch`表达式。
 
 可以通过`for-in`并提供两个名称接收字典的键值对来遍历字典。由于字典是无序集合，所以在遍历的时候输出顺序是随机的。
+
+```
+let interestingNumbers = [
+    "Prime": [2, 3, 5, 7, 11, 13],
+    "Fibonacci": [1, 1, 2, 3, 5, 8],
+    "Square": [1, 4, 9, 16, 25],
+]
+var largest = 0
+for (kind, numbers) in interestingNumbers {
+    for number in numbers {
+        if number > largest {
+            largest = number
+        }
+    }
+}
+print(largest)
+```
+
+&gt;试验
+
+&gt;&gt;添加另外一个变量来确定最大的值是哪个类型的，最打的值是多少
 
