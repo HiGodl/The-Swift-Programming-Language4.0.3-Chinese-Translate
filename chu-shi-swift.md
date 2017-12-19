@@ -272,7 +272,35 @@ print(statistics.2)
 
 ```
 
+Swift中方法可以嵌套，嵌套的方法可以访问上层方法中定义的变量。可以通过方法嵌套来组织过于长过于复杂的方法中的代码。
 
+
+
+```Swift
+func returnFifteen() -> Int {
+    var y = 10
+    func add() {
+        y += 5
+    }
+    add()
+    return y
+}
+returnFifteen()
+
+```
+
+方法是基础数据类型（first-class type 不太清楚这个咋翻译）。也就是说方法可以作为另一个方法的返回值。
+
+```Swift
+func makeIncrementer() -> ((Int) -> Int) {
+    func addOne(number: Int) -> Int {
+        return 1 + number
+    }
+    return addOne
+}
+var increment = makeIncrementer()
+increment(7)
+```
 
 
 
