@@ -80,7 +80,7 @@ And then I said "I have \(apples + oranges) pieces of fruit."
 ```
 var shoppingList = ["catfish", "water", "tulips", "blue paint"]
 shoppingList[1] = "bottle of water"
- 
+
 var occupations = [
     "Malcolm": "Captain",
     "Kaylee": "Mechanic",
@@ -92,7 +92,7 @@ occupations["Jayne"] = "Public Relations”
 
 ```
 let emptyArray = [String]()
-let emptyDictionary = [String: Float]()”
+let emptyDictionary = [String: Float]()
 ```
 
 给变量赋值或者作为方法参数传递时，如果能够推断出类型，空数组可以写成 \[\] ，空字典可以写成\[:\]。
@@ -100,6 +100,76 @@ let emptyDictionary = [String: Float]()”
 ```
 shoppingList = []
 occupations = [:]
+```
+
+#### 流程控制
+
+使用if和switch实现条件控制，使用for-in，while，repreat-while实现循环。条件语句或者循环控制变量的圆括号是可以省略的，但是执行语句的花括号必须要写。
+
+```
+let individualScores = [75, 43, 103, 87, 12]
+var teamScore = 0
+for score in individualScores {
+    if score > 50 {
+        teamScore += 3
+    } else {
+        teamScore += 1
+    }
+}
+print(teamScore)
+```
+
+在if语句中，条件表达式结果必须为布尔值——也就是说在 if score {....}是错误的，并不包含与0的隐式的比较。
+
+可以使用 if let 来判断某些值是否存在。这些值可以看做是可选值。可选值的值可以为具体值或者用nil表示没有值。在定义变量的值类型后边加问号”？“表示这个变量的值为可选值（可以为具体值或者为nil）。
+
+```
+var optionalString: String? = "Hello"
+print(optionalString == nil)
+ 
+var optionalName: String? = "John Appleseed"
+var greeting = "Hello!"
+if let name = optionalName {
+    greeting = "Hello, \(name)"
+}
+```
+
+```
+试验
+
+将optionalName的值设为nil，看看会得到什么结果？添加else分句当optionalName为nil时设置另外一个问候语
+```
+
+如果可选值为nil时，条件结果为false，在该分句中的代码就会跳过。如果可选值不为nil，就会将该值赋给let后边的常量，并执行分句中代码，分句代码中也可以正常使用该常量。
+
+另一种操作可选值的方法是通过”??“操作符给可选值设置一个默认值。如果可选值的值没有设置就会使用默认值。
+
+```
+let nickName: String? = nil
+let fullName: String = "John Appleseed"
+let informalGreeting = "Hi \(nickName ?? fullName)”
+```
+
+Switch语句支持多种数据格式以及多种比较类表达式——不在限制于值支持整型和相等判断。
+
+```
+let vegetable = "red pepper"
+switch vegetable {
+case "celery":
+    print("Add some raisins and make ants on a log.")
+case "cucumber", "watercress":
+    print("That would make a good tea sandwich.")
+case let x where x.hasSuffix("pepper"):
+    print("Is it a spicy \(x)?")
+default:
+    print("Everything tastes good in soup.")
+}
+```
+
+```
+试验
+
+去掉default条件看看会有什么错误？ 
 ```
 
 
