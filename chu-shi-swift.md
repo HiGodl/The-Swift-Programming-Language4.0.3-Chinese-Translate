@@ -28,7 +28,7 @@ let myConstant = 42
 
 如果初始化并没有提供足够的信息（或者没有初始值），在变量后面写清该变量的类型，通过冒号隔开。
 
-```
+```Swift
 let implicitInteger=70
 let implicitDouble = 70.0
 let explicitDouble: Double = 70
@@ -126,7 +126,7 @@ print(teamScore)
 ```
 var optionalString: String? = "Hello"
 print(optionalString == nil)
- 
+
 var optionalName: String? = "John Appleseed"
 var greeting = "Hello!"
 if let name = optionalName {
@@ -169,8 +169,12 @@ default:
 ```
 试验
 
-去掉default条件看看会有什么错误？ 
+去掉default条件看看会有什么错误？
 ```
 
+注意上例中如何使用 let 将满足筛选条件的值赋给常量的
 
+在swift中switch语句在执行完第一个满足条件的语句后并不会继续执行后边的语句而是直接跳出Swich表达式，因此在每个条件执行完之后并不需要明确写出break来跳出switch表达式。
+
+可以通过for-in并提供两个名称接收字典的键值对来遍历字典。由于字典是无序集合，所以在遍历的时候输出顺序是随机的。
 
