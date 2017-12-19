@@ -335,6 +335,23 @@ numbers.map({ (number: Int) -> Int in
 >试验
 >>重写闭包，使所有奇数返回值为0
 
+通过一些可选项可以更简洁的书写闭包。当闭包的类型确定的时候，例如作为代理的回调方法，可以删掉参数的类型，返回值的类型，或者同时删掉。单语句闭包隐式的返回他们唯一语句的值
+
+
+```Swift
+let mappedNumbers = numbers.map({ number in 3 * number })
+print(mappedNumbers)
+
+```
+
+我们可能更喜欢使用数字来代替名称来作为参数——这种操作对于短小的闭包来说非常实用。作为函数的最后一个参数传递的闭包可以在括号之后立即出现。当闭包作为方法的唯一参数时，可以将圆括号省略。
+
+
+```Swift
+let sortedNumbers = numbers.sorted { $0 > $1 }
+print(sortedNumbers)
+
+```
 
 
 
