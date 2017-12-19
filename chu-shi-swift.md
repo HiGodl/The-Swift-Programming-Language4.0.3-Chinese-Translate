@@ -66,5 +66,41 @@ let fruitSummary = "I have \(apples + oranges) pieces of fruit."
 在\()中添加一个浮点数计算表达式添加到字符串，并且完成在问候语中包含某个人的姓名
 ```
 
+可以使用三个双引号定义多行字符串。默认三个双引号中的多行字符串不包含缩进，如下：
+
+```
+let quotation = """
+I said "I have \(apples) apples."
+And then I said "I have \(apples + oranges) pieces of fruit."
+""”
+```
+
+使用方括号定义数组和字典”\[ \]“ ， 可以通过数组索引及字典键值获取集合中元素。最后一个元素后边可以有逗号。
+
+```
+var shoppingList = ["catfish", "water", "tulips", "blue paint"]
+shoppingList[1] = "bottle of water"
+ 
+var occupations = [
+    "Malcolm": "Captain",
+    "Kaylee": "Mechanic",
+]
+occupations["Jayne"] = "Public Relations”
+```
+
+可以通过初始化方法新建空数组或字典。
+
+```
+let emptyArray = [String]()
+let emptyDictionary = [String: Float]()”
+```
+
+给变量赋值或者作为方法参数传递时，如果能够推断出类型，空数组可以写成 \[\] ，空字典可以写成\[:\]。
+
+```
+shoppingList = []
+occupations = [:]
+```
+
 
 
