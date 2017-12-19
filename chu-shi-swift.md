@@ -224,18 +224,16 @@ print(total)
 
 使用func定义方法。通过方法名调用方法，方法参数写在方法名后的圆括号中。使用`->`将参数名及参数类型与返回值类型隔开
 
-
-
 ```Swift
 func greet(person: String, day: String) -> String {
     return "Hello \(person), today is \(day)."
 }
 greet(person: "Bob", day: "Tuesday")
-
 ```
 
->试验
->>将`day`这个参数移除。在问候中添加一个包含午餐的参数
+> 试验
+>
+> > 将`day`这个参数移除。在问候中添加一个包含午餐的参数
 
 通常情况下，参数名默认为方法参数标签，可以在参数名前添加自定义参数标签，或者使用`_`来代表无参数标签
 
@@ -244,11 +242,9 @@ func greet(_ person: String, on day: String) -> String {
     return "Hello \(person), today is \(day)."
 }
 greet("John", on: "Wednesday")
-
 ```
 
 通过元组`(tuple)`来定义一个复合值——例如，方法返回多个值。元组中的值可以通过名称或者索引获取。
-
 
 ```
 func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
@@ -263,18 +259,15 @@ func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
         }
         sum += score
     }
-    
+
     return (min, max, sum)
 }
 let statistics = calculateStatistics(scores: [5, 3, 100, 3, 9])
 print(statistics.sum)
 print(statistics.2)
-
 ```
 
 Swift中方法可以嵌套，嵌套的方法可以访问上层方法中定义的变量。可以通过方法嵌套来组织过于长过于复杂的方法中的代码。
-
-
 
 ```Swift
 func returnFifteen() -> Int {
@@ -286,7 +279,6 @@ func returnFifteen() -> Int {
     return y
 }
 returnFifteen()
-
 ```
 
 方法是基础数据类型（first-class type 不太清楚这个咋翻译）。也就是说方法可以作为另一个方法的返回值。
@@ -322,40 +314,79 @@ hasAnyMatches(list: numbers, condition: lessThanTen)
 
 方法其实是一种特殊类型的闭包：一个可以先定义后调用的代码块。不管闭包在哪里执行，都可以访问其定义作用域中的变量、方法等——其实在方法嵌套中就已经展示了这个特性。可以通过 `{()}` 来定义闭包，通过 `in` 来分割参数及闭包返回值类型。
 
-
 ```Swift
-
 numbers.map({ (number: Int) -> Int in
     let result = 3 * number
     return result
 })
-
 ```
 
->试验
->>重写闭包，使所有奇数返回值为0
+> 试验
+>
+> > 重写闭包，使所有奇数返回值为0
 
 通过一些可选项可以更简洁的书写闭包。当闭包的类型确定的时候，例如作为代理的回调方法，可以删掉参数的类型，返回值的类型，或者同时删掉。单语句闭包隐式的返回他们唯一语句的值
-
 
 ```Swift
 let mappedNumbers = numbers.map({ number in 3 * number })
 print(mappedNumbers)
-
 ```
 
 我们可能更喜欢使用数字来代替名称来作为参数——这种操作对于短小的闭包来说非常实用。作为函数的最后一个参数传递的闭包可以直接写在圆括号后。当闭包作为方法的唯一参数时，可以将圆括号省略。
 
-
 ```Swift
 let sortedNumbers = numbers.sorted { $0 > $1 }
 print(sortedNumbers)
+```
+
+#### 
+
+#### 类和对象
+
+通过`class <className>{}`来定义类。类属性的声明与常量变量的声明式一样的，唯一不同的是属性实在类中的。同样的，方法和函数的声明也是一样的。
+
+
+```Swift
+
+class Shape {
+    var numberOfSides = 0
+    func simpleDescription() -> String {
+        return "A shape with \(numberOfSides) sides."
+    }
+}
+
+```
+>试验
+>>通过`let`声明一个不可变的属性，声明一个含参的方法
+
+通过`<class>()`的方法来创建类的对象。使用点 `.` 访问对象的属性及方法。
+
+
+```Swift
+var shape = Shape()
+shape.numberOfSides = 7
+var shapeDescription = shape.simpleDescription()
 
 ```
 
+这个版本的`Shape`丢掉了一些重要的东西：在初始化的时候给对象设置一些初始值的初始化方法。使用 `init` 来定义初始化方法。
 
 
+```Swift
+class NamedShape {
+    var numberOfSides: Int = 0
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    func simpleDescription() -> String {
+        return "A shape with \(numberOfSides) sides."
+    }
+}
 
+```
 
 
 
