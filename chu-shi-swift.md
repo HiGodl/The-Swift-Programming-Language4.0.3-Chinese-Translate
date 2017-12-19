@@ -392,5 +392,33 @@ class NamedShape {
 
 如果在对象销毁之前需要做一些操作可以使用 `deinit` 来创建对象销毁方法
 
+使用`class <className>:<superClassName>{...}`来创建`superClassName`的子类。创建新的类的时候并不需要继承任何基类，按需确定是否要添加父类。子类中重写父类的方法时需要在前面加 `override` 修饰符 —— 如果在未加 `override` 的情况下重写了父类的方法，编译器会报错。同时编译器也会检查写明 `override` 的子类方法是否在父类中有定义。所以使用 `override` 的时候要注意。
+
+
+```Swift
+class Square: NamedShape {
+    var sideLength: Double
+    
+    init(sideLength: Double, name: String) {
+        self.sideLength = sideLength
+        super.init(name: name)
+        numberOfSides = 4
+    }
+    
+    func area() -> Double {
+        return sideLength * sideLength
+    }
+    override func simpleDescription() -> String {
+        return "A square with sides of length \(sideLength)."
+    }
+}
+let test = Square(sideLength: 5.2, name: "my test square")
+test.area()
+test.simpleDescription()
+```
+
+
+
+
 
 
