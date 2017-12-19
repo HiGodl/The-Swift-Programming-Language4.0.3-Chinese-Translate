@@ -186,7 +186,22 @@ for (kind, numbers) in interestingNumbers {
 print(largest)
 ```
 
-&gt;试验
+>试验
+>>添加另外一个变量来确定最大的值是哪个类型的，最打的值是多少
 
-&gt;&gt;添加另外一个变量来确定最大的值是哪个类型的，最打的值是多少
+使用`while`语句来循环执行一段代码，指到不满足条件为止。如果要确保该循环最少执行一次，需要将条件放到最后
+
+```Swift
+var n = 2
+while n < 100 {
+    n *= 2
+}
+print(n)
+ 
+var m = 2
+repeat {
+    m *= 2
+} while m < 100
+print(m)
+```
 
