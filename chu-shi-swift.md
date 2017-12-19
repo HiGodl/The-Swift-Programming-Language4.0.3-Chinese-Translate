@@ -186,8 +186,9 @@ for (kind, numbers) in interestingNumbers {
 print(largest)
 ```
 
->试验
->>添加另外一个变量来确定最大的值是哪个类型的，最打的值是多少
+> 试验
+>
+> > 添加另外一个变量来确定最大的值是哪个类型的，最打的值是多少
 
 使用`while`语句来循环执行一段代码，指到不满足条件为止。如果要确保该循环最少执行一次，需要将条件放到最后
 
@@ -197,13 +198,14 @@ while n < 100 {
     n *= 2
 }
 print(n)
- 
+
 var m = 2
 repeat {
     m *= 2
 } while m < 100
 print(m)
 ```
+
 可以使用`..<`来确保循环在某一索引范围内执行。
 
 ```Swift
@@ -213,6 +215,43 @@ for i in 0..<4 {
 }
 print(total)
 ```
-`..<`操作符不包含索引中的最大值，如果要包含最大值需要使用`...<`
+
+`..<`操作符不包含索引中的最大值，如果要包含最大值需要使用 `...<`
+
+#### 
+
+#### 方法和闭包
+
+使用func定义方法。通过方法名调用方法，方法参数写在方法名后的圆括号中。使用`->`将参数名及参数类型与返回值类型隔开
+
+
+
+```Swift
+func greet(person: String, day: String) -> String {
+    return "Hello \(person), today is \(day)."
+}
+greet(person: "Bob", day: "Tuesday")
+
+```
+
+>试验
+>>将`day`这个参数移除。在问候中添加一个包含午餐的参数
+
+通常情况下，参数名默认为方法参数标签，可以在参数名前添加自定义参数标签，或者使用`_`来代表无参数标签
+
+```Swift
+func greet(_ person: String, on day: String) -> String {
+    return "Hello \(person), today is \(day)."
+}
+greet("John", on: "Wednesday")
+
+```
+
+
+
+
+
+
+
 
 
