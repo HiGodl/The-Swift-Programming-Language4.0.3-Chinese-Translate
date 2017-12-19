@@ -204,4 +204,15 @@ repeat {
 } while m < 100
 print(m)
 ```
+可以使用`..<`来确保循环在某一索引范围内执行。
+
+```Swift
+var total = 0
+for i in 0..<4 {
+    total += i
+}
+print(total)
+```
+`..<`操作符不包含索引中的最大值，如果要包含最大值需要使用`...<`
+
 
