@@ -1,6 +1,7 @@
 作为编程语言学习的传统，我们来通过一个`Hello，World！`来开始我们的Swift教程。在Swift中，我们可以通过简单的一行来实现：
 
-```
+```Swift
+
 print("Hello, World!")
 ```
 
@@ -38,7 +39,7 @@ let explicitDouble: Double = 70
 
 在Swift中不允许隐式的转换数据类型。如果需要进行数据类型转换，需要通过目标类型的转换方法来进行数据转换
 
-```
+```Swift
 let lable = "The width is "
 let width = 94
 let widthLable = lable + String(width)
@@ -50,7 +51,7 @@ let widthLable = lable + String(width)
 
 下面提供了更简单的在字符串中插入其他值的方法：将要插入字符串中的值写在圆括号中，在圆括号的最前面添加一个反斜杠`\`。如下：
 
-```
+```Swift
 let apples = 3
 let oranges = 5
 let appleSummary = "I have \(apples) apples."
@@ -63,7 +64,7 @@ let fruitSummary = "I have \(apples + oranges) pieces of fruit."
 
 可以使用三个双引号定义多行字符串。默认三个双引号中的多行字符串不包含缩进，如下：
 
-```
+```Swift
 let quotation = """
 I said "I have \(apples) apples."
 And then I said "I have \(apples + oranges) pieces of fruit."
@@ -72,7 +73,7 @@ And then I said "I have \(apples + oranges) pieces of fruit."
 
 使用方括号定义数组和字典`[]` ， 可以通过数组索引及字典键值获取集合中元素。最后一个元素后边可以有逗号。
 
-```
+```Swift
 var shoppingList = ["catfish", "water", "tulips", "blue paint"]
 shoppingList[1] = "bottle of water"
 
@@ -85,14 +86,15 @@ occupations["Jayne"] = "Public Relations”
 
 可以通过初始化方法新建空数组或字典。
 
-```
+```Swift
 let emptyArray = [String]()
 let emptyDictionary = [String: Float]()
 ```
 
 给变量赋值或者作为方法参数传递时，如果能够推断出类型，空数组可以写成`[]` ，空字典可以写成`[:]`。
 
-```
+```Swift
+
 shoppingList = []
 occupations = [:]
 ```
@@ -101,7 +103,8 @@ occupations = [:]
 
 使用`if`和`switch`实现条件控制，使用`for-in，while，repreat-while`实现循环。条件语句或者循环控制变量的圆括号是可以省略的，但是执行语句的花括号必须要写。
 
-```
+```Swift
+
 let individualScores = [75, 43, 103, 87, 12]
 var teamScore = 0
 for score in individualScores {
@@ -118,7 +121,8 @@ print(teamScore)
 
 可以使用 `if let` 来判断某些值是否存在。这些值可以看做是可选值。可选值的值可以为具体值或者用nil表示没有值。在定义变量的值类型后边加问号`？`表示这个变量的值为可选值（可以为具体值或者为nil）。
 
-```
+```Swift
+
 var optionalString: String? = "Hello"
 print(optionalString == nil)
 
@@ -137,7 +141,8 @@ if let name = optionalName {
 
 另一种操作可选值的方法是通过`??`操作符给可选值设置一个默认值。如果可选值的值没有设置就会使用默认值。
 
-```
+```Swift
+
 let nickName: String? = nil
 let fullName: String = "John Appleseed"
 let informalGreeting = "Hi \(nickName ?? fullName)”
@@ -169,7 +174,8 @@ default:
 
 可以通过`for-in`并提供两个名称接收字典的键值对来遍历字典。由于字典是无序集合，所以在遍历的时候输出顺序是随机的。
 
-```
+```Swift
+
 let interestingNumbers = [
     "Prime": [2, 3, 5, 7, 11, 13],
     "Fibonacci": [1, 1, 2, 3, 5, 8],
@@ -246,7 +252,8 @@ greet("John", on: "Wednesday")
 
 通过元组`(tuple)`来定义一个复合值——例如，方法返回多个值。元组中的值可以通过名称或者索引获取。
 
-```
+```Swift
+
 func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
     var min = scores[0]
     var max = scores[0]
@@ -345,47 +352,42 @@ print(sortedNumbers)
 
 通过`class <className>{}`来定义类。类属性的声明与常量变量的声明式一样的，唯一不同的是属性实在类中的。同样的，方法和函数的声明也是一样的。
 
-
 ```Swift
-
 class Shape {
     var numberOfSides = 0
     func simpleDescription() -> String {
         return "A shape with \(numberOfSides) sides."
     }
 }
-
 ```
->试验
->>通过`let`声明一个不可变的属性，声明一个含参的方法
+
+> 试验
+>
+> > 通过`let`声明一个不可变的属性，声明一个含参的方法
 
 通过`<class>()`的方法来创建类的对象。使用点 `.` 访问对象的属性及方法。
-
 
 ```Swift
 var shape = Shape()
 shape.numberOfSides = 7
 var shapeDescription = shape.simpleDescription()
-
 ```
 
 这个版本的`Shape`有一些重要的事情没有做：在初始化的时候给对象设置一些初始值的初始化方法。使用 `init` 来定义初始化方法。
-
 
 ```Swift
 class NamedShape {
     var numberOfSides: Int = 0
     var name: String
-    
+
     init(name: String) {
         self.name = name
     }
-    
+
     func simpleDescription() -> String {
         return "A shape with \(numberOfSides) sides."
     }
 }
-
 ```
 
 注意如何使用 `self` 区分 `name` 属性和 `name` 参数，类初始化的时候初始化方法的参数传递与方法调用的参数传递基本相同。每个属性都需要赋值——定义的时候直接赋值`(numberOfSides)` 或者在类的初始化方法中赋值 `(name)`
@@ -394,17 +396,16 @@ class NamedShape {
 
 使用`class <className>:<superClassName>{...}`来创建`superClassName`的子类。创建新的类的时候并不需要继承任何基类，按需确定是否要添加父类。子类中重写父类的方法时需要在前面加 `override` 修饰符 —— 如果在未加 `override` 的情况下重写了父类的方法，编译器会报错。同时编译器也会检查写明 `override` 的子类方法是否在父类中有定义。所以使用 `override` 的时候要注意。
 
-
 ```Swift
 class Square: NamedShape {
     var sideLength: Double
-    
+
     init(sideLength: Double, name: String) {
         self.sideLength = sideLength
         super.init(name: name)
         numberOfSides = 4
     }
-    
+
     func area() -> Double {
         return sideLength * sideLength
     }
@@ -416,9 +417,6 @@ let test = Square(sideLength: 5.2, name: "my test square")
 test.area()
 test.simpleDescription()
 ```
-
-
-
 
 
 
