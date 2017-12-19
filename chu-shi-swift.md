@@ -320,6 +320,24 @@ var numbers = [20, 19, 7, 12]
 hasAnyMatches(list: numbers, condition: lessThanTen)
 ```
 
+方法其实是一种特殊类型的闭包：一个可以先定义后调用的代码块。不管闭包在哪里执行，都可以访问其定义作用域中的变量、方法等——其实在方法嵌套中就已经展示了这个特性。可以通过 `{()}` 来定义闭包，通过 `in` 来分割参数及闭包返回值类型。
+
+
+```Swift
+
+numbers.map({ (number: Int) -> Int in
+    let result = 3 * number
+    return result
+})
+
+```
+
+>试验
+>>重写闭包，使所有奇数返回值为0
+
+
+
+
 
 
 
