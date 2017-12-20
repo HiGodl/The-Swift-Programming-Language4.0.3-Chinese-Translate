@@ -573,5 +573,29 @@ let heartsDescription = hearts.simpleDescription()
 >试验
 >>给 `Suit` 添加 `color()` 方法，`spades` 和 `clubs` 返回 `black`， `hearts` 和 `diamonds` 返回 `red`
 
+注意上面用到 `hearts` 枚举项的两个地方：由于 `heart`常量在定义的时候并没有指定类型，所以在赋值的时候是通过`Suit.hearts`这种方式获取枚举项赋值。在`switch`语句中，因为已知`self`的类型，所以可以通过简写的方式(`.hearts`)获取枚举项。当值类型可以确认的时候可以通过简写获取枚举项。
 
+如果枚举有原始数值，那么原始数值会作为声明的一部分存在，也就是在任何时候同一枚举项的原始数值都相同。同事我们有另外一种将枚举项与原始数值关联的方法——原始数值可以在实例化枚举的时候指定，这样在同一枚举的同一枚举项就可以设置为不同的原始数值。你可以将其看做给枚举项的属性赋值。例如，从服务器获取太阳升起落下的时间。服务器可能返回正确的信息，或者返回错误信息。
+
+```Swift
+enum ServerResponse {
+    case result(String, String)
+    case failure(String)
+}
+ 
+let success = ServerResponse.result("6:00 am", "8:09 pm")
+let failure = ServerResponse.failure("Out of cheese.")
+ 
+switch success {
+case let .result(sunrise, sunset):
+    print("Sunrise is at \(sunrise) and sunset is at \(sunset).")
+case let .failure(message):
+    print("Failure...  \(message)")
+}
+```
+
+>试验
+>>在`switch`语句及`ServerResponse`中添加第三个枚举项。
+
+注意在`switch`语句中如何获取枚举项中服务器返回的太阳升起落下的时间。
 
