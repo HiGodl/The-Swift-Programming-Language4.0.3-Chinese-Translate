@@ -617,3 +617,80 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 
 >试验
 >>为卡片添加一个创建一副完整的卡片组合方法的，每张卡片组合一个等级和套装
+
+
+####协议和扩展
+
+使用`protocol`声明代理
+
+```Swift
+
+protocol ExampleProtocol {
+    var simpleDescription: String { get }
+    mutating func adjust()
+}
+
+```
+
+类、枚举和结构体都可以实现协议。
+
+```Swift
+
+class SimpleClass: ExampleProtocol {
+    var simpleDescription: String = "A very simple class."
+    var anotherProperty: Int = 69105
+    func adjust() {
+        simpleDescription += "  Now 100% adjusted."
+    }
+}
+var a = SimpleClass()
+a.adjust()
+let aDescription = a.simpleDescription
+ 
+struct SimpleStructure: ExampleProtocol {
+    var simpleDescription: String = "A simple structure"
+    mutating func adjust() {
+        simpleDescription += " (adjusted)"
+    }
+}
+var b = SimpleStructure()
+b.adjust()
+let bDescription = b.simpleDescription
+
+```
+
+>试验
+>>定义一个实现该协议的枚举
+
+注意在 `SimpleStructure` 中需要通过 `mutating`关键字来声明一个用来管理结构体属性的方法。但是由于类方法任何时候都对类对象有管理权，所以在`SimpleClass`中的方法不需要添加任何关键字以实现对类对象的管理
+
+通过 `extension` 给已存在的类添加扩展功能， 例如添加新的方法或者可计算属性。可以通过扩展给定义在其他地方的类甚至是引用库中的类实现扩展。
+
+```Swift
+
+extension Int: ExampleProtocol {
+    var simpleDescription: String {
+        return "The number \(self)"
+    }
+    mutating func adjust() {
+        self += 42
+    }
+}
+print(7.simpleDescription)
+
+```
+
+>试验
+>>通过扩展给`Double`类添加一个`absoluteValue`属性
+
+我们可以像其他类型一样使用协议的名称——例如，创建一个指定协议的集合对象，集合中添加的对象必须要实现指定的协议。当使用一个协议类型的值的时候，我们只能调用协议中定义的方法，任何协议方法之外的方法我们都无法调用。
+
+```Swift
+
+let protocolValue: ExampleProtocol = a
+print(protocolValue.simpleDescription)
+// print(protocolValue.anotherProperty)  // Uncomment to see the error
+
+```
+
+尽管`protocolValue`的运行时类型是`SimpleClass`，编译器也会按照指定的类型（`ExampleProtocol`）处理。也就是除了协议中的方法我们无法掉用类定义的其他属性及方法。
