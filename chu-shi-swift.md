@@ -373,7 +373,7 @@ shape.numberOfSides = 7
 var shapeDescription = shape.simpleDescription()
 ```
 
-这个版本的`Shape`有一些重要的事情没有做：在初始化的时候给对象设置一些初始值的初始化方法。使用 `init` 来定义初始化方法。
+这个版本的`Shape`有一些重要的事情没有做：在初始化的时候给对象设置一些初始值的构造方法。使用 `init` 来定义构造方法。
 
 ```Swift
 class NamedShape {
