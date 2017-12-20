@@ -616,4 +616,4 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 ```
 
 >试验
->>为卡片添加一个创建一副完整的卡片组合方法的，每张卡片组合一个等级和套装”
+>>为卡片添加一个创建一副完整的卡片组合方法的，每张卡片组合一个等级和套装
