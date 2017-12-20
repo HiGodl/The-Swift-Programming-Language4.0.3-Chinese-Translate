@@ -599,3 +599,21 @@ case let .failure(message):
 
 注意在`switch`语句中如何获取枚举项中服务器返回的太阳升起落下的时间。
 
+使用`struct`定义结构体。结构体支持大部分类的操作，包括方法、构造方法。类和结构体最大的不同是传值时类对象是引用传递，结构体是值传递。
+
+```Swift
+
+struct Card {
+    var rank: Rank
+    var suit: Suit
+    func simpleDescription() -> String {
+        return "The \(rank.simpleDescription()) of \(suit.simpleDescription())"
+    }
+}
+let threeOfSpades = Card(rank: .three, suit: .spades)
+let threeOfSpadesDescription = threeOfSpades.simpleDescription()
+
+```
+
+>试验
+>>为卡片添加一个创建一副完整的卡片组合方法的，每张卡片组合一个等级和套装”
