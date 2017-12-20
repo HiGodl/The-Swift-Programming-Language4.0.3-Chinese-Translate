@@ -619,6 +619,7 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 >>为卡片添加一个创建一副完整的卡片组合方法的，每张卡片组合一个等级和套装
 
 
+
 ####协议和扩展
 
 使用`protocol`声明代理
@@ -694,3 +695,99 @@ print(protocolValue.simpleDescription)
 ```
 
 尽管`protocolValue`的运行时类型是`SimpleClass`，编译器也会按照指定的类型（`ExampleProtocol`）处理。也就是除了协议中的方法我们无法掉用类定义的其他属性及方法。
+
+
+####错误处理
+
+可以通过实现`Error`协议的任意类型来展示错误
+
+```Swift
+
+enum PrinterError: Error {
+    case outOfPaper
+    case noToner
+    case onFire
+}
+
+```
+
+在有`throws`关键字的方法中我们可以使用`throw`抛出错误。方法中抛出错误的时候这个方法会立刻返回，调用这个方法的代码段需要处理抛出的错误
+
+```Swift
+
+func send(job: Int, toPrinter printerName: String) throws -> String {
+    if printerName == "Never Has Toner" {
+        throw PrinterError.noToner
+    }
+    return "Job sent"
+}
+
+```
+
+可以有多种处理错误的方式。使用`do-catch`，在`do`后的代码块中，通过`try`标记出可能会抛出错误的方法。在`catch`代码块中，抛出的错误会通过`error`参数传入，也可以设置error参数为其他名称。
+
+```Swift
+
+do {
+    let printerResponse = try send(job: 1040, toPrinter: "Bi Sheng")
+    print(printerResponse)
+} catch {
+    print(error)
+}
+
+```
+
+>试验
+>>将`printer`的`name`设置为"Never Has Toner"，让`send(job:toPrinter:)`运行时抛出错误
+
+可以写多个`catch`代码块，每个代码块处理特定的错误。在`catch`后的表达式类似于`switch`语句中`case`后表达式的写法
+
+```Swift
+
+do {
+    let printerResponse = try send(job: 1440, toPrinter: "Gutenberg")
+    print(printerResponse)
+} catch PrinterError.onFire {
+    print("I'll just put this over here, with the rest of the fire.")
+} catch let printerError as PrinterError {
+    print("Printer error: \(printerError).")
+} catch {
+    print(error)
+}
+
+```
+
+>试验
+>>添加抛出错误的代码，需要抛出什么错误第一个`catch`后的代码块才会执行呢，那第二个和第三个`catch`又需要抛出什么错误才能执行呢？
+
+
+另一个处理错误的方法是通过`try?`将结果转换为可选值。如果方法抛出错误的话，将会忽略掉错误并返回`nil`。如果有值的话方法返回的值就会存在可选容器中。
+
+```Swift
+
+let printerSuccess = try? send(job: 1884, toPrinter: "Mergenthaler")
+let printerFailure = try? send(job: 1885, toPrinter: "Never Has Toner")
+
+```
+
+通过`defer`关键字在方法中定义一个在方法执行之后，在返回值返回之前执行的代码块。这个代码块无论是否抛出错误都会执行。可以通过`defer`定义多个方法调用之间的初始化及清理操作。
+
+```Swift
+
+var fridgeIsOpen = false
+let fridgeContent = ["milk", "eggs", "leftovers"]
+ 
+func fridgeContains(_ food: String) -> Bool {
+    fridgeIsOpen = true
+    defer {
+        fridgeIsOpen = false
+    }
+    
+    let result = fridgeContent.contains(food)
+    return result
+}
+fridgeContains("banana")
+print(fridgeIsOpen)
+
+```
+
