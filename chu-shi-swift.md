@@ -462,4 +462,33 @@ print(triangle.sideLength)
     2. 调用父类初始化方法
     3. 修改父类中初始化属性的值。所有初始化的工作包括方法调用，获取设置属性值都可以在这一步完成。
 
+在实际开发中如果并不需要对赋给属性的值做任何处理，但是在属性赋值前后要执行特定的方法或者代码，可以使用`willSet`和`didSet`方法实现。写在这两个方法中的代码会在除了在类初始化方法中的任何给属性设置方法的时候执行。例如下例中，该类可以确保三角形的边长永远与正方形的边长相等。
+
+
+```Swift
+
+class TriangleAndSquare {
+    var triangle: EquilateralTriangle {
+        willSet {
+            square.sideLength = newValue.sideLength
+        }
+    }
+    var square: Square {
+        willSet {
+            triangle.sideLength = newValue.sideLength
+        }
+    }
+    init(size: Double, name: String) {
+        square = Square(sideLength: size, name: name)
+        “triangle = EquilateralTriangle(sideLength: size, name: name)
+    }
+}
+var triangleAndSquare = TriangleAndSquare(size: 10, name: "another test shape")
+print(triangleAndSquare.square.sideLength)
+print(triangleAndSquare.triangle.sideLength)
+triangleAndSquare.square = Square(sideLength: 50, name: "larger square")
+print(triangleAndSquare.triangle.sideLength)
+
+```
+
 
