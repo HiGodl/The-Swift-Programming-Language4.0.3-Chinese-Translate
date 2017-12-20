@@ -5,4 +5,5 @@
 * [关于Swift](chapter1.md)
 * [版本兼容性](ban-ben-jian-rong-xing.md)
 * [初识Swift](chu-shi-swift.md)
+* [enums&structs](enumsandstructs.md)
 

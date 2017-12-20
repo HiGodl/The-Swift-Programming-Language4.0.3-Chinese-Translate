@@ -500,5 +500,3 @@ let sideLength = optionalSquare?.sideLength
 
 ```
 
-
-
