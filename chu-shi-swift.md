@@ -490,5 +490,5 @@ triangleAndSquare.square = Square(sideLength: 50, name: "larger square")
 print(triangleAndSquare.triangle.sideLength)
 
 ```
-
+当使用可选值的时候，可以在执行操作（方法、属性、索引取值）之前添加 `?` 。当值为 `nil` 的时候，`？` 后边的内容不会执行，整个表达式的值都为 `nil` 。 如果不是 `nil` 那么`？` 后边的内容就会正常执行。无论哪种情况，整个表达式返回的都是可选值
 
