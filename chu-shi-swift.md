@@ -791,3 +791,60 @@ print(fridgeIsOpen)
 
 ```
 
+
+####泛型
+通过添加尖括号加泛型名称创建泛型方法或类型。
+
+```Swift
+
+func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
+    var result = [Item]()
+    for _ in 0..<numberOfTimes {
+        result.append(item)
+    }
+    return result
+}
+makeArray(repeating: "knock", numberOfTimes: 4)
+
+```
+
+可以通过泛型定义方法、类、实例方法、枚举、结构体
+
+```Swift
+
+// Reimplement the Swift standard library's optional type
+enum OptionalValue<Wrapped> {
+    case none
+    case some(Wrapped)
+}
+var possibleInteger: OptionalValue<Int> = .none
+possibleInteger = .some(100)
+
+```
+
+在方法体前添加`where`关键字，指定特定的需求——例如，要求类要实现协议，要求两个类相同，要求类继成特定的父类。
+
+```Swift
+
+func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
+    where T.Iterator.Element: Equatable, T.Iterator.Element == U.Iterator.Element {
+        for lhsItem in lhs {
+            for rhsItem in rhs {
+                if lhsItem == rhsItem {
+                    return true
+                }
+            }
+        }
+        return false
+}
+anyCommonElements([1, 2, 3], [3])
+
+```
+
+>试验
+>>修改 `anyCommonElements(_:_:)` 方法，要求该方法返回两个数组中包含的相同的元素。
+
+`<T: Equatable>`与`<T> ... where T: Equatable`两种写法意义相同
+
+
+
