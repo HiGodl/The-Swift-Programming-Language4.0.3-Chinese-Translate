@@ -350,7 +350,7 @@ print(sortedNumbers)
 
 #### 类和对象
 
-通过`class <className>{}`来定义类。类属性的声明与常量变量的声明式一样的，唯一不同的是属性实在类中的。同样的，方法和函数的声明也是一样的。
+通过在 `class` 后添加类名来定义类。类属性的声明与常量变量的声明式一样的，唯一不同的是属性实在类中的。同样的，方法和函数的声明也是一样的。
 
 ```Swift
 class Shape {
@@ -394,7 +394,7 @@ class NamedShape {
 
 如果在对象销毁之前需要做一些操作可以使用 `deinit` 来创建对象销毁方法
 
-使用`class <className>:<superClassName>{...}`来创建`superClassName`的子类。创建新的类的时候并不需要继承任何基类，按需确定是否要添加父类。子类中重写父类的方法时需要在前面加 `override` 修饰符 —— 如果在未加 `override` 的情况下重写了父类的方法，编译器会报错。同时编译器也会检查写明 `override` 的子类方法是否在父类中有定义。所以使用 `override` 的时候要注意。
+使用`class` 加类名加父类名来创建的子类，父类与类名间用冒号隔开。创建新的类的时候并不需要继承任何基类，按需确定是否要添加父类。子类中重写父类的方法时需要在前面加 `override` 修饰符 —— 如果在未加 `override` 的情况下重写了父类的方法，编译器会报错。同时编译器也会检查写明 `override` 的子类方法是否在父类中有定义。所以使用 `override` 的时候要注意。
 
 ```Swift
 class Square: NamedShape {
@@ -418,5 +418,48 @@ test.area()
 test.simpleDescription()
 ```
 
+>试验
+>>新建一个命名为`Circle`继承于`NameShape`的子类，并且将`name`和半径作为初始化方法的参数。实现`area()`和`simpleDescription()`方法
+
+类属性除了可以存储值意外，还可以给属性添加`get`和`set`方法。
+
+
+```Swift
+
+class EquilateralTriangle: NamedShape {
+    var sideLength: Double = 0.0
+    
+    init(sideLength: Double, name: String) {
+        self.sideLength = sideLength
+        super.init(name: name)
+        numberOfSides = 3
+    }
+    
+    var perimeter: Double {
+        get {
+            return 3.0 * sideLength
+        }
+        set {
+            sideLength = newValue / 3.0
+        }
+    }
+    
+    override func simpleDescription() -> String {
+        return "An equilateral triangle with sides of length \(sideLength)."
+    }
+}
+var triangle = EquilateralTriangle(sideLength: 3.1, name: "a triangle")
+print(triangle.perimeter)
+triangle.perimeter = 9.9
+print(triangle.sideLength)
+
+```
+
+在`perimeter`的set方法中，新值的默认名称为`newValue`，当然可以通过在set方法后的圆括号中写明来指定特定的名称。
+
+注意在`EquilateralTriangle`的初始化方法中，一共做了三件事：
+    1. 给子类的属性设置初始化值
+    2. 调用父类初始化方法
+    3. 修改父类中初始化属性的值。所有初始化的工作包括方法调用，获取设置属性值都可以在这一步完成。
 
 
