@@ -144,5 +144,39 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
 >>所有可以使用的在字符串中插入值的操作，请参考 [String Interpolation]() 章节
 
 
+####注释
+
+可以通过注释写一些笔记或者提醒，注释并不会执行。当 Swift 编译器编译时会自动跳过注释内容。
+
+Swift 中的注释几乎和 C 中一样。 单行注释以双斜杠开头：
+
+```Swift
+
+// This is a comment.
+
+```
+
+多行注释以 "`/*`" 开头 "`*/`" 结尾
+
+```Swift
+
+/* This is also a comment
+ but is written over multiple lines. */
+
+```
+
+在Swift中，多行注释是可以嵌套的，这一点有别与 C 语言。
+
+```Swift
+
+“/* This is the start of the first multiline comment.
+ /* This is the second, nested multiline comment. */
+ This is the end of the first multiline comment. */
+
+```
+
+Swift 中的嵌套注释可以很轻松的注释掉一大段包含多行注释的代码。
+
+
 
 
