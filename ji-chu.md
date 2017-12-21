@@ -1,6 +1,6 @@
 尽管Swift是一个用来写 iOS, macOS, watchOS 及 tvOS 应用的新语言，但是如果你以前写过C以及 Objective-C 的话，用起来并不会感到陌生。
 
-Swift 使用自己的方式实现了 C 和 Objective-C 中所有类型，包括`Int`(整型)，`Double`和`Float`（浮点数）， `Bool`(布尔值)，`String`（字符串）。Swift 也提供了三种主要的集合，`Array`,`Set`,`Dictionary`，在 [Collection Types]() 章节中有详细描述。
+Swift 使用自己的方式实现了 C 和 Objective-C 中所有类型，包括`Int`(整型)，`Double`和`Float`（浮点数）， `Bool`(布尔值)，`String`（字符串）。Swift 也提供了三种主要的集合，`Array`,`Set`,`Dictionary`，在 [集合类型]() 章节中有详细描述。
 
 像C语言一样，Swift通过指定名称来存储关联变量。Swift中也大量使用了不可变的变量，也就是常量，并且在Swift中常量要比在 C 语言中要强大的多。在编码过程中如果有不需要改变的值的时候，可以通过常量使得代码更加安全、简洁，这种用法在Swift中随处可见。
 
@@ -75,7 +75,7 @@ var red, green, blue: Double
 ```
 
 >注意
->>在实际工作中我们很少用到类型注解。在声明变量或常量的同时给变量或常量赋值，Swift 可以从赋值推断出变量或常量的实际类型，在[Type Safety and Type Inference]()中有详细讲解。在 `welcomeMessage` 例子中，由于在声明变量的时候没有给定初始化值，所以需要明确指明该变量的类型是什么。
+>>在实际工作中我们很少用到类型注解。在声明变量或常量的同时给变量或常量赋值，Swift 可以从赋值推断出变量或常量的实际类型，在[类型安全和类型推断]()中有详细讲解。在 `welcomeMessage` 例子中，由于在声明变量的时候没有给定初始化值，所以需要明确指明该变量的类型是什么。
 
 
 #####变量和常量的命名
@@ -129,7 +129,7 @@ print(friendlyWelcome)
 
 ```
 
-`print(_:separator:terminator:)` 方法是全局方法，可以将常量或变量输出到合适的地方。例如在 Xcode 中，会将结果输出到 `console` 面板上。 `separator` 和 `terminator`参数有默认值，所以在调用该方法的时候可以忽略这两个参数。输出结束之后默认会添加换行符。如果想在输出完成之后不添加换行，则需要给 `terminator` 传入一个空字符串——例如 `print(someValue, terminator: "")` 。关于给参数设置默认值，请参考 [Default Parameter Values]() 章节
+`print(_:separator:terminator:)` 方法是全局方法，可以将常量或变量输出到合适的地方。例如在 Xcode 中，会将结果输出到 `console` 面板上。 `separator` 和 `terminator`参数有默认值，所以在调用该方法的时候可以忽略这两个参数。输出结束之后默认会添加换行符。如果想在输出完成之后不添加换行，则需要给 `terminator` 传入一个空字符串——例如 `print(someValue, terminator: "")` 。关于给参数设置默认值，请参考 [参数默认值]() 章节
 
 Swift 通过字符串插入操作符在长字符串中添加常量或变量，在执行时 Swift 会及时的将其转换为常量或变量此时的的值。将常量或变量的名称写在圆括号中，并在圆括号前加反斜杠：
 
@@ -141,7 +141,7 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
 ```
 
 >注意
->>所有可以使用的在字符串中插入值的操作，请参考 [String Interpolation]() 章节
+>>所有可以使用的在字符串中插入值的操作，请参考 [字符串插值]() 章节
 
 
 ####注释
