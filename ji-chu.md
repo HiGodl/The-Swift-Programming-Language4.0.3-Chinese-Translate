@@ -339,6 +339,64 @@ let justOverOneMillion = 1_000_000.000_000_1
 
 除非在显示外部资源的显示大小的数据，或者性能、内存使用情况或者其他必要的情况下，我们才会使用指定类型的整型数。在这些情况下使用指定大小的整型类型可以帮我们检测到内存意外泄漏并且隐含地记录了正在使用的数据的性质。
 
+#####整型数值转换
+每种数据数值数据类型使用常量或变量能够存储值的范围是不同的。`Int8`类型的常量或变量可以存储`-128`到`127`之间的数，`UInt8`类型可以存储 `0` 到 `255`之间的整数。如果使用常量或变量存储超出其类型范围的值代码编译过程中会报错：
+
+```Swift
+
+let cannotBeNegative: UInt8 = -1
+// UInt8 cannot store negative numbers, and so this will report an error
+let tooBig: Int8 = Int8.max + 1
+// Int8 cannot store a number larger than its maximum value,
+// and so this will also report an error
+
+```
+
+由于不同数值类型之间的存储范围不同，所以必须根据实际情况选择数据类型转换。这种选择可以防止隐式转换错误，并有助于在代码中明确类型转换的意图。
+
+可以通过带转换值初始化一个新的目标类型的值来进行数值类型转换。在下例中，常量`twoThousand`是`UInt16`类型，而常量`one`是`UInt8`类型。由于值类型不同，这两个数值不能直接做加法。所以要通过`UInt16(one)`初始化一个新的`UInt16`类型的`one`， 并使用这个值来替换原来的值：
+
+```Swift
+
+let twoThousand: UInt16 = 2_000
+let one: UInt8 = 1
+let twoThousandAndOne = twoThousand + UInt16(one)
+
+```
+
+由于加号两侧都为`UInt16`类型的数值，所以可以进行加法操作。由于输出值是两个`UInt16`的值相加得来，所以输出值`twoThousandAndOne`也是`UInt16`类型。
+
+`SomeType(ofInitialValue)` 是 Swift 中默认的类型初始化并赋值的方法。在具体实现中，`UInt16`有一个接收`UInt8`的初始化方法，所以这个初始化方法用来将`UInt8`类型数转换为`UInt16`类型数。在通过初始化方法给`UInt16`类型传值时，传入的值并不是任意的，需要传入`UInt16`类型初始化方法中包含的类型。通过扩展已有的类型使得初始化方法接收新的数据类型（包括自定义数据类型）会在 [扩展]() 章节中讲解。
+
+#####整型和浮点数间的转换
+
+整型数和浮点数之间的转换必须明确写出：
+
+```Swift
+
+let three = 3
+let pointOneFourOneFiveNine = 0.14159
+let pi = Double(three) + pointOneFourOneFiveNine
+// pi equals 3.14159, and is inferred to be of type Double
+
+```
+
+例中，常量`three`用来创建一个新的`Double`值，用来保证加号两侧的类型相同。如果不做转换，两个数是无法相加的。
+
+浮点数转换为整型也是需要明确写出的。整型可以通过`Double`和`Float`进行初始化：
+
+```Swift
+
+let integerPi = Int(pi)
+// integerPi equals 3, and is inferred to be of type Int
+
+```
+
+通过这种方式转换，浮点数通常会去掉小数点后边的值而保留整数部分的值。也就是说`4.75`会转换为`4`，`-3.9`或转换为`-3`。
+
+>注意
+>>常量或变量相加的规则同数值的直接相加是不同的。数值`3`可以直接与数值`0.14159`相加，因为数值在其后并没有指定其类型是什么。它们的类型只有在编译器执行之后才会确定。
+
 
 
 
