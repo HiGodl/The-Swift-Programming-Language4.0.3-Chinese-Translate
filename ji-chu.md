@@ -398,6 +398,31 @@ let integerPi = Int(pi)
 >>常量或变量相加的规则同数值的直接相加是不同的。数值`3`可以直接与数值`0.14159`相加，因为数值在其后并没有指定其类型是什么。它们的类型只有在编译器执行之后才会确定。
 
 
+####类型别名
+
+类型别名可以给已存在的类型起一个别名。可以使用`typealias`关键字定义。
+
+类型别名可以使得已存在的类在更符合上下文语境，例如我们在对特定字节数据的外部资源进行处理的时候。
+
+```Swift
+
+typealias AudioSample = UInt16
+
+```
+
+定义完类型别名之后，可以任何地方将类型的原名用别名替换掉：
+
+```Swift
+
+var maxAmplitudeFound = AudioSample.min
+// maxAmplitudeFound is now 0
+
+```
+
+例子中`AudioSample`被定义为`UInt16`的别名。由于是别名，`AudioSample.min`实际调用的是`UInt16.min`，并给`maxAmplitudeFound`提供了初始值`0`。
+
+
+
 
 
 
