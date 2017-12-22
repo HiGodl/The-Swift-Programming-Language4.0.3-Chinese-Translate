@@ -422,6 +422,61 @@ var maxAmplitudeFound = AudioSample.min
 例子中`AudioSample`被定义为`UInt16`的别名。由于是别名，`AudioSample.min`实际调用的是`UInt16.min`，并给`maxAmplitudeFound`提供了初始值`0`。
 
 
+####布尔值
+
+Swift中的布尔类型叫做`Bool`。由于值只能为真或假，布尔值被看做逻辑值。Swift有两个布尔常量，`true`和`false`：
+
+```Swift
+
+let orangesAreOrange = true
+let turnipsAreDelicious = false
+
+```
+
+由于初始化的同时被赋值为布尔值，所以`orangesAreOrange`和`turnipsAreDelicious`被推断为布尔类型。就像`Double`和`Int`类型一样，如果在声明常量或变量的时候直接设置值为`true`或`false`，那么并不需要明确写出常量或变量的值类型为`Bool`。当常量或变量通过其他已经确定之类行的值进行初始化的时候，类型推断可以使得我们的代码更加简洁易读。
+
+布尔值在使用`if`之类的条件语句时非常有用：
+
+```Swift
+
+if turnipsAreDelicious {
+    print("Mmm, tasty turnips!")
+} else {
+    print("Eww, turnips are horrible.")
+}
+// Prints "Eww, turnips are horrible.”
+
+```
+
+`if`之类的条件语句在 [流程控制]() 章节中有详细讲解
+
+Swift的类型安全机制确保非布尔值不能代替布尔值来执行操作。下例中会造成编译报错：
+
+```Swift
+
+let i = 1
+if i {
+    // this example will not compile, and will report an error
+}
+
+```
+
+然而下面例子中的写法是允许的：
+
+```Swift
+
+let i = 1
+if i == 1 {
+    // this example will compile successfully
+}
+
+```
+
+`i==1`比较结果为`Bool`类型，所以第二个例子可以通过类型检查。像`i == 1`这样的比较操作会在 [基础运算符]() 中详解。
+
+就像在其他例子中提到的 Swift 的类型安全检查机制，这一进步可以避免某些意想不到的错误，同时可以使得特定代码的意图表达更清晰。
+
+
 
 
 
