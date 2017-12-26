@@ -477,6 +477,87 @@ if i == 1 {
 就像在其他例子中提到的 Swift 的类型安全检查机制，这一进步可以避免某些意想不到的错误，同时可以使得特定代码的意图表达更清晰。
 
 
+####元组
+
+元组(Tuples)是由多个值组成的一个值。元组中的值可以是任何类型。
+
+在下例中，`(404, "Not Found")` 是一个描述`HTTP`状态码的元组。我们在每次浏览网页的时候，服务器都会返回一个特殊的值作为`HTTP`状态码。当访问的网页不存在时会返回`404 Not Found`。
+
+```Swift
+
+let http404Error = (404, "Not Found")
+// http404Error is of type (Int, String), and equals (404, "Not Found")
+
+```
+
+`(404, “Not Found”)` 将 `HTTP` 状态码由`Int`,`String`两种类型的值组成的元组来表示：数值和描述。它的类型可以描述为"`(Int, String)`类型的元组"。
+
+在元组中可以包含任何数据类型的任何排列组合。可以实现`(Int, Int, Int)`或者`(String, Bool)`，或者特殊的需要使用的元组类型。
+
+可以通过常量或者变量来接收元组中的数值，以便在后面的代码中使用：
+
+```Swift
+
+let (statusCode, statusMessage) = http404Error
+print("The status code is \(statusCode)")
+// Prints "The status code is 404"
+print("The status message is \(statusMessage)")
+// Prints "The status message is Not Found” 
+
+```
+
+在获取元组中的值的时候，如果有些值不需要，可以使用下划线“`_`”忽略掉该值：
+
+```Swift
+
+let (justTheStatusCode, _) = http404Error
+print("The status code is \(justTheStatusCode)")
+// Prints "The status code is 404”
+
+```
+
+或者，我们可以通过从0开始的索引值获取元组中的元素：
+
+```Swift
+
+print("The status code is \(http404Error.0)")
+// Prints "The status code is 404"
+print("The status message is \(http404Error.1)")
+// Prints "The status message is Not Found”
+
+```
+
+我们可以在声明元组的时候给元组中的元素命名：
+
+```Swift
+
+let http200Status = (statusCode: 200, description: "OK")
+
+```
+
+命名元组中元素之后，可以通过元素名称获取元素值：
+
+```Swift
+
+print("The status code is \(http200Status.statusCode)")
+// Prints "The status code is 200"
+print("The status message is \(http200Status.description)")
+// Prints "The status message is OK”
+
+```
+
+元组在函数返回值包含多个数值的情况下非常有用。函数在返回网页访问情况的时候可能会返回一个`(Int, String)`类型的元组来描述返回是否成功。通过返回包含两个值与类型都不相同的元素的元组，比起只能返回一种类型的一个数值函数可以提供更多的返回值的信息。更多的信息可以参考 [多返回值函数]() 章节。
+
+>注意
+>>元组在表达临时的一组有关系的数值是非常有用。并不适用于创建复杂的数据结构。如果需要的数据结构并不是作为临时使用，最好使用类或者结构体定义。更多信息请参考 [类和结构体]() 章节。
+
+
+
+
+
+
+
+
 
 
 
