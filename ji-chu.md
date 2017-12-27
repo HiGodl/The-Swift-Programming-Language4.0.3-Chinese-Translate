@@ -573,6 +573,34 @@ let convertedNumber = Int(possibleNumber)
 由于实例化可能失败，所以构造函数返回的是可选类型的`Int`，而不是`Int`。可选类型的 `Int` 写做 `Int?` 而不是 `Int` 。 问号表名其是一个可选类型的值，也就是可能包含一个`Int`值，也可能没有值。（不可能包含其他类型的值，例如`Bool`, `String`类型的值。只能是`Int`或者什么都没有。）
 
 
+#####nil
+通过设置可选变量的值为`nil`表明变量无值的状态：
+
+```Swift
+
+var serverResponseCode: Int? = 404
+// serverResponseCode contains an actual Int value of 404
+serverResponseCode = nil
+// serverResponseCode now contains no value
+
+```
+
+>注意
+>>不能够给非可选类型的常量或变量设置`nil`。一般使用指定类型的可选类型声明可能无值的常量或变量。
+
+声明可选类型的变量如果没有设置初始值时，默认设置为`nil`：
+
+```Swift
+
+var surveyAnswer: String?
+// surveyAnswer is automatically set to nil
+
+```
+
+>注意
+>>Swift中与Objective-C中的`nil`是不同的。Objective-C中，`nil`代表空指针（指针不指向任何对象）。在Swift中，`nil`并不是指针——只是代表值不存在。任何类型的可选值都可以设置为`nil`，并不只有对象能设置为`nil`。
+
+
 
 
 
