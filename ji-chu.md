@@ -559,6 +559,19 @@ print("The status message is \(http200Status.description)")
 >注意
 >>在 Objective-C 及 C 语言中并没有可选值的定义。在 Objective-C 中返回值为对象的方法可以返回一个具体对象或者是 `nil`， `nil` 表示并没有对象返回。然而这种做法只能对返回值为对象的方法起作用，如果是结构体，基础C类型，或者枚举值，Objective-C 方法将返回一个特殊值（例如`NSNotFound`）来表达并没有具体值返回。Swift这种做法可以告诉方法调用者，方法的返回值是一个可选值，使用之前需要检查是否有值。Swift可以用可选值的方式表达任何类型的数值，并不需要特殊的常量来表达没有值返回的情况。
 
+下例中说明可选值如何处理值可能不存在的情况。Swift 中`Int` 的构造方法可以传入一个`String`并将`String`转为`Int`。 然而，并不是所有的字符串都能转为整型。字符串`123`可以转换为数值`123`，但是`Hello, world`并不能转换为整型。
+
+下例中通过`Int`的构造方法尝试将`String`转为`Int`:
+
+```Swift
+let possibleNumber = "123"
+let convertedNumber = Int(possibleNumber)
+// convertedNumber is inferred to be of type "Int?", or "optional Int”
+
+```
+
+由于实例化可能失败，所以构造函数返回的是可选类型的`Int`，而不是`Int`。可选类型的 `Int` 写做 `Int?` 而不是 `Int` 。 问号表名其是一个可选类型的值，也就是可能包含一个`Int`值，也可能没有值。（不可能包含其他类型的值，例如`Bool`, `String`类型的值。只能是`Int`或者什么都没有。）
+
 
 
 
