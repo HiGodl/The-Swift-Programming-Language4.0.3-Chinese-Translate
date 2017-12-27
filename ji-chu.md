@@ -601,6 +601,39 @@ var surveyAnswer: String?
 >>Swift中与Objective-C中的`nil`是不同的。Objective-C中，`nil`代表空指针（指针不指向任何对象）。在Swift中，`nil`并不是指针——只是代表值不存在。任何类型的可选值都可以设置为`nil`，并不只有对象能设置为`nil`。
 
 
+#####if表达式和强制解包
+
+可以通过`if`表达式与`nil`进行比较判断可选值是否有具体值。通过使用“等于”操作符"==" 或者“不等”操作符"!="进行比较。
+
+如果可选值有值的话，就可以看做“不等于”`nil`：
+
+```Swift
+
+if convertedNumber != nil {
+    print("convertedNumber contains some integer value.")
+}
+// Prints "convertedNumber contains some integer value.”
+
+```
+
+如果能够确定可选值有值，可以通过在可选值后添加叹号"!"来访问可选值的值。这个叹号表示：“我知道这个可选值是有值的，我要使用这个值”，这叫做可选值的强制解包：
+
+```Swift
+
+if convertedNumber != nil {
+    print("convertedNumber has an integer value of \(convertedNumber!).")
+}
+// Prints "convertedNumber has an integer value of 123.
+
+```
+
+更多关于`if`表达式的信息，请参考[流程控制]()章节。
+
+>注意
+>>通过`!`强制解包无值的可选值的时候会触发运行时错误。当使用`!`强制解包可选值的时候要确定可选值有具体值。
+
+
+
 
 
 
