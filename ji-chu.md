@@ -634,6 +634,65 @@ print("convertedNumber has an integer value of \(convertedNumber!).")
 >>通过`!`强制解包无值的可选类型的时候会触发运行时错误。当使用`!`强制解包可选类型的时候要确定可选类型有具体值。
 
 
+#####可选类型绑定
+
+通过可选类型绑定可以判断一个可选类型是否有值，如果有的话会将该值保存到一个临时的常量或变量中。可选类型绑定可以使用`if`和`while`来检查可选类型中是否有值，并且将其解包到常量或变量中，作为一个操作的一部分。`if` 和 `while` 在[流程控制]()章节中有详细说明。
+
+通过 `if` 实现可选类型绑定：
+
+```Swift
+
+if let constantName = someOptional{
+    statement
+}
+
+```
+
+可以通过可选类型绑定的方式重写[可选类型]()章节的`possibleNumber`一例：
+
+```Swift
+
+if let actualNumber = Int(possibleNumber) {
+    print("\"\(possibleNumber)\" has an integer value of \(actualNumber)")
+} else {
+    print("\"\(possibleNumber)\" could not be converted to an integer")
+}
+// Prints ""123" has an integer value of 123”
+
+```
+
+可以这样解读以上代码：
+
+“如果 `Int(possibleNumber)` 返回的可选类型有值，则将可选类型中的值赋给 `actualNumber` 这个常量。”
+
+如果转换成功，`actualNumber` 这个常量就可以在 `if` 的第一个分支语句中使用。因为该常量已经通过可选类型中的值进行了初始化，也就不必使用`!`强制解包来获取该值了。在上例中，`actualNumber`只是用来打印转换的结果。
+
+在可选类型绑定中可以使用常量和变量。在`if`表达式的第一个分支中需要修改`actualNumber`的值，那就可以使用`if var actualNumber`来代替，这样就会通过可选类型的值初始化一个变量而不是常量。
+
+在一个`if`表达式中可以包含多个以逗号分隔的可选类型绑定以及布尔条件。如果任何可选类型绑定为`nil`或者布尔条件为`false`则整个`if`表达式的条件被视为`false`。如下例：
+
+```Swift
+if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
+    print("\(firstNumber) < \(secondNumber) < 100")
+}
+// Prints "4 < 42 < 100"
+ 
+if let firstNumber = Int("4") {
+    if let secondNumber = Int("42") {
+        if firstNumber < secondNumber && secondNumber < 100 {
+            print("\(firstNumber) < \(secondNumber) < 100")
+        }
+    }
+}
+// Prints "4 < 42 < 100”
+```
+
+>注意
+>>在`if`表达式中通过可选类型绑定创建的常量或者变量只能在`if`语句中使用。相反，在`guard`表达式中通过可选类型绑定创建的常量或者变量只能在`guard`表达式之后的语句中使用，请参考 [Early Exit]() 章节
+
+
+
+
 
 
 
