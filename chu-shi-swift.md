@@ -1,4 +1,5 @@
-作为编程语言学习的传统，我们来通过一个`Hello，World！`来开始我们的Swift教程。在Swift中，我们可以通过简单的一行来实现：
+作
+为编程语言学习的传统，我们来通过一个`Hello，World！`来开始我们的Swift教程。在Swift中，我们可以通过简单的一行来实现：
 
 ```Swift
 
@@ -78,8 +79,8 @@ var shoppingList = ["catfish", "water", "tulips", "blue paint"]
 shoppingList[1] = "bottle of water"
 
 var occupations = [
-    "Malcolm": "Captain",
-    "Kaylee": "Mechanic",
+"Malcolm": "Captain",
+"Kaylee": "Mechanic",
 ]
 occupations["Jayne"] = "Public Relations”
 ```
@@ -108,18 +109,18 @@ occupations = [:]
 let individualScores = [75, 43, 103, 87, 12]
 var teamScore = 0
 for score in individualScores {
-    if score > 50 {
-        teamScore += 3
-    } else {
-        teamScore += 1
-    }
+if score > 50 {
+teamScore += 3
+} else {
+teamScore += 1
+}
 }
 print(teamScore)
 ```
 
 在`if`语句中，条件表达式结果必须为布尔值——也就是说在 `if score {....}`是错误的，并不包含与0的隐式的比较。
 
-可以使用 `if let` 来判断某些值是否存在。这些值可以看做是可选值。可选值的值可以为具体值或者用nil表示没有值。在定义变量的值类型后边加问号`？`表示这个变量的值为可选值（可以为具体值或者为nil）。
+可以使用 `if let` 来判断某些值是否存在。这些值可以看做是可选类型。可选类型的值可以为具体值或者用nil表示没有值。在定义变量的值类型后边加问号`？`表示这个变量的值为可选类型（可以为具体值或者为nil）。
 
 ```Swift
 
@@ -129,7 +130,7 @@ print(optionalString == nil)
 var optionalName: String? = "John Appleseed"
 var greeting = "Hello!"
 if let name = optionalName {
-    greeting = "Hello, \(name)"
+greeting = "Hello, \(name)"
 }
 ```
 
@@ -137,9 +138,9 @@ if let name = optionalName {
 >
 > > 将optionalName的值设为`nil`，看看会得到什么结果？添加`else`分句当`optionalName`为`nil`时设置另外一个问候语
 
-如果可选值为`nil`时，条件结果为`false`，在该分句中的代码就会跳过。如果可选值不为`nil`，就会将该值赋给`let`后边的常量，并执行分句中代码，分句代码中也可以正常使用该常量。
+如果可选类型为`nil`时，条件结果为`false`，在该分句中的代码就会跳过。如果可选类型不为`nil`，就会将该值赋给`let`后边的常量，并执行分句中代码，分句代码中也可以正常使用该常量。
 
-另一种操作可选值的方法是通过`??`操作符给可选值设置一个默认值。如果可选值的值没有设置就会使用默认值。
+另一种操作可选类型的方法是通过`??`操作符给可选类型设置一个默认值。如果可选类型的值没有设置就会使用默认值。
 
 ```Swift
 
@@ -154,13 +155,13 @@ let informalGreeting = "Hi \(nickName ?? fullName)”
 let vegetable = "red pepper"
 switch vegetable {
 case "celery":
-    print("Add some raisins and make ants on a log.")
+print("Add some raisins and make ants on a log.")
 case "cucumber", "watercress":
-    print("That would make a good tea sandwich.")
+print("That would make a good tea sandwich.")
 case let x where x.hasSuffix("pepper"):
-    print("Is it a spicy \(x)?")
+print("Is it a spicy \(x)?")
 default:
-    print("Everything tastes good in soup.")
+print("Everything tastes good in soup.")
 }
 ```
 
@@ -177,17 +178,17 @@ default:
 ```Swift
 
 let interestingNumbers = [
-    "Prime": [2, 3, 5, 7, 11, 13],
-    "Fibonacci": [1, 1, 2, 3, 5, 8],
-    "Square": [1, 4, 9, 16, 25],
+"Prime": [2, 3, 5, 7, 11, 13],
+"Fibonacci": [1, 1, 2, 3, 5, 8],
+"Square": [1, 4, 9, 16, 25],
 ]
 var largest = 0
 for (kind, numbers) in interestingNumbers {
-    for number in numbers {
-        if number > largest {
-            largest = number
-        }
-    }
+for number in numbers {
+if number > largest {
+largest = number
+}
+}
 }
 print(largest)
 ```
@@ -201,13 +202,13 @@ print(largest)
 ```Swift
 var n = 2
 while n < 100 {
-    n *= 2
+n *= 2
 }
 print(n)
 
 var m = 2
 repeat {
-    m *= 2
+m *= 2
 } while m < 100
 print(m)
 ```
@@ -217,14 +218,14 @@ print(m)
 ```Swift
 var total = 0
 for i in 0..<4 {
-    total += i
+total += i
 }
 print(total)
 ```
 
 `..<`操作符不包含索引中的最大值，如果要包含最大值需要使用 `...<`
 
-#### 
+####
 
 #### 方法和闭包
 
@@ -232,7 +233,7 @@ print(total)
 
 ```Swift
 func greet(person: String, day: String) -> String {
-    return "Hello \(person), today is \(day)."
+return "Hello \(person), today is \(day)."
 }
 greet(person: "Bob", day: "Tuesday")
 ```
@@ -245,7 +246,7 @@ greet(person: "Bob", day: "Tuesday")
 
 ```Swift
 func greet(_ person: String, on day: String) -> String {
-    return "Hello \(person), today is \(day)."
+return "Hello \(person), today is \(day)."
 }
 greet("John", on: "Wednesday")
 ```
@@ -255,19 +256,19 @@ greet("John", on: "Wednesday")
 ```Swift
 
 func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
-    var min = scores[0]
-    var max = scores[0]
-    var sum = 0
-    for score in scores {
-        if score > max {
-            max = score
-        } else if score < min {
-            min = score
-        }
-        sum += score
-    }
+var min = scores[0]
+var max = scores[0]
+var sum = 0
+for score in scores {
+if score > max {
+max = score
+} else if score < min {
+min = score
+}
+sum += score
+}
 
-    return (min, max, sum)
+return (min, max, sum)
 }
 let statistics = calculateStatistics(scores: [5, 3, 100, 3, 9])
 print(statistics.sum)
@@ -278,12 +279,12 @@ Swift中方法可以嵌套，嵌套的方法可以访问上层方法中定义的
 
 ```Swift
 func returnFifteen() -> Int {
-    var y = 10
-    func add() {
-        y += 5
-    }
-    add()
-    return y
+var y = 10
+func add() {
+y += 5
+}
+add()
+return y
 }
 returnFifteen()
 ```
@@ -292,10 +293,10 @@ returnFifteen()
 
 ```Swift
 func makeIncrementer() -> ((Int) -> Int) {
-    func addOne(number: Int) -> Int {
-        return 1 + number
-    }
-    return addOne
+func addOne(number: Int) -> Int {
+return 1 + number
+}
+return addOne
 }
 var increment = makeIncrementer()
 increment(7)
@@ -305,15 +306,15 @@ increment(7)
 
 ```Swift
 func hasAnyMatches(list: [Int], condition: (Int) -> Bool) -> Bool {
-    for item in list {
-        if condition(item) {
-            return true
-        }
-    }
-    return false
+for item in list {
+if condition(item) {
+return true
+}
+}
+return false
 }
 func lessThanTen(number: Int) -> Bool {
-    return number < 10
+return number < 10
 }
 var numbers = [20, 19, 7, 12]
 hasAnyMatches(list: numbers, condition: lessThanTen)
@@ -323,8 +324,8 @@ hasAnyMatches(list: numbers, condition: lessThanTen)
 
 ```Swift
 numbers.map({ (number: Int) -> Int in
-    let result = 3 * number
-    return result
+let result = 3 * number
+return result
 })
 ```
 
@@ -346,7 +347,7 @@ let sortedNumbers = numbers.sorted { $0 > $1 }
 print(sortedNumbers)
 ```
 
-#### 
+####
 
 #### 类和对象
 
@@ -354,10 +355,10 @@ print(sortedNumbers)
 
 ```Swift
 class Shape {
-    var numberOfSides = 0
-    func simpleDescription() -> String {
-        return "A shape with \(numberOfSides) sides."
-    }
+var numberOfSides = 0
+func simpleDescription() -> String {
+return "A shape with \(numberOfSides) sides."
+}
 }
 ```
 
@@ -377,16 +378,16 @@ var shapeDescription = shape.simpleDescription()
 
 ```Swift
 class NamedShape {
-    var numberOfSides: Int = 0
-    var name: String
+var numberOfSides: Int = 0
+var name: String
 
-    init(name: String) {
-        self.name = name
-    }
+init(name: String) {
+self.name = name
+}
 
-    func simpleDescription() -> String {
-        return "A shape with \(numberOfSides) sides."
-    }
+func simpleDescription() -> String {
+return "A shape with \(numberOfSides) sides."
+}
 }
 ```
 
@@ -398,20 +399,20 @@ class NamedShape {
 
 ```Swift
 class Square: NamedShape {
-    var sideLength: Double
+var sideLength: Double
 
-    init(sideLength: Double, name: String) {
-        self.sideLength = sideLength
-        super.init(name: name)
-        numberOfSides = 4
-    }
+init(sideLength: Double, name: String) {
+self.sideLength = sideLength
+super.init(name: name)
+numberOfSides = 4
+}
 
-    func area() -> Double {
-        return sideLength * sideLength
-    }
-    override func simpleDescription() -> String {
-        return "A square with sides of length \(sideLength)."
-    }
+func area() -> Double {
+return sideLength * sideLength
+}
+override func simpleDescription() -> String {
+return "A square with sides of length \(sideLength)."
+}
 }
 let test = Square(sideLength: 5.2, name: "my test square")
 test.area()
@@ -427,26 +428,23 @@ test.simpleDescription()
 ```Swift
 
 class EquilateralTriangle: NamedShape {
-    var sideLength: Double = 0.0
-    
-    init(sideLength: Double, name: String) {
-        self.sideLength = sideLength
-        super.init(name: name)
-        numberOfSides = 3
-    }
-    
-    var perimeter: Double {
-        get {
-            return 3.0 * sideLength
-        }
-        set {
-            sideLength = newValue / 3.0
-        }
-    }
-    
-    override func simpleDescription() -> String {
-        return "An equilateral triangle with sides of length \(sideLength)."
-    }
+var sideLength: Double = 0.0
+init(sideLength: Double, name: String) {
+self.sideLength = sideLength
+super.init(name: name)
+numberOfSides = 3
+}
+var perimeter: Double {
+get {
+return 3.0 * sideLength
+}
+set {
+sideLength = newValue / 3.0
+}
+}
+override func simpleDescription() -> String {
+return "An equilateral triangle with sides of length \(sideLength)."
+}
 }
 var triangle = EquilateralTriangle(sideLength: 3.1, name: "a triangle")
 print(triangle.perimeter)
@@ -458,9 +456,9 @@ print(triangle.sideLength)
 在`perimeter`的set方法中，新值的默认名称为`newValue`，当然可以通过在set方法后的圆括号中写明来指定特定的名称。
 
 注意在`EquilateralTriangle`的初始化方法中，一共做了三件事：
-    1. 给子类的属性设置初始化值
-    2. 调用父类初始化方法
-    3. 修改父类中初始化属性的值。所有初始化的工作包括方法调用，获取设置属性值都可以在这一步完成。
+1. 给子类的属性设置初始化值
+2. 调用父类初始化方法
+3. 修改父类中初始化属性的值。所有初始化的工作包括方法调用，获取设置属性值都可以在这一步完成。
 
 在实际开发中如果并不需要对赋给属性的值做任何处理，但是在属性赋值前后要执行特定的方法或者代码，可以使用`willSet`和`didSet`方法实现。写在这两个方法中的代码会在除了在类初始化方法中的任何给属性设置方法的时候执行。例如下例中，该类可以确保三角形的边长永远与正方形的边长相等。
 
@@ -468,20 +466,20 @@ print(triangle.sideLength)
 ```Swift
 
 class TriangleAndSquare {
-    var triangle: EquilateralTriangle {
-        willSet {
-            square.sideLength = newValue.sideLength
-        }
-    }
-    var square: Square {
-        willSet {
-            triangle.sideLength = newValue.sideLength
-        }
-    }
-    init(size: Double, name: String) {
-        square = Square(sideLength: size, name: name)
-        “triangle = EquilateralTriangle(sideLength: size, name: name)
-    }
+var triangle: EquilateralTriangle {
+willSet {
+square.sideLength = newValue.sideLength
+}
+}
+var square: Square {
+willSet {
+triangle.sideLength = newValue.sideLength
+}
+}
+init(size: Double, name: String) {
+square = Square(sideLength: size, name: name)
+“triangle = EquilateralTriangle(sideLength: size, name: name)
+}
 }
 var triangleAndSquare = TriangleAndSquare(size: 10, name: "another test shape")
 print(triangleAndSquare.square.sideLength)
@@ -490,7 +488,7 @@ triangleAndSquare.square = Square(sideLength: 50, name: "larger square")
 print(triangleAndSquare.triangle.sideLength)
 
 ```
-当使用可选值的时候，可以在执行操作（方法、属性、索引取值）之前添加 `?` 。当值为 `nil` 的时候，`？` 后边的内容不会执行，整个表达式的值都为 `nil` 。 如果不是 `nil` 那么`？` 后边的内容就会正常执行。无论哪种情况，整个表达式返回的都是可选值
+当使用可选类型的时候，可以在执行操作（方法、属性、索引取值）之前添加 `?` 。当值为 `nil` 的时候，`？` 后边的内容不会执行，整个表达式的值都为 `nil` 。 如果不是 `nil` 那么`？` 后边的内容就会正常执行。无论哪种情况，整个表达式返回的都是可选类型
 
 
 ```Swift
@@ -507,23 +505,23 @@ let sideLength = optionalSquare?.sideLength
 
 ```Swift
 enum Rank: Int {
-    case ace = 1
-    case two, three, four, five, six, seven, eight, nine, ten
-    case jack, queen, king
-    func simpleDescription() -> String {
-        switch self {
-        case .ace:
-            return "ace"
-        case .jack:
-            return "jack"
-        case .queen:
-            return "queen"
-        case .king:
-            return "king"
-        default:
-            return String(self.rawValue)
-        }
-    }
+case ace = 1
+case two, three, four, five, six, seven, eight, nine, ten
+case jack, queen, king
+func simpleDescription() -> String {
+switch self {
+case .ace:
+return "ace"
+case .jack:
+return "jack"
+case .queen:
+return "queen"
+case .king:
+return "king"
+default:
+return String(self.rawValue)
+}
+}
 }
 let ace = Rank.ace
 let aceRawValue = ace.rawValue
@@ -541,7 +539,7 @@ let aceRawValue = ace.rawValue
 ```Swift
 
 if let convertedRank = Rank(rawValue: 3) {
-    let threeDescription = convertedRank.simpleDescription()
+let threeDescription = convertedRank.simpleDescription()
 }
 
 ```
@@ -551,19 +549,19 @@ if let convertedRank = Rank(rawValue: 3) {
 ```Swift
 
 enum Suit {
-    case spades, hearts, diamonds, clubs
-    func simpleDescription() -> String {
-        switch self {
-        case .spades:
-            return "spades"
-        case .hearts:
-            return "hearts"
-        case .diamonds:
-            return "diamonds"
-        case .clubs:
-            return "clubs"
-        }
-    }
+case spades, hearts, diamonds, clubs
+func simpleDescription() -> String {
+switch self {
+case .spades:
+return "spades"
+case .hearts:
+return "hearts"
+case .diamonds:
+return "diamonds"
+case .clubs:
+return "clubs"
+}
+}
 }
 let hearts = Suit.hearts
 let heartsDescription = hearts.simpleDescription()
@@ -579,18 +577,16 @@ let heartsDescription = hearts.simpleDescription()
 
 ```Swift
 enum ServerResponse {
-    case result(String, String)
-    case failure(String)
+case result(String, String)
+case failure(String)
 }
- 
 let success = ServerResponse.result("6:00 am", "8:09 pm")
 let failure = ServerResponse.failure("Out of cheese.")
- 
 switch success {
 case let .result(sunrise, sunset):
-    print("Sunrise is at \(sunrise) and sunset is at \(sunset).")
+print("Sunrise is at \(sunrise) and sunset is at \(sunset).")
 case let .failure(message):
-    print("Failure...  \(message)")
+print("Failure... \(message)")
 }
 ```
 
@@ -604,11 +600,11 @@ case let .failure(message):
 ```Swift
 
 struct Card {
-    var rank: Rank
-    var suit: Suit
-    func simpleDescription() -> String {
-        return "The \(rank.simpleDescription()) of \(suit.simpleDescription())"
-    }
+var rank: Rank
+var suit: Suit
+func simpleDescription() -> String {
+return "The \(rank.simpleDescription()) of \(suit.simpleDescription())"
+}
 }
 let threeOfSpades = Card(rank: .three, suit: .spades)
 let threeOfSpadesDescription = threeOfSpades.simpleDescription()
@@ -627,8 +623,8 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 ```Swift
 
 protocol ExampleProtocol {
-    var simpleDescription: String { get }
-    mutating func adjust()
+var simpleDescription: String { get }
+mutating func adjust()
 }
 
 ```
@@ -638,21 +634,20 @@ protocol ExampleProtocol {
 ```Swift
 
 class SimpleClass: ExampleProtocol {
-    var simpleDescription: String = "A very simple class."
-    var anotherProperty: Int = 69105
-    func adjust() {
-        simpleDescription += "  Now 100% adjusted."
-    }
+var simpleDescription: String = "A very simple class."
+var anotherProperty: Int = 69105
+func adjust() {
+simpleDescription += " Now 100% adjusted."
+}
 }
 var a = SimpleClass()
 a.adjust()
 let aDescription = a.simpleDescription
- 
 struct SimpleStructure: ExampleProtocol {
-    var simpleDescription: String = "A simple structure"
-    mutating func adjust() {
-        simpleDescription += " (adjusted)"
-    }
+var simpleDescription: String = "A simple structure"
+mutating func adjust() {
+simpleDescription += " (adjusted)"
+}
 }
 var b = SimpleStructure()
 b.adjust()
@@ -670,12 +665,12 @@ let bDescription = b.simpleDescription
 ```Swift
 
 extension Int: ExampleProtocol {
-    var simpleDescription: String {
-        return "The number \(self)"
-    }
-    mutating func adjust() {
-        self += 42
-    }
+var simpleDescription: String {
+return "The number \(self)"
+}
+mutating func adjust() {
+self += 42
+}
 }
 print(7.simpleDescription)
 
@@ -690,7 +685,7 @@ print(7.simpleDescription)
 
 let protocolValue: ExampleProtocol = a
 print(protocolValue.simpleDescription)
-// print(protocolValue.anotherProperty)  // Uncomment to see the error
+// print(protocolValue.anotherProperty) // Uncomment to see the error
 
 ```
 
@@ -704,9 +699,9 @@ print(protocolValue.simpleDescription)
 ```Swift
 
 enum PrinterError: Error {
-    case outOfPaper
-    case noToner
-    case onFire
+case outOfPaper
+case noToner
+case onFire
 }
 
 ```
@@ -716,10 +711,10 @@ enum PrinterError: Error {
 ```Swift
 
 func send(job: Int, toPrinter printerName: String) throws -> String {
-    if printerName == "Never Has Toner" {
-        throw PrinterError.noToner
-    }
-    return "Job sent"
+if printerName == "Never Has Toner" {
+throw PrinterError.noToner
+}
+return "Job sent"
 }
 
 ```
@@ -729,10 +724,10 @@ func send(job: Int, toPrinter printerName: String) throws -> String {
 ```Swift
 
 do {
-    let printerResponse = try send(job: 1040, toPrinter: "Bi Sheng")
-    print(printerResponse)
+let printerResponse = try send(job: 1040, toPrinter: "Bi Sheng")
+print(printerResponse)
 } catch {
-    print(error)
+print(error)
 }
 
 ```
@@ -745,14 +740,14 @@ do {
 ```Swift
 
 do {
-    let printerResponse = try send(job: 1440, toPrinter: "Gutenberg")
-    print(printerResponse)
+let printerResponse = try send(job: 1440, toPrinter: "Gutenberg")
+print(printerResponse)
 } catch PrinterError.onFire {
-    print("I'll just put this over here, with the rest of the fire.")
+print("I'll just put this over here, with the rest of the fire.")
 } catch let printerError as PrinterError {
-    print("Printer error: \(printerError).")
+print("Printer error: \(printerError).")
 } catch {
-    print(error)
+print(error)
 }
 
 ```
@@ -761,7 +756,7 @@ do {
 >>添加抛出错误的代码，需要抛出什么错误第一个`catch`后的代码块才会执行呢，那第二个和第三个`catch`又需要抛出什么错误才能执行呢？
 
 
-另一个处理错误的方法是通过`try?`将结果转换为可选值。如果方法抛出错误的话，将会忽略掉错误并返回`nil`。如果有值的话方法返回的值就会存在可选容器中。
+另一个处理错误的方法是通过`try?`将结果转换为可选类型。如果方法抛出错误的话，将会忽略掉错误并返回`nil`。如果有值的话方法返回的值就会存在可选类型容器中。
 
 ```Swift
 
@@ -776,15 +771,13 @@ let printerFailure = try? send(job: 1885, toPrinter: "Never Has Toner")
 
 var fridgeIsOpen = false
 let fridgeContent = ["milk", "eggs", "leftovers"]
- 
 func fridgeContains(_ food: String) -> Bool {
-    fridgeIsOpen = true
-    defer {
-        fridgeIsOpen = false
-    }
-    
-    let result = fridgeContent.contains(food)
-    return result
+fridgeIsOpen = true
+defer {
+fridgeIsOpen = false
+}
+let result = fridgeContent.contains(food)
+return result
 }
 fridgeContains("banana")
 print(fridgeIsOpen)
@@ -798,11 +791,11 @@ print(fridgeIsOpen)
 ```Swift
 
 func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
-    var result = [Item]()
-    for _ in 0..<numberOfTimes {
-        result.append(item)
-    }
-    return result
+var result = [Item]()
+for _ in 0..<numberOfTimes {
+result.append(item)
+}
+return result
 }
 makeArray(repeating: "knock", numberOfTimes: 4)
 
@@ -814,8 +807,8 @@ makeArray(repeating: "knock", numberOfTimes: 4)
 
 // Reimplement the Swift standard library's optional type
 enum OptionalValue<Wrapped> {
-    case none
-    case some(Wrapped)
+case none
+case some(Wrapped)
 }
 var possibleInteger: OptionalValue<Int> = .none
 possibleInteger = .some(100)
@@ -827,15 +820,15 @@ possibleInteger = .some(100)
 ```Swift
 
 func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
-    where T.Iterator.Element: Equatable, T.Iterator.Element == U.Iterator.Element {
-        for lhsItem in lhs {
-            for rhsItem in rhs {
-                if lhsItem == rhsItem {
-                    return true
-                }
-            }
-        }
-        return false
+where T.Iterator.Element: Equatable, T.Iterator.Element == U.Iterator.Element {
+for lhsItem in lhs {
+for rhsItem in rhs {
+if lhsItem == rhsItem {
+return true
+}
+}
+}
+return false
 }
 anyCommonElements([1, 2, 3], [3])
 
@@ -845,6 +838,5 @@ anyCommonElements([1, 2, 3], [3])
 >>修改 `anyCommonElements(_:_:)` 方法，要求该方法返回两个数组中包含的相同的元素。
 
 `<T: Equatable>`与`<T> ... where T: Equatable`两种写法意义相同
-
 
 
