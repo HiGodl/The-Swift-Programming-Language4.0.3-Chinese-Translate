@@ -1,4 +1,5 @@
-尽管Swift是一个用来写 iOS, macOS, watchOS 及 tvOS 应用的新语言，但是如果你以前写过C以及 Objective-C 的话，用起来并不会感到陌生。
+尽
+管Swift是一个用来写 iOS, macOS, watchOS 及 tvOS 应用的新语言，但是如果你以前写过C以及 Objective-C 的话，用起来并不会感到陌生。
 
 Swift 使用自己的方式实现了 C 和 Objective-C 中所有类型，包括`Int`(整型)，`Double`和`Float`（浮点数）， `Bool`(布尔值)，`String`（字符串）。Swift 也提供了三种主要的集合，`Array`,`Set`,`Dictionary`，在 [集合类型]() 章节中有详细描述。
 
@@ -6,7 +7,7 @@ Swift 使用自己的方式实现了 C 和 Objective-C 中所有类型，包括`
 
 除了我们所熟知的数据类型，Swift 中还提供了在 Objective-C 中并没有定义的数据类型，例如元组（tuples）。可以使用元组定义传递一组值。同时也可以通过元组在方法返回值中包含多个值。
 
-Swift也提供了可选值类型（optional types），用来处理一个值是否存在。可选值可以告诉你“有一个等于x的值”或者“根本就没有值”。可选值在Swift中的用法类似与在 Objective-C 中的空指针`nil`，但是可选类型并不是只能用与类对象，它可以给任何类型使用。可选值不只比 Objective-C 中的空指针更安全和易理解， 它也是Swift许多强大特性的核心。
+Swift也提供了可选类型（optional types），用来处理一个值是否存在。可选类型可以告诉你“有一个等于x的值”或者“根本就没有值”。可选类型在Swift中的用法类似与在 Objective-C 中的空指针`nil`，但是可选类型并不是只能用与类对象，它可以给任何类型使用。可选类型不只比 Objective-C 中的空指针更安全和易理解， 它也是Swift许多强大特性的核心。
 
 Swift 是类型安全的语言，也就是Swift可以帮你确定你在编码过程中可以使用的类型。如果代码某一部分需要传入一个`String`类型的值，类型安全检查机制会阻止你传入除`String`之外的其他类型。同样的，如果一段代码需要传入一个费可选类型的`String`， 类型安全检查机制会阻止你传入一个可选类型的`String`。类型安全检查机制可以最大限度的提早告知编码过程中的错误。
 
@@ -161,7 +162,7 @@ Swift 中的注释几乎和 C 中一样。 单行注释以双斜杠开头：
 ```Swift
 
 /* This is also a comment
- but is written over multiple lines. */
+but is written over multiple lines. */
 
 ```
 
@@ -170,8 +171,8 @@ Swift 中的注释几乎和 C 中一样。 单行注释以双斜杠开头：
 ```Swift
 
 “/* This is the start of the first multiline comment.
- /* This is the second, nested multiline comment. */
- This is the end of the first multiline comment. */
+/* This is the second, nested multiline comment. */
+This is the end of the first multiline comment. */
 
 ```
 
@@ -199,8 +200,8 @@ Swift 提供了 8,16,32,64位有符号和无符号的整型数。这些整型与
 
 ```Swift
 
-let minValue = UInt8.min  // minValue is equal to 0, and is of type UInt8
-let maxValue = UInt8.max  // maxValue is equal to 255, and is of type UInt8
+let minValue = UInt8.min // minValue is equal to 0, and is of type UInt8
+let maxValue = UInt8.max // maxValue is equal to 255, and is of type UInt8
 
 ```
 这些属性值是适当大小的数字类型（例如上面的示例中的UInt8），因此可以在表达式中与其他相同类型的值一起使用。
@@ -239,7 +240,7 @@ Swift 也提供了无符号整型类型，`UInt` ， 与运行平台有相同的
 >>`Double`类型可以精确到小数点后15位，`Float`可以精确到小数点后6位。可以根据实际需要及取值范围来确定使用哪个浮点类型。当两种类型都可以满足时比较推荐使用`Double`。
 
 
-####类型安全和类型推断 
+####类型安全和类型推断
 
 Swift是一种数据类型安全语言。数据类型安全要求在代码中表名需要具体使用哪种类型的数据。如果某段代码中需要一个 `String` 类型的数据， 则无法传入一个 `Int` 类型的值。
 
@@ -279,7 +280,7 @@ let anotherPi = 3 + 0.14159
 
 ```
 
-3的字面值本身并没有明确的类型，因次 `Double`  作为正确的输出类型是从加法中的浮点数字面量推断出的。
+3的字面值本身并没有明确的类型，因次 `Double` 作为正确的输出类型是从加法中的浮点数字面量推断出的。
 
 
 ####数字的书面表达方式
@@ -296,9 +297,9 @@ let anotherPi = 3 + 0.14159
 ```Swift
 
 let decimalInteger = 17
-let binaryInteger = 0b10001       // 17 in binary notation
-let octalInteger = 0o21           // 17 in octal notation
-let hexadecimalInteger = 0x11     // 17 in hexadecimal notation
+let binaryInteger = 0b10001 // 17 in binary notation
+let octalInteger = 0o21 // 17 in octal notation
+let hexadecimalInteger = 0x11 // 17 in hexadecimal notation
 
 ```
 
@@ -441,9 +442,9 @@ let turnipsAreDelicious = false
 ```Swift
 
 if turnipsAreDelicious {
-    print("Mmm, tasty turnips!")
+print("Mmm, tasty turnips!")
 } else {
-    print("Eww, turnips are horrible.")
+print("Eww, turnips are horrible.")
 }
 // Prints "Eww, turnips are horrible.”
 
@@ -457,7 +458,7 @@ Swift的类型安全机制确保非布尔值不能代替布尔值来执行操作
 
 let i = 1
 if i {
-    // this example will not compile, and will report an error
+// this example will not compile, and will report an error
 }
 
 ```
@@ -468,7 +469,7 @@ if i {
 
 let i = 1
 if i == 1 {
-    // this example will compile successfully
+// this example will compile successfully
 }
 
 ```
@@ -503,7 +504,7 @@ let (statusCode, statusMessage) = http404Error
 print("The status code is \(statusCode)")
 // Prints "The status code is 404"
 print("The status message is \(statusMessage)")
-// Prints "The status message is Not Found” 
+// Prints "The status message is Not Found”
 
 ```
 
@@ -553,13 +554,13 @@ print("The status message is \(http200Status.description)")
 >>元组在表达临时的一组有关系的数值是非常有用。并不适用于创建复杂的数据结构。如果需要的数据结构并不是作为临时使用，最好使用类或者结构体定义。更多信息请参考 [类和结构体]() 章节。
 
 
-####可选值
-可选值可以用在值可能不存在的情况下。可选值代表两种情况：如果值存在就可以解包可选值并获取它的具体值，或者根本就没有值。
+####可选类型
+可选类型可以用在值可能不存在的情况下。可选值代表两种情况：如果值存在就可以解包可选类型并获取它的具体值，或者根本就没有值。
 
 >注意
->>在 Objective-C 及 C 语言中并没有可选值的定义。在 Objective-C 中返回值为对象的方法可以返回一个具体对象或者是 `nil`， `nil` 表示并没有对象返回。然而这种做法只能对返回值为对象的方法起作用，如果是结构体，基础C类型，或者枚举值，Objective-C 方法将返回一个特殊值（例如`NSNotFound`）来表达并没有具体值返回。Swift这种做法可以告诉方法调用者，方法的返回值是一个可选值，使用之前需要检查是否有值。Swift可以用可选值的方式表达任何类型的数值，并不需要特殊的常量来表达没有值返回的情况。
+>>在 Objective-C 及 C 语言中并没有可选类型的定义。在 Objective-C 中返回值为对象的方法可以返回一个具体对象或者是 `nil`， `nil` 表示并没有对象返回。然而这种做法只能对返回值为对象的方法起作用，如果是结构体，基础C类型，或者枚举值，Objective-C 方法将返回一个特殊值（例如`NSNotFound`）来表达并没有具体值返回。Swift这种做法可以告诉方法调用者，方法的返回值是一个可选类型，使用之前需要检查是否有值。Swift可以用可选类型的方式表达任何类型的数值，并不需要特殊的常量来表达没有值返回的情况。
 
-下例中说明可选值如何处理值可能不存在的情况。Swift 中`Int` 的构造方法可以传入一个`String`并将`String`转为`Int`。 然而，并不是所有的字符串都能转为整型。字符串`123`可以转换为数值`123`，但是`Hello, world`并不能转换为整型。
+下例中说明可选类型如何处理值可能不存在的情况。Swift 中`Int` 的构造方法可以传入一个`String`并将`String`转为`Int`。 然而，并不是所有的字符串都能转为整型。字符串`123`可以转换为数值`123`，但是`Hello, world`并不能转换为整型。
 
 下例中通过`Int`的构造方法尝试将`String`转为`Int`:
 
@@ -574,7 +575,7 @@ let convertedNumber = Int(possibleNumber)
 
 
 #####nil
-通过设置可选变量的值为`nil`表明变量无值的状态：
+通过设置可选类型变量的值为`nil`表明变量无值的状态：
 
 ```Swift
 
@@ -598,30 +599,30 @@ var surveyAnswer: String?
 ```
 
 >注意
->>Swift中与Objective-C中的`nil`是不同的。Objective-C中，`nil`代表空指针（指针不指向任何对象）。在Swift中，`nil`并不是指针——只是代表值不存在。任何类型的可选值都可以设置为`nil`，并不只有对象能设置为`nil`。
+>>Swift中与Objective-C中的`nil`是不同的。Objective-C中，`nil`代表空指针（指针不指向任何对象）。在Swift中，`nil`并不是指针——只是代表值不存在。任何类型的可选类型都可以设置为`nil`，并不只有对象能设置为`nil`。
 
 
 #####if表达式和强制解包
 
-可以通过`if`表达式与`nil`进行比较判断可选值是否有具体值。通过使用“等于”操作符"==" 或者“不等”操作符"!="进行比较。
+可以通过`if`表达式与`nil`进行比较判断可选类型是否有具体值。通过使用“等于”操作符"==" 或者“不等”操作符"!="进行比较。
 
-如果可选值有值的话，就可以看做“不等于”`nil`：
+如果可选类型有值的话，就可以看做“不等于”`nil`：
 
 ```Swift
 
 if convertedNumber != nil {
-    print("convertedNumber contains some integer value.")
+print("convertedNumber contains some integer value.")
 }
 // Prints "convertedNumber contains some integer value.”
 
 ```
 
-如果能够确定可选值有值，可以通过在可选值后添加叹号"!"来访问可选值的值。这个叹号表示：“我知道这个可选值是有值的，我要使用这个值”，这叫做可选值的强制解包：
+如果能够确定可选类型有值，可以通过在可选类型后添加叹号"!"来访问可选类型的值。这个叹号表示：“我知道这个可选类型是有值的，我要使用这个值”，这叫做可选类型的强制解包：
 
 ```Swift
 
 if convertedNumber != nil {
-    print("convertedNumber has an integer value of \(convertedNumber!).")
+print("convertedNumber has an integer value of \(convertedNumber!).")
 }
 // Prints "convertedNumber has an integer value of 123.
 
@@ -630,8 +631,7 @@ if convertedNumber != nil {
 更多关于`if`表达式的信息，请参考[流程控制]()章节。
 
 >注意
->>通过`!`强制解包无值的可选值的时候会触发运行时错误。当使用`!`强制解包可选值的时候要确定可选值有具体值。
-
+>>通过`!`强制解包无值的可选类型的时候会触发运行时错误。当使用`!`强制解包可选类型的时候要确定可选类型有具体值。
 
 
 
