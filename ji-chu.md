@@ -741,6 +741,65 @@ if let definiteString = assumedString {
 >注意
 >>如果一个值在其整个生命周期中可能为`nil`，并且在之后的使用中要检查是否为`nil`的话，不要使用隐式解包可选类型而要用普通的可选类型。
 
+####错误处理
+
+使用错误处理可以在程序运行出错的时候做出响应。
+
+不同于可选类型通过判断是否有值来表达方法的成功或失败，错误处理可以检查出潜在的错误，如果有需要还可以将错误传递到程序的其他部分。
+
+在方法执行过程中如果出现不可预知的错误时，将会抛出错误。方法的调用者可以捕获这个错误并作出适当处理。
+
+```Swift
+
+func canThrowAnError() throws {
+    // this function may or may not throw an error
+}
+
+```
+
+函数可以通过 `throws` 关键字在声明的时候表明其可能抛出错误。在调用可能抛出错误的函数时需要在方法前加上`try`关键字来执行。
+
+Swift会自动将错误传出到当前作用域，直到被`catch`分句处理。
+
+```Swift
+
+do {
+    try canThrowAnError()
+    // no error was thrown
+} catch {
+    // an error was thrown
+}
+
+``` 
+
+`do`表达式创建了一个作用于，可与将错误传递给一个或多个`catch`分支。
+
+下例中说明了错误处理如何响应多中错误：
+
+```Swift
+
+func makeASandwich() throws {
+    // ...
+}
+ 
+do {
+    try makeASandwich()
+    eatASandwich()
+} catch SandwichError.outOfCleanDishes {
+    washDishes()
+} catch SandwichError.missingIngredients(let ingredients) {
+    buyGroceries(ingredients)
+}
+
+```
+
+这个例子中，如果没有干净的盘子或者有原料缺失， `makeASandwich()` 就会抛出错误。 因为会抛出错误，`makeASandwich()` 在调用时需要使用`try`表达式包装。通过将方法包在`do`表达式中，使得任何抛出的错误都会传到之后提供的`catch`分支中。
+
+如果没有错误抛出，就会调用`eatASandwich()`方法，如果抛出错误并且错误为`SandwichError.outOfCleanDishes`就会调用`washDishes()`方法，如果抛出错误并且错误为`SandwichError.missingIngredients`就会调用`buyGroceries(_:)`方法，并传入`catch`分支捕获的`[Srting]`参数
+
+错误抛出、捕获、传递在[错误处理]()章节有详细介绍
+
+
 
 
 
