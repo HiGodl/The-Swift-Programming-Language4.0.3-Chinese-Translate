@@ -701,6 +701,47 @@ if let firstNumber = Int("4") {
 
 当可选类型在定义之后就有值并且在之后的任何时候都有值，使用隐式解包可选类型会更方便。在`Swift`中隐式解包可选类型主要用在类的初始化方法中，在 [非持有引用类型和隐式解包可选类型属性]() 章节中有详细说明。
 
+隐式解包可选类型是一种无感知的常用可选类型，可以作为非可选类型值使用，在每次使用时不需要解包可选类型值。 下例中详细说明了在获取可选类型解包后的 `String` 类型值时可选字符串类型与隐式解包可选字符串类型在使用上的不同：
+
+```Swift
+let possibleString: String? = "An optional string."
+let forcedString: String = possibleString! // requires an exclamation mark
+ 
+let assumedString: String! = "An implicitly unwrapped optional string."
+let implicitString: String = assumedString // no need for an exclamation mark
+
+```
+
+可以把隐式解包可选类型看做是赋予了可选类型在使用时自动解包的权限。同在每次使用可选类型的时候在其后追加 `!`  相比，隐式解包可选类型将这个操作提前到声明的时候。
+
+>注意
+>>如果隐式解包可选类型在为 `nil` 的时候想要获取其中的值会造成运行时错误。这个错误与可选类型值不包含值的时候使用 `!` 进行强制解包是相同的。
+
+当然也可以将隐式解包可选类型看做是普通的可选类型使用，在使用之前判断是否有值：
+```Swift
+
+if assumedString != nil {
+    print(assumedString)
+}
+// Prints "An implicitly unwrapped optional string.”
+
+```
+
+也可以使用可选类型绑定使用隐式解包可选类型，并在一个表达式中检查解包该值：
+
+```Swift
+
+if let definiteString = assumedString {
+    print(definiteString)
+}
+// Prints "An implicitly unwrapped optional string.”
+
+```
+
+>注意
+>>如果一个值在其整个生命周期中可能为`nil`，并且在之后的使用中要检查是否为`nil`的话，不要使用隐式解包可选类型而要用普通的可选类型。
+
+
 
 
 
