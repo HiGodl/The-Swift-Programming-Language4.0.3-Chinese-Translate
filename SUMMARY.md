@@ -8,5 +8,5 @@
 * [1.3 初识Swift](chu-shi-swift.md)
 * [2. Swift详解](swiftxiang-jie.md)
 * [2.1 基础](ji-chu.md)
-* 2.2 基础运算符
+* [2.2 基础运算符](22-ji-chu-yun-suan-fu.md)
 
