@@ -1,4 +1,4 @@
-尽管Swift是一个用来写 iOS, macOS, watchOS 及 tvOS 平台应用的新语言，但是如果你以前写过 C 以及 Objective-C 的话，用起来并不会感到陌生。
+尽管Swift是 iOS, macOS, watchOS 及 tvOS 平台应用的新语言，但是如果你熟悉 C 或者 Objective-C 的话，用起来并不会感到陌生。
 
 Swift 使用自己的方式实现了 C 和 Objective-C 中所有类型，包括`Int`(整型)，`Double`和`Float`（浮点数）， `Bool`(布尔值)，`String`（字符串）。Swift 也提供了三种主要的集合，`Array`,`Set`,`Dictionary`，在 [集合类型]() 章节中有详细描述。
 
