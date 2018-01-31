@@ -130,6 +130,28 @@ a = (b x some multiplier) + remainder
 
 在计算中并不会考虑`b`为负数的情况，也就是`a % b`与`a % -b`得到的结果是一样的。
 
+#####一元减法运算符
+
+可以通过在数值类型前加`-`(也就是一元减法运算符)来取反：
+
+```Swift
+let three = 3
+let minusThree = -three       // minusThree equals -3
+let plusThree = -minusThree   // plusThree equals 3, or "minus minus three”
+
+```
+一元减法运算符直接写在被操作数的前面，不能有空格。
+
+#####一元加法运算符
+
+一元加法运算符(`+`)直接返回被操作数的值，并不会作任何改变：
+
+```Swift
+let minusSix = -6
+let alsoMinusSix = +minusSix  // alsoMinusSix equals -6
+```
+虽然一元加法运算符并不会作任何事，但是在使用正数的同时有负数的存在，可以通过添加一元加法运算符保持代码的对称性。
+
 
 
 
