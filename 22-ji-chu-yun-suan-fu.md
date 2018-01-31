@@ -169,6 +169,106 @@ a += 2
 
 更多Swift标准库提供的运算符的信息，请参考[运算符声明]()
 
+####比较运算符
+Swift提供所有C标准库的比较运算符：
+
+- 等于 (a == b)
+- 不等 (a != b)
+- 大于 (a > b)
+- 小于 (a < b)
+- 大于等于 (a >= b)
+- 小于等于 (a <= b)
+
+>注意
+>>Swift 也提供两种恒等运算符 (identity operator) (===和!==)，用来判断两个对象是否引用同一个实例。更多信息请参考[类和结构体]()
+
+比较运算符会返回`Bool`值来表明该表达式是否正确：
+
+```Swift
+1 == 1   // true because 1 is equal to 1
+2 != 1   // true because 2 is not equal to 1
+2 > 1    // true because 2 is greater than 1
+1 < 2    // true because 1 is less than 2
+1 >= 1   // true because 1 is greater than or equal to 1
+2 <= 1   // false because 2 is not less than or equal to 1
+```
+
+比较运算符经常用在条件表达式中，例如`if`表达式：
+
+```Swift
+let name = "world"
+if name == "world" {
+    print("hello, world")
+} else {
+    print("I'm sorry \(name), but I don't recognize you")
+}
+// Prints "hello, world", because name is indeed equal to "world".
+```
+
+更多`if`表达式的信息，请参考[流程控制]() 章节
+
+如果两个元组中包含相同类型相同个数的元素，可以通过比较运算符进行比较。元组比较的顺序是从左到右，一次比较一个值，直到两个值不同为止。比较两个不同的值，并将比较结果作为元组的比较结果。如果所有元素都相等，那么元组也相等。例如：
+
+```Swift
+(1, "zebra") < (2, "apple")   // true because 1 is less than 2; "zebra" and "apple" are not compared
+(3, "apple") < (3, "bird")    // true because 3 is equal to 3, and "apple" is less than "bird"
+(4, "dog") == (4, "dog")      // true because 4 is equal to 4, and "dog" is equal to "dog”
+
+```
+
+在上面例子中，第一行说明了元组从左向右比较的特性。因为`1` 小于 `2`，`(1, "zebra")` 便小于 `(2, "apple")`， 无论后面元素是啥都无所谓。即使`zebra`大于`apple`，由于此次比较已经在第一个元素处结束了，所以对结果并没有影响。但如果第一个元素相同的时候，就会继续比较第二个元素——例子中的第二行代码便说明了此问题。
+
+只有在元组中的元素可以通过比较运算符进行比较时才能通过比较运算符比较两个元组。例如在下面的代码中，可以比较两个`(String, Int)`类型的元组，因为`String`和`Int`都可以使用`<`运算符。相反，如果元组的类型为`(String, Bool)`，由于`Bool`类型不能通过`<`运算符进行比较，所以该类型元组不能使用`<`运算符进行比较。
+
+```Swift
+("blue", -1) < ("purple", 1)        // OK, evaluates to true
+("blue", false) < ("purple", true)  // Error because < can't compare Boolean values
+```
+>注意
+>>Swift标准库中，只实现了包含元素个数小于7个的元组的比较运算符。如果需要比较的元组元素个数大于等于7，那就需要自定义实现元组的比较运算符。
+
+####三目运算符
+
+三目运算符是是包含了三部分的特殊的运算符，格式为`question ? answer1 : answer2`。它是`question`为对或错时作不同操作的简写方式。如果`question`是对的，那么该表达式执行`answer1`并返回执行结果；否则执行`answer2`并返回执行结果。
+
+三目运算符为下面代码的简写：
+
+```Swift
+if question {
+    answer1
+} else {
+    answer2
+}
+```
+
+下面我们通过计算`table`的行高来说明该运算符如何使用。如果该行包含头部的话，该行的行高为`contentHeight + 50`， 否则为`contentHeight + 20`
+
+```Swift
+let contentHeight = 40
+let hasHeader = true
+let rowHeight = contentHeight + (hasHeader ? 50 : 20)
+// rowHeight is equal to 90
+```
+
+这个例子为下面代码的简写：
+
+```Swift
+let contentHeight = 40
+let hasHeader = true
+let rowHeight: Int
+if hasHeader {
+    rowHeight = contentHeight + 50
+} else {
+    rowHeight = contentHeight + 20
+}
+// rowHeight is equal to 90
+```
+
+第一个例子中表明了`rowHeight`可以用三目运算符通过一行代码设置合适的高度，这要比第二个例子中的方式更简洁。
+
+三目运算符对于只有两种情况的操作来说是一种更有效更简洁的书写方式，但是如果过度使用的话会使得代码难以理解。避免将三元条件运算符的多个实例组合成一个复合语句。
+
+
 
 
 
