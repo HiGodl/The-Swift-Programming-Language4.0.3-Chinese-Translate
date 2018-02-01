@@ -9,4 +9,5 @@
 * [2. Swift详解](swiftxiang-jie.md)
 * [2.1 基础](ji-chu.md)
 * [2.2 基础运算符](22-ji-chu-yun-suan-fu.md)
+* [2.3 字符串和字符](23-zi-fu-chuan-he-zi-fu.md)
 
