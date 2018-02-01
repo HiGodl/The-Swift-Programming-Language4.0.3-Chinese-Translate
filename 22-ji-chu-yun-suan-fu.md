@@ -379,6 +379,109 @@ range.contains(7)   // false
 range.contains(4)   // true
 range.contains(-1)  // true
 ```
+####逻辑运算符
+
+逻辑运算符用来合并或改变逻辑值`true`和`false`。Swift支持三种基于C语言的语言所支持的逻辑运算符：
+
+-逻辑非 (`!a`)
+-逻辑与 (`a && b`)
+-逻辑或 (`a || b`)
+
+#####逻辑非运算符
+
+逻辑非运算符(`!a`)用来对布尔值取反。`true`变为`false`，`false`变为`true`。
+
+逻辑非是前置运算符，直接写在被操作数的前面，不允许有空格。可以读作"非`a`"，看下例：
+
+```Swift
+let allowedEntry = false
+if !allowedEntry {
+    print("ACCESS DENIED")
+}
+// Prints "ACCESS DENIED”
+```
+
+`if !allowedEntry`可以读为“如果不允许进入”。后面的语句只有在“不允许进入”为`true`的时候才会执行，也就是当`allowedEntry`为`false`的时候。
+
+在给布尔常量或变量命名的时候要保证代码的可读性与简洁性。防止双重取反或者逻辑不明确。
+
+#####逻辑与运算符
+逻辑与运算符(`a && b`)，只有在两个被操作数都为`true`的时候才返回`true`。
+
+如果有任何一个值为`false`，整个表达式的值就为`false`。事实上，如果第一个值为`false`的时候，由于第二个值不管是啥整个表达式都不会为`true`，所以第二个值会直接略掉。这种执行方式为短路求值。
+
+下面例子中会判断两个布尔值，只有都为`true`的时候才能进入：
+
+```Swift
+let enteredDoorCode = true
+let passedRetinaScan = false
+if enteredDoorCode && passedRetinaScan {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+// Prints "ACCESS DENIED”
+
+```
+
+#####逻辑或运算符
+
+逻辑或运算符（`a || b`）是由两个相邻管道字符组成的中缀操作符。两个被操作数只要有一个为`true`整个表达式就会返回`true`。
+
+和逻辑与运算符一样，逻辑或运算符也使用了短路求值的方式。如果左侧的值为true，那么右侧就不会执行，右侧不管为何值都不会改变最终结果。
+
+在下面的例子中，第一个布尔值`hasDoorKey`为`false`，但是第二个值`knowsOverridePassword`为`true`，因为运算符两侧有一个值为`true`，所以整个表达式的结果为`true`，通过被允许：
+
+```Swift
+let hasDoorKey = false
+let knowsOverridePassword = true
+if hasDoorKey || knowsOverridePassword {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+// Prints "Welcome!”
+```
+
+#####逻辑运算符合并使用
+可以在一个表达式中使用多个逻辑运算符来实现复杂操作：
+
+```Swift
+if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+// Prints "Welcome!”
+
+```
+
+例子中使用了多个`&&`和`||`运算符来创建一个长表达式。然而`&&`和`||`依然对两个值进行操作，所以这个长表达式只是多个表达式写在了一起。这个例子可以这样解读：
+
+如果已经输入了正确的门编号并且通过了视网膜扫描，或者有门钥匙，或者知道紧急密码，都可以进入。
+
+由于`enteredDoorCode`,`passedRetinaScan`,`hasDoorKey`的值都为`false`，前两个表达式的结果为`false`，但是知道紧急密码，所以整个表达式的值依然为`true`
+
+>注意
+>>由于Swift中的逻辑运算符为从左向右执行的，多个逻辑运算符同时使用的时候也遵循此规则。
+
+
+####显式括号
+
+有些时候通过在表达式中添加圆括号可以使得表达式可读性更强。在上面的例子中，通过在第一部分添加圆括号可以使得整个表达式的意图更明确：
+
+```Swift
+if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+// Prints "Welcome!”
+```
+
+括号的使用表明了前两个值是作为整个逻辑表达式的一种情况存在的。整个逻辑表达式的结果并不会改变，但是整个表达式的意图更明确可读性更强。可读性永远要摆在简洁性之前。使用括号可以使得意图更明确。
+
+
 
 
 
