@@ -268,6 +268,40 @@ if hasHeader {
 
 三目运算符对于只有两种情况的操作来说是一种更有效更简洁的书写方式，但是如果过度使用的话会使得代码难以理解。避免将三元条件运算符的多个实例组合成一个复合语句。
 
+####nil聚合运算符(??)
+nil聚合运算符(a ?? b) 运算方式——如果可选类型`a`有值则解包并返回`a`的值，否则返回默认值`b`。表达式`a`必须为可选类型。表达式`b`返回的必须为`a`中存储的类型。
+nil聚合运算符为下面例子的简写形式：
+
+```Swift
+a != nil ? a! : b
+```
+
+上面的代码中使用了三目运算符，如果`a`不为`nil`则强制解包`a`并返回存储的值，否则返回`b`。nil聚合运算符通过简洁可读性更强的形式实现了条件检查及解包操作。
+
+>注意
+>>如果`a`的值为非空，那么`b`就不会被赋值。这种方式叫做短路求值
+
+下面例子中通过nil聚合运算符赋值`colorNameToUse`，赋值结果为用户自定义颜色名称或者是默认颜色名称。
+
+```Swift
+let defaultColorName = "red"
+var userDefinedColorName: String?   // defaults to nil
+ 
+var colorNameToUse = userDefinedColorName ?? defaultColorName
+// userDefinedColorName is nil, so colorNameToUse is set to the default of "red”
+```
+
+`userDefinedColorName`为可选字符串类型，默认值为`nil`。由于`userDefinedColorName`为可选类型，所以可以使用nil聚合运算符判断其值。在例子中，通过运算符给字符串类型的`colorNameToUse`赋初始值。由于`userDefinedColorName`为`nil`，所以`userDefinedColorName ?? defaultColorName`表达式返回值为`defaultColorName`的值`red`。
+
+如果`userDefinedColorName`赋值为非空，再次执行该运算符检查赋值，`userDefinedColorName`就会解包并赋值给`colorNameToUse`
+
+```Swift
+userDefinedColorName = "green"
+colorNameToUse = userDefinedColorName ?? defaultColorName
+// userDefinedColorName is not nil, so colorNameToUse is set to "green”
+
+```
+
 
 
 
