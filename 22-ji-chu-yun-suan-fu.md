@@ -302,6 +302,48 @@ colorNameToUse = userDefinedColorName ?? defaultColorName
 
 ```
 
+####区间运算符
+
+Swift提供了集中区间运算符作为某一区间一组值的简写。
+
+#####闭合区间运算符
+
+闭合区间运算符(`a...b`)定义一组从`a`到`b`并且包含`a`和`b`的值。`a`的值必须小于等于`b`。
+
+在遍历一组连续的值的时候闭合区间运算符比较好用，例如 `for-in` 循环：
+
+```Swift
+for index in 1...5 {
+    print("\(index) times 5 is \(index * 5)")
+}
+// 1 times 5 is 5
+// 2 times 5 is 10
+// 3 times 5 is 15
+// 4 times 5 is 20
+// 5 times 5 is 25
+```
+更多`for-in`循环的介绍，请参见[流程控制]()章节
+
+#####半开区间运算符
+
+半开区间运算符(`a..<b`)定义`a`到`b`之间不包含`b`的一组值。因为只包含第一个值，不包含最后一个值，所以叫半开。与闭合区间运算符相同，`a`必须要小于等于`b`。如果`a`和`b`相等，那么定义的区间为空。
+
+半开区间运算符在完整遍历索引从0开始的列表（例如数组）时比较好用：
+
+```Swift
+let names = ["Anna", "Alex", "Brian", "Jack"]
+let count = names.count
+for i in 0..<count {
+    print("Person \(i + 1) is called \(names[i])")
+}
+// Person 1 is called Anna
+// Person 2 is called Alex
+// Person 3 is called Brian
+// Person 4 is called Jack
+```
+
+例子中声明的数组包含四个元素，但由于使用半开区间运算符`0..<count`只会遍历到`3`。更多关于数组的信息，请参见[数组]()
+
 
 
 
