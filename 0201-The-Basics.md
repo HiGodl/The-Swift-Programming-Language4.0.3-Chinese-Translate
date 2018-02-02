@@ -1,6 +1,6 @@
 尽管Swift是 iOS, macOS, watchOS 及 tvOS 平台应用的新语言，但是如果你熟悉 C 或者 Objective-C 的话，用起来并不会感到陌生。
 
-Swift 使用自己的方式实现了 C 和 Objective-C 中所有类型，包括`Int`(整型)，`Double`和`Float`（浮点数）， `Bool`(布尔值)，`String`（字符串）。Swift 也提供了三种主要的集合，`Array`,`Set`,`Dictionary`，在 [集合类型]() 章节中有详细描述。
+Swift 使用自己的方式实现了 C 和 Objective-C 中所有类型，包括`Int`(整型)，`Double`和`Float`（浮点数）， `Bool`(布尔值)，`String`（字符串）。Swift 也提供了三种主要的集合，`Array`,`Set`,`Dictionary`，在 [集合类型](0204-Collection-Types.md) 章节中有详细描述。
 
 像C语言一样，Swift通过指定名称来存储关联变量。Swift中也大量使用了不可变的变量，也就是常量，并且在Swift中常量要比在 C 语言中要强大的多。在编码过程中如果有不需要改变的值的时候，可以通过常量使得代码更加安全、简洁，这种用法在Swift中随处可见。
 
