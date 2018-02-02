@@ -224,7 +224,6 @@ print(total)
 
 `..<`操作符不包含索引中的最大值，如果要包含最大值需要使用 `...<`
 
-####
 
 #### 方法和闭包
 
@@ -346,7 +345,6 @@ let sortedNumbers = numbers.sorted { $0 > $1 }
 print(sortedNumbers)
 ```
 
-####
 
 #### 类和对象
 
