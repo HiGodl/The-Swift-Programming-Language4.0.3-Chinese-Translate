@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
 * [章节名称翻译对照](zhang-jie-ming-cheng-fan-yi-dui-zhao.md)
-* [1. 欢迎来到Swift的世界](huan-ying-lai-dao-swift-de-shi-jie.md)
+* [欢迎来到Swift的世界](huan-ying-lai-dao-swift-de-shi-jie.md)
 * [1.1 关于Swift](chapter1.md)
 * [1.2 版本兼容性](ban-ben-jian-rong-xing.md)
 * [1.3 初识Swift](chu-shi-swift.md)
@@ -33,4 +33,5 @@
 * [2.24 内存安全](224-nei-cun-an-quan.md)
 * [2.25 访问限制](225-fang-wen-xian-zhi.md)
 * [2.26 高级运算符](226-gao-ji-yun-suan-fu.md)
+* 3. 语言参考
 
