@@ -129,7 +129,7 @@ print(friendlyWelcome)
 
 ```
 
-`print(_:separator:terminator:)` 方法是全局方法，可以将常量或变量输出到合适的地方。例如在 Xcode 中，会将结果输出到 `console` 面板上。 `separator` 和 `terminator`参数有默认值，所以在调用该方法的时候可以忽略这两个参数。输出结束之后默认会添加换行符。如果想在输出完成之后不添加换行，则需要给 `terminator` 传入一个空字符串——例如 `print(someValue, terminator: "")` 。关于给参数设置默认值，请参考 [参数默认值]() 章节
+`print(_:separator:terminator:)` 方法是全局方法，可以将常量或变量输出到合适的地方。例如在 Xcode 中，会将结果输出到 `console` 面板上。 `separator` 和 `terminator`参数有默认值，所以在调用该方法的时候可以忽略这两个参数。输出结束之后默认会添加换行符。如果想在输出完成之后不添加换行，则需要给 `terminator` 传入一个空字符串——例如 `print(someValue, terminator: "")` 。关于给参数设置默认值，请参考 [参数默认值](0206-Functions.md#defaultParameterValues) 章节
 
 Swift 通过字符串插入操作符在长字符串中添加常量或变量，在执行时 Swift 会及时的将其转换为常量或变量此时的的值。将常量或变量的名称写在圆括号中，并在圆括号前加反斜杠：
 
