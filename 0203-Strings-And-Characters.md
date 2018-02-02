@@ -6,7 +6,7 @@ Swift的`String`类尽管语法非常简单，但是它是一种快速、先进�
 
 >注意
 >>Swift的`String`类是通过Foundation的`NSString`类桥接过来的。Foundation框架也通过扩展`String`暴露了`NSString`的方法。也就是如果引用Foundation框架，那么无需转换`String`为`NSString`就可以访问`NSString`方法。
-
+>>更多关于`String`在Foundation和Cocoa中的使用，请参考《Using Swift with Cocoa and Objective-C (Swift 4)》中的Cocoa数据类型的使用
 
 
 
