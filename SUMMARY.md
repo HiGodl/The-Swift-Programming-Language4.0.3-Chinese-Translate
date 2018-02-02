@@ -5,7 +5,7 @@
 * [欢迎来到Swift的世界](0100-Welcome-to-Swift.md)
 * [一 关于Swift](0101-About-Swift.md)
 * [二  版本兼容性](0102-Version-Compatibility.md)
-* [1.3 初识Swift](chu-shi-swift.md)
+* [三 初识Swift](chu-shi-swift.md)
 * [2. Swift详解](swiftxiang-jie.md)
 * [2.1 基础](ji-chu.md)
 * [2.2 基础运算符](22-ji-chu-yun-suan-fu.md)
