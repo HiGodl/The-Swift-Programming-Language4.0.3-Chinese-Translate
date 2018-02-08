@@ -173,6 +173,33 @@ print(catString)
 // Prints "Cat!🐱”
 ```
 
+#####字符和字符串的串联
+多个字符串值可以通过加法运算符`+`组合成一个新的字符串：
+
+```Swift
+let string1 = "hello"
+let string2 = " there"
+var welcome = string1 + string2
+// welcome now equals "hello there”
+```
+
+也可以通过加法赋值运算符`+=`将一个字符串添加到另一个字符串之后：
+
+```Swift
+var instruction = "look over"
+instruction += string2
+// instruction now equals "look over there”
+```
+
+通过`String`类型的`append()`方法可以将字符类型的数据添加到字符串中：
+
+```Swift
+let exclamationMark: Character = "!"
+welcome.append(exclamationMark)
+// welcome now equals "hello there!”
+```
+
+
 
 
 
