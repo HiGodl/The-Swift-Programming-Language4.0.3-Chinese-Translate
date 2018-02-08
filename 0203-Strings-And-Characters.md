@@ -132,6 +132,13 @@ constantString += " and another Highlander"
 >>Swift的字符串的可变性与`Objective-C`和`Cocoa`中的定义（通过两个类`NSString`、`NSMutableString`来定义字符串是否可变）是不同的
 
 
+####字符串是值类型
+Swift中的`String`是值类型。如果创建一个`String`类型的值，在作为参数传入函数或方法中或者给常量或变量赋值的时候实际上传递的是字符串的一个拷贝。在上边的情况中，都是从该值创建了一个新的拷贝，实际上传递的是这个拷贝，并不是该值。关于值类型请参考[结构体和枚举是值类型](0209-Classes-And-Structures.md#structuresandEnumerationsAreValueTypes)
+
+Swift中`String`默认拷贝的特性，保证当字符串或者方法传给你一个`String`的值得时候，不管它从哪来你获取到的都是一个确确实实的`String`类型值。你可以确定你得到的字符串除了你自己谁都不能去修改。
+
+在底层，Swift的编译器优化了字符串的使用，以便只有在必要时才进行实际的复制。 这意味着在字符串作为值类型时使用总能得到最好的结果。
+
 
 
 
