@@ -158,6 +158,22 @@ for character in "Dog!🐶" {
 
 `for-in`循环请参见[For-in循环](0205-Control-Flow.md#for-inLoops)
 
+或者也可以使用`Character`类型创建一个字符常量或变量并为其赋值：
+
+```Swift
+let exclamationMark: Character = "!"
+```
+
+`String`值可以通过在其构造函数中传入一个`Character`数组的方式进行初始化：
+
+```Swift
+et catCharacters: [Character] = ["C", "a", "t", "!", "🐱"]
+let catString = String(catCharacters)
+print(catString)
+// Prints "Cat!🐱”
+```
+
+
 
 
 
