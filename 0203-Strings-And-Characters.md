@@ -70,5 +70,35 @@ It also ends with a line break.
 在上面的例子中，虽然整个多行字符串是有缩进的，第一行和最后一行字符串也不会包含任何空格。因为第二行要比其他行缩进的多，所以会包含四个空格的缩进。
 
 
+#####多行字符串字面量中的特殊字符
+
+多行字符串字面量可以包含以下特殊字符：
+- 转义特殊字符`\0`（空字符）， `\\`（反斜杠）, `\t`（z制表符），`\n`（换行符），`\r`（），`\"`（双引号），`\'`（单引号）
+- 任意`Unicode`编码值，以`\u{n}`的格式书写，`n`是1-8位十六进制数组成的一个有意义的Unicode编码打印值（Unicode会在之后的[Unicode](0203-Strings-And-Characters.md#unicode)中介绍）
+
+
+下面的例子展示了四种特殊字符的例子。`wiseWords`常量包含了两个转义双引号。`dollarSin`，`blackHeart`，和`sparklingHeart`常量展示了Unicode的格式：
+
+```Swift
+let wiseWords = "\"Imagination is more important than knowledge\" - Einstein"
+// "Imagination is more important than knowledge" - Einstein
+let dollarSign = "\u{24}"        // $,  Unicode scalar U+0024
+let blackHeart = "\u{2665}"      // ♥,  Unicode scalar U+2665
+let sparklingHeart = "\u{1F496}" // 💖, Unicode scalar U+1F496 
+```
+
+由于多行字符串字面量的定义是用三对双引号，所以可以在多行字符串字面两种直接加入非转义的单个双引号。如果要包含`"""`的话，至少要有一个双引号要进行转义。例如：
+
+```Swift
+let threeDoubleQuotationMarks = """
+Escaping the first quotation mark \"""
+Escaping all three quotation marks \"\"\"
+"""
+```
+
+
+
 
 <span id="stringInterpolation"></span>
+
+<span id="unicode"></span>
