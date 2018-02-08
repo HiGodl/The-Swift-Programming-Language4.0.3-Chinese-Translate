@@ -115,6 +115,22 @@ if emptyString.isEmpty {
 // Prints "Nothing to see here”
 ```
 
+####字符串可变性
+可以通过表明字符串为常量（不可变）或变量（可变）来指定字符串是否可变：
+
+```Swift
+var variableString = "Horse"
+variableString += " and carriage"
+// variableString is now "Horse and carriage"
+ 
+let constantString = "Highlander"
+constantString += " and another Highlander"
+// this reports a compile-time error - a constant string cannot be modified
+```
+
+>注意
+>>Swift的字符串的可变性与`Objective-C`和`Cocoa`中的定义（通过两个类`NSString`、`NSMutableString`来定义字符串是否可变）是不同的
+
 
 
 
