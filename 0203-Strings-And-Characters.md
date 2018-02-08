@@ -96,6 +96,27 @@ Escaping all three quotation marks \"\"\"
 """
 ```
 
+####初始化空字符串
+
+可以通过给字符串变量赋值为空字符串或者使用`String`的初始化方法创建一个空字符串，以作为拼接一个长字符串的起点：
+
+```Swift
+var emptyString = ""               // empty string literal
+var anotherEmptyString = String()  // initializer syntax
+// these two strings are both empty, and are equivalent to each other
+```
+
+可以通过检查`isEmpty`属性来判断`String`value是否为空字符串：
+
+```Swift
+if emptyString.isEmpty {
+    print("Nothing to see here")
+}
+// Prints "Nothing to see here”
+```
+
+
+
 
 
 
