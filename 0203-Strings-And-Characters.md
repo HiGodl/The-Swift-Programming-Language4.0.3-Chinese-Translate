@@ -141,6 +141,26 @@ Swift中`String`默认拷贝的特性，保证当字符串或者方法传给你�
 
 
 
+####字符的使用
+
+可以使用`for-in`表达式来通过遍历的方式获取`String`中的单个`Character`值：
+
+```Swift
+for character in "Dog!🐶" {
+    print(character)
+}
+// D
+// o
+// g
+// !
+// 🐶
+```
+
+`for-in`循环请参见[For-in循环](0205-Control-Flow.md#for-inLoops)
+
+
+
+
 
 
 <span id="stringInterpolation"></span>
