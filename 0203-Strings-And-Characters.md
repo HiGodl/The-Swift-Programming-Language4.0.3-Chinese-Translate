@@ -378,4 +378,31 @@ for index in greeting.indices {
 >注意
 >>任何实现`Collection`协议的类型都可以使用`startIndex`、`endIndex`属性和`index(before:)`、`index(after:)`、`index(_:offsetBy:)`。这些类型包括本章介绍的`String`，以及集合类`Array`、`Dictionary`和`Set`。
 
+#####插入和移除
+
+使用`insert(_:at:)`方法可以将字符插入到字符串特定的位置，使用`insert(contentsOf:at:)`可以将另一字符串插入到字符串的特定位置。
+
+```Swift
+var welcome = "hello"
+welcome.insert("!", at: welcome.endIndex)
+// welcome now equals "hello!"
+ 
+welcome.insert(contentsOf: " there", at: welcome.index(before: welcome.endIndex))
+// welcome now equals "hello there!”
+```
+
+使用`remove(at:)`方法可以将特定索引下的字符从字符串中删除；使用`removeSubrange(_:)`可以将特定范围中的字符从字符串中删除：
+
+```Swift
+welcome.remove(at: welcome.index(before: welcome.endIndex))
+// welcome now equals "hello there"
+ 
+let range = welcome.index(welcome.endIndex, offsetBy: -6)..<welcome.endIndex
+welcome.removeSubrange(range)
+// welcome now equals "hello”
+```
+
+>注意
+>>任何实现`RangeReplaceableCollection`协议的类型都可以使用`insert(_:at:)`、`insert(contentsOf:at:)`、`remove(at:)`、`removeSubrange(_:)`方法。包括本章所介绍的`String`，以及集合类型中的`Array`，`Dictionary`，`Set`。    
+
 
