@@ -251,6 +251,8 @@ let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 >>插入字符串中的表达式不能有非预期的反斜杠、换行符、回车符。可以包含其他字符串字面量
 
 
+<span id="unicode"></span>
+
 ####Unicode
 Unicode 是用来在不同系统之间表达、传递文本信息的国际标准编码。它几乎可以以标准化形式展示所有语言中的所有字符，也可以用来对外部文件（例如文本文件）的读取或写入字符。Swift中的`String`和`Charactor`类型是完全Unicode编码的，本章节中我们将详细说明。
 
