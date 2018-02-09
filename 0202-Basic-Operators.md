@@ -169,6 +169,9 @@ a += 2
 
 更多Swift标准库提供的运算符的信息，请参考[运算符声明](https://developer.apple.com/documentation/swift/operator_declarations)
 
+
+<span id="comparisonOperators"></span>
+
 ####比较运算符
 Swift提供所有C标准库的比较运算符：
 
