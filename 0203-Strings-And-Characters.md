@@ -202,6 +202,36 @@ welcome.append(exclamationMark)
 >注意
 >>由于`Character`只能包含一个字符，所以不能向字符变量中添加字符串
 
+如果需要通过多行字符串字面量创建一个更长的字符串，并且每行之后都包含一个换行符，如下：
+
+```Swift
+let badStart = """
+one
+two
+"""
+let end = """
+three
+"""
+print(badStart + end)
+// Prints two lines:
+// one
+// twothree
+ 
+let goodStart = """
+one
+two
+
+"""
+print(goodStart + end)
+// Prints three lines:
+// one
+// two
+// three
+```
+
+上例中，通过`badStart`和`end`结合生成了一个两行的字符串，这并不是我们想要的。因为在`badStart`的最后一行并没有换行符，所以这一行就会直接拼接上`end`的第一行。不同的是，`goodStart`的每一行末尾都包含换行符，所以当与`end`相加时就会返回预期的三行。
+
+
 
 
 
