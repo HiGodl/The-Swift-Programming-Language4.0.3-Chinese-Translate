@@ -301,11 +301,27 @@ let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
 // regionalIndicatorForUS is 🇺🇸
 ```
 
+####字符计算
+使用`count`属性可以或者字符串中字符的个数：
 
+```Swift
+let unusualMenagerie = "Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"
+print("unusualMenagerie has \(unusualMenagerie.count) characters")
+// Prints "unusualMenagerie has 40 characters”
+```
 
+注意在拓展字形集群时，当修改或串联字符串并不一定会影响字符串长度。
 
+例如，如果初始化一个四个字符字符串`cafe`，然后在字符串后添加一个组合用尖音`COMBINING ACUTE ACCENT` (`U+0301`)，得到的字符串长度任然是`4`个字符，第四个字符为`é`而不是`e`：
 
+```Swift
+var word = "cafe"
+print("the number of characters in \(word) is \(word.count)")
+// Prints "the number of characters in cafe is 4"
+ 
+word += "\u{301}"    // COMBINING ACUTE ACCENT, U+0301
+ 
+print("the number of characters in \(word) is \(word.count)")
+// Prints "the number of characters in café is 4”
+```
 
-
-
-<span id="unicode"></span>
