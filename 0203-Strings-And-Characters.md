@@ -199,6 +199,10 @@ welcome.append(exclamationMark)
 // welcome now equals "hello there!”
 ```
 
+>注意
+>>由于`Character`只能包含一个字符，所以不能向字符变量中添加字符串
+
+
 
 
 
