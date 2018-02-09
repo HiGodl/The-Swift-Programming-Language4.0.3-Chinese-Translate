@@ -425,6 +425,11 @@ let newString = String(beginning)
 在上例中，`greeting`是一个字符串，并持有一段组成该字符串字符所占的内存。由于`beginning`是`greeting`的子字符串，所以它指向的内存空间是`greeting`的一段，`newString`是一个字符串——当由子字符串进行实例化时，它就持有了一段自己的内存空间。下图展示了它们间的关系：
 
 
+![](/assets/WX20180209-170138@2x.png)
+
+>注意
+>>`String`和`Substring`都实现了`StringProtocol`协议，这就意味着字符串操作函数接受一个`StringProtocol`的值是很方便的。可以使用`String`或`Substring`调用这些方法
+
 
 
 
