@@ -331,3 +331,4 @@ print("the number of characters in \(word) is \(word.count)")
 
 ####访问和修改字符串
 
+可以通过字符串的方法，属性或者下标语法访问和修改字符串。
