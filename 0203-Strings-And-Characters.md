@@ -263,6 +263,42 @@ Swift原生`String`类型是有Unicode标量创建。字符或修饰符的Unicod
 并不是所有的21位Unicode标量都有其表示的字符——一些标量是为了以后扩展使用的。已经有具体字符的标量也有自己的名称，例如上例中的拉丁小写字母A`LATIN SMALL LETTER A`，正面的小鸡`FRONT-FACING BABY CHICK`。
 
 
+#####拓展字形集群
+
+每一个`Character`类型的实例都代表一个拓展字形集群。一个拓展字形集群是组由一个或多个Unicode标量组成的一个可读的字符。
+
+例如，`é`代表一个单独的Unicode标量`é`(小写尖音E`LATIN SMALL LETTER E WITH ACUTE`或者`U+00E9`)。然而，同样的字母可以用一组标量来展示——一个标准字母`e`（小写拉定字母E`LATIN SMALL LETTER E`或`U+0065`）后跟一个组合用尖音符号`COMBINING ACUTE ACCENT`标量（`U+0301`）。 组合用尖音符号`COMBINING ACUTE ACCENT`会自动加在字母标量之上，当着一组标量被Unicode环境下的文本翻译系统读取时会将`e`变为`é`。
+
+在第一中情况中，该群集值包含一个标量；在第二中情况是一个两个标量的群集。在两种情况下，`é`作为拓展字形集群会以单个字符显示：
+
+```Swift
+let eAcute: Character = "\u{E9}"                         // é
+let combinedEAcute: Character = "\u{65}\u{301}"          // e followed by ́
+// eAcute is é, combinedEAcute is é
+```
+
+拓展字形集群可以以灵活的方式将多个无意义的字符组合为一个字符。例如，例如，韩文字母中的韩文音节可以表示为预先分解或分解的序列。这两个表示都符合Swift中的单个字符值：
+
+```Swift
+let precomposed: Character = "\u{D55C}"                  // 한
+let decomposed: Character = "\u{1112}\u{1161}\u{11AB}"   // ᄒ, ᅡ, ᆫ
+// precomposed is 한, decomposed is 한
+```
+
+扩展的字形群集使标量符号（例如组合用闭合圆`COMBINING ENCLOSING CIRCLE`，或`U+20DD`）能够将其他Unicode标量作为一个Character值的一部分包含进来：
+
+```Swift
+let enclosedEAcute: Character = "\u{E9}\u{20DD}"
+// enclosedEAcute is é⃝
+```
+
+国旗符号的Unicode标量可以成对组合成一个字符值，例如区域指示符号字母U`REGIONAL INDICATOR SYMBOL LETTER U`（`U+1F1FA`）和区域指示符号字母S`REGIONAL INDICATOR SYMBOL LETTER S`（`U+1F1F8`）的这个组合：
+
+```Swift
+let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
+// regionalIndicatorForUS is 🇺🇸
+```
+
 
 
 
