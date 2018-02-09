@@ -232,14 +232,29 @@ print(goodStart + end)
 上例中，通过`badStart`和`end`结合生成了一个两行的字符串，这并不是我们想要的。因为在`badStart`的最后一行并没有换行符，所以这一行就会直接拼接上`end`的第一行。不同的是，`goodStart`的每一行末尾都包含换行符，所以当与`end`相加时就会返回预期的三行。
 
 
-
-
-
-
-
-
-
-
 <span id="stringInterpolation"></span>
+
+####字符串插值
+字符串插值是在字符串字面量中通过插入常量、变量、字面量、或者表达式从而组成一个新的字符串的方法。字符串插值可以用在单行和多行字符串字面量中。每一个插入字符串字面量的元素都要写在前面带反斜杠的双括号中：
+
+```Swift
+let multiplier = 3
+let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
+// message is "3 times 2.5 is 7.5”
+```
+
+上例中，通过`\(multiplier)`将`multiplier`的值插入到字符串字面量中。当字符串插值执行以创建一个字符串的时候，占位符会被`multiplier`的实际值替换掉。
+
+同时`multiplier`也是字符串后边插入的一个表达式的一部分。表达式会计算出`Double(multiplier) * 2.5`的结果`7.5`并将其插入到字符串中。这个例子中，表达式在插入到字符串字面量中时应以`\(Double(multiplier) * 2.5)`的形式书写。
+
+>注意
+>>插入字符串中的表达式不能有非预期的反斜杠、换行符、回车符。可以包含其他字符串字面量
+
+
+
+
+
+
+
 
 <span id="unicode"></span>
