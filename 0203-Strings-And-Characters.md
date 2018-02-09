@@ -431,5 +431,22 @@ let newString = String(beginning)
 >>`String`和`Substring`都实现了`StringProtocol`协议，这就意味着字符串操作函数接受一个`StringProtocol`的值是很方便的。可以使用`String`或`Substring`调用这些方法
 
 
+####字符串比较
+
+Swift提供了三种比较文字值的方式：字符串和字符判等，前缀判等，后缀判等。
+
+#####字符和字符串判等
+使用等于运算符（`==`）和不等运算符（`!=`）判断字符串和字符是否相等，在[比较运算符](0202-Basic-Operators.md#comparisonOperators)中有详细说明：
+
+```Swift
+let quotation = "We're a lot alike, you and I."
+let sameQuotation = "We're a lot alike, you and I."
+if quotation == sameQuotation {
+    print("These two strings are considered equal")
+}
+// Prints "These two strings are considered equal”
+```
+
+
 
 
