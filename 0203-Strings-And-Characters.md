@@ -406,3 +406,25 @@ welcome.removeSubrange(range)
 >>任何实现`RangeReplaceableCollection`协议的类型都可以使用`insert(_:at:)`、`insert(contentsOf:at:)`、`remove(at:)`、`removeSubrange(_:)`方法。包括本章所介绍的`String`，以及集合类型中的`Array`，`Dictionary`，`Set`。    
 
 
+####子字符串（Substrings）
+
+当使用下标或者`prefix(_:)`方法获取一个字符串的子字符串时，得到的结果是一个`Substring`的实例，而不是另一个字符串。在Swift中子字符串几乎拥有所有字符串的方法，也就是你可以在使用时将子字符串作为字符串来看待。但是，与字符串不同的是，子字符串所存在的时间要小于其所在字符串存在的时间。所以当你想使得子字符串的生命周期更长时，需要将子字符串转换为字符串实例，例如：
+
+```Swift
+let greeting = "Hello, world!"
+let index = greeting.index(of: ",") ?? greeting.endIndex
+let beginning = greeting[..<index]
+// beginning is "Hello"
+ 
+// Convert the result to a String for long-term storage.
+let newString = String(beginning)
+```
+
+像字符串一样，子字符串指向了一段由字符组成的子字符串所在的内存空间。但与字符串不同的是，为了优化性能，子字符串可以复用其所在字符串的内存空间，或者是一段用来存储其他子字符串的内存空间。（字符串也做了同样的优化，但是如果两个字符串共享没存的话，它们就是相等的）这种方式的优化使得你在修改字符串或子字符串之前无需耗费性能去对字符串进行拷贝。像上面介绍的，子字符串并不适合用来做长时间存储——因为它们只想的内存空间是其所在字符串中的一部分，子字符串必须的使用时机必须是在字符串被内存释放之前。
+
+在上例中，`greeting`是一个字符串，并持有一段组成该字符串字符所占的内存。由于`beginning`是`greeting`的子字符串，所以它指向的内存空间是`greeting`的一段，`newString`是一个字符串——当由子字符串进行实例化时，它就持有了一段自己的内存空间。下图展示了它们间的关系：
+
+
+
+
+
