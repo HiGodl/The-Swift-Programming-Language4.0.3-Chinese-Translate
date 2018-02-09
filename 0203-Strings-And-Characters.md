@@ -251,6 +251,19 @@ let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 >>插入字符串中的表达式不能有非预期的反斜杠、换行符、回车符。可以包含其他字符串字面量
 
 
+####Unicode
+Unicode 是用来在不同系统之间表达、传递文本信息的国际标准编码。它几乎可以以标准化形式展示所有语言中的所有字符，也可以用来对外部文件（例如文本文件）的读取或写入字符。Swift中的`String`和`Charactor`类型是完全Unicode编码的，本章节中我们将详细说明。
+
+#####Unicode标量
+Swift原生`String`类型是有Unicode标量创建。字符或修饰符的Unicode标量是一个唯一的21位数字，例如`U+0061`为小写拉定字母A(`a`)，`U+1F425`是一个正面的小鸡的字符(`🐥`)。
+
+>注意
+>>Unicode标量是从U+0000到U+D7FF（含）或U+E000到U+10FFFF（含）的任何Unicode代码点。 Unicode标量不包括Unicode代理对代码点，这些代码点是U+D800到U+DFFF范围内的代码点。
+
+并不是所有的21位Unicode标量都有其表示的字符——一些标量是为了以后扩展使用的。已经有具体字符的标量也有自己的名称，例如上例中的拉丁小写字母A`LATIN SMALL LETTER A`，正面的小鸡`FRONT-FACING BABY CHICK`。
+
+
+
 
 
 
