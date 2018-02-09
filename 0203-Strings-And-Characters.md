@@ -447,6 +447,8 @@ if quotation == sameQuotation {
 // Prints "These two strings are considered equal”
 ```
 
+如果两个字符或字符串的拓展字形集群是正则相等的，那么这两个字符或字符串就是相等的。如果两个拓展字形集群有相同的意义及展现，就算不是使用同一种形式的Unicode标量组成的，那么这两个拓展字形集群也是正则相等的。
+
 
 
 
