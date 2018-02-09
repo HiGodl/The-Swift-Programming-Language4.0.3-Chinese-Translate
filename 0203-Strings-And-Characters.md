@@ -332,3 +332,50 @@ print("the number of characters in \(word) is \(word.count)")
 ####访问和修改字符串
 
 可以通过字符串的方法，属性或者下标语法访问和修改字符串。
+
+
+#####字符串索引
+
+每个字符串值都有一个与其关联的索引类型`String.Index`，用来得到字符在字符串中的位置。
+
+就像上面提到的，不同的字符需要不同大小的内存来存储，所以要查明某个字符在字符串中的位置，必须要从开始或结尾遍历字符串的每一个Unicode标量。所以，Swift不能通过整型值进行索引。
+
+使用`startIndex`属性访问字符串的第一个字符，使用`endIndex`属性是字符串中最后一个字符之后的位置。所以，`endIndex`属性并不是一个有效的字符串下标。如果字符串为空，那么`startIndex``endIndex`相等。
+
+使用`index(before:)`和`index(after:)`方法可以获取已知索引之前或之后的位置。获取跟已知索引偏移量较大的索引时为了不去频繁调用上面两种方法可以通过`index(_:offsetBy:)`来获取。
+
+可以通过下标访问字符串中特定位置的字符：
+
+```Swift
+let greeting = "Guten Tag!"
+greeting[greeting.startIndex]
+// G
+greeting[greeting.index(before: greeting.endIndex)]
+// !
+greeting[greeting.index(after: greeting.startIndex)]
+// u
+let index = greeting.index(greeting.startIndex, offsetBy: 7)
+greeting[index]
+// a
+```
+
+尝试访问字符串范围之外的索引或者字符串索引之外的字符时会触发运行时错误：
+
+```Swift
+greeting[greeting.endIndex] // Error
+greeting.index(after: greeting.endIndex) // Error”
+```
+
+使用`indices`属性可以访问字符串所有索引下的单独的字符：
+
+```Swift
+for index in greeting.indices {
+    print("\(greeting[index]) ", terminator: "")
+}
+// Prints "G u t e n   T a g ! ”
+```
+
+>注意
+>>任何实现`Collection`协议的类型都可以使用`startIndex`、`endIndex`属性和`index(before:)`、`index(after:)`、`index(_:offsetBy:)`。这些类型包括本章介绍的`String`，以及集合类`Array`、`Dictionary`和`Set`。
+
+
