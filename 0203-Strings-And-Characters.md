@@ -558,5 +558,25 @@ Swift提供了几种不同的方式来访问字符串的Unicode表示。可以�
 let dogString = "Dog‼🐶"
 ```
 
+#####UTF-8表示
+
+可以通过遍历字符串的`utf8`属性来访问字符串的`UTF-8`表示。这个属性的类型为`String.UTF8View`，是一组无符号8位的值，每一个都代表了`UTF-8`表示中的一个字节：
+
+![](/assets/WX20180210-181619@2x.png)
+
+```Swift
+for codeUnit in dogString.utf8 {
+    print("\(codeUnit) ", terminator: "")
+}
+print("")
+// Prints "68 111 103 226 128 188 240 159 144 182 "
+```
+在上面的例子中，前三个十进制的代码单元`codeUnit`的值（`68`,`111`,`103`）代表了字符`D`,`o`,`g`，它们的`UTF-8`表示与`ASCII`表示是一样的。接下来的三个十进制代码单元`codeUnit`的值（`226`,`128`,`188`）分别为双感叹号`DOUBLE EXCLAMATION MARK`UTF-8表示的三个字节。最后的四个十进制代码单元`codeUnit`的值（`240`,`159`,`144`,`182`）分别为狗头`DOG FACE`UTF-8表示的四个字节
+
+
+
+
+
+
 
 
