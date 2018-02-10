@@ -449,6 +449,37 @@ if quotation == sameQuotation {
 
 如果两个字符或字符串的拓展字形集群是正则相等的，那么这两个字符或字符串就是相等的。如果两个拓展字形集群有相同的意义及展现，就算不是使用同一种形式的Unicode标量组成的，那么这两个拓展字形集群也是正则相等的。
 
+例如，尖音小写拉定字符e`LATIN SMALL LETTER E WITH ACUTE`(`U+00E9`)与小写
 
+例如，尖音小写拉丁字符e`LATIN SMALL LETTER E WITH ACUTE`(`U+00E9`)与小写拉丁字符e`LATIN SMALL LETTER E`(`U+0065`)后跟一个尖音字符`COMBINING ACUTE ACCENT`（`U+0301`）是相等的。这两种拓展字形集群都会以正确的方式显示`é`字符，所以它们被认为是正则相等：
+
+```Swift
+// "Voulez-vous un café?" using LATIN SMALL LETTER E WITH ACUTE
+let eAcuteQuestion = "Voulez-vous un caf\u{E9}?"
+ 
+// "Voulez-vous un café?" using LATIN SMALL LETTER E and COMBINING ACUTE ACCENT
+let combinedEAcuteQuestion = "Voulez-vous un caf\u{65}\u{301}?"
+ 
+if eAcuteQuestion == combinedEAcuteQuestion {
+    print("These two strings are considered equal")
+}
+// Prints "These two strings are considered equal" 
+```
+
+相反的，英语中的大写拉丁字符A`LATIN CAPITAL LETTER A`（`U+0041`，或者`A`），与俄语中的大写西里尔字符A`CYRILLIC CAPITAL LETTER A`（`U+0410`，或者`A`）并不相等。两个字符虽然看起来一样，但是语义并不相同：
+
+```Swift
+let latinCapitalLetterA: Character = "\u{41}"
+ 
+let cyrillicCapitalLetterA: Character = "\u{0410}"
+ 
+if latinCapitalLetterA != cyrillicCapitalLetterA {
+    print("These two characters are not equivalent.")
+}
+// Prints "These two characters are not equivalent.”
+```
+
+>注意
+>>Swift中的字符串和字符比较不是区域敏感的。
 
 
