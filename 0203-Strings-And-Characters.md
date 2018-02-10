@@ -595,6 +595,13 @@ print("")
 第五第六个代码单元（`codeUnit`）值为（`55357`和`56374`）是`UTF-16`中的`DOG FACE`的表现形式。这些值是低代理值U+D83D（十进制值55357）和高代理值U+DC36（十进制值56374）。
 
 
+#####Unicode标量表示
+
+可以通过遍历字符串的`unicodeScalars`属性来访问字符串的Unicode标量表示。这个属性的类型为`UnicodeScalarView`，是一组`UnicodeScalar`类型的值。
+每一个`UnicodeScalar`都有一个21位的`value`属性，以一个`UInt32`的值表示：
+
+![](/assets/WX20180210-184202@2x.png)
+
 
 
 
