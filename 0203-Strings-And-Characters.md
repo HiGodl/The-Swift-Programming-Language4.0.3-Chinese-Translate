@@ -602,6 +602,35 @@ print("")
 
 ![](/assets/WX20180210-184202@2x.png)
 
+```Swift
+for scalar in dogString.unicodeScalars {
+    print("\(scalar.value) ", terminator: "")
+}
+print("")
+// Prints "68 111 103 8252 128054" 
+```
+
+前三个`UnicodeScalar`的`value`属性的值为（`68`,`111`,`103`）仍然代表了字符`D`,`o`,`g`。
+
+第四个`codeUnit`值为（`8252`）作为十进制与十六进制的`203C`相等，表示Unicode标量`U+203C`也就是双感叹号`DOUBLE EXCLAMATION MARK`字符。
+
+第五个`UnicodeScalar`的`value`属性值为`128054`，作为十进制与十六进制的`1F436`相等，表示Unicode标量`U+1F436`，也就是狗头`DOG FACE`字符。
+
+除了使用`value`属性，`UnicodeScalar`也可以用来创建新的字符串，例如使用字符串差值的方式：
+
+```Swift
+for scalar in dogString.unicodeScalars {
+    print("\(scalar) ")
+}
+// D
+// o
+// g
+// ‼
+// 🐶
+```
+
+
+
 
 
 
