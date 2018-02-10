@@ -140,6 +140,7 @@ Swift中`String`默认拷贝的特性，保证当字符串或者方法传给你�
 在底层，Swift的编译器优化了字符串的使用，以便只有在必要时才进行实际的复制。 这意味着在字符串作为值类型时使用总能得到最好的结果。
 
 
+<span id="workingWithCharacters"></span>
 
 ####字符的使用
 
@@ -431,7 +432,9 @@ let newString = String(beginning)
 >>`String`和`Substring`都实现了`StringProtocol`协议，这就意味着字符串操作函数接受一个`StringProtocol`的值是很方便的。可以使用`String`或`Substring`调用这些方法
 
 
+
 <span id="stringAndCharacterEquality"></span>
+
 ####字符串比较
 
 Swift提供了三种比较文字值的方式：字符串和字符判等，前缀判等，后缀判等。
@@ -536,6 +539,24 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 
 >注意
 >>`hasPrefix(_:)`和`hasSuffix(_:)`方法会通过正则判等逐字符的对扩展字符群集进行判断，如在[字符和字符串比较](0203-Strings-And-Characters.md#stringAndCharacterEquality)中所表述的。
+
+####字符串的Unicode表示
+
+当一个Unicode字符串写入到文本文件或其他存储器中时，该字符串中的Unicode标量被编码为几种Unicode定义的编码形式之一。每种格式都会将字符串编码为小块编码也就是代码单元。包括`UTF-8`编码格式（将字符串编码为8位的代码单元），`UTF-16`编码格式（将字符串编码为16位的代码单元），`UTF-32`编码格式（将字符串编码为32位的代码单元）.
+
+Swift提供了几种不同的方式来访问字符串的Unicode表示。可以使用`for-in`来获取字符串中每个Unicode拓展字符集。这部分在[字符的使用](0203-Strings-And-Characters.md#workingWithCharacters)中有所讲解。
+
+或者，在其他三个符合Unicode表现之一的形式中访问字符串：
+
+- 一组`UTF-8`代码单元（使用字符串`utf8`属性访问）
+- 一组`UTF-16`代码单元（使用字符串`utf16`属性访问）
+- 一组`UTF-32`代码单元（使用字符串`utf32`属性访问）
+
+下面的每个例子都展示了一种下面字符串不同的表现形式，有字符`D`,`o`,`g`,`!!`（双感叹号`DOUBLE EXCLAMATION MARK`，或Unicode标量`U+203C`），以及`🐶`字符（狗头`DOG FACE`，或Unicode标量`U+1F436`）:
+
+```Swift
+let dogString = "Dog‼🐶"
+```
 
 
 
