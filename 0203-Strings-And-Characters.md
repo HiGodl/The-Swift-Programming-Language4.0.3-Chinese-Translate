@@ -435,7 +435,7 @@ let newString = String(beginning)
 
 Swift提供了三种比较文字值的方式：字符串和字符判等，前缀判等，后缀判等。
 
-#####字符和字符串判等
+#####字符和字符串比较
 使用等于运算符（`==`）和不等运算符（`!=`）判断字符串和字符是否相等，在[比较运算符](0202-Basic-Operators.md#comparisonOperators)中有详细说明：
 
 ```Swift
