@@ -431,6 +431,7 @@ let newString = String(beginning)
 >>`String`和`Substring`都实现了`StringProtocol`协议，这就意味着字符串操作函数接受一个`StringProtocol`的值是很方便的。可以使用`String`或`Substring`调用这些方法
 
 
+<span id="stringAndCharacterEquality"></span>
 ####字符串比较
 
 Swift提供了三种比较文字值的方式：字符串和字符判等，前缀判等，后缀判等。
@@ -481,5 +482,60 @@ if latinCapitalLetterA != cyrillicCapitalLetterA {
 
 >注意
 >>Swift中的字符串和字符比较不是区域敏感的。
+
+#####前缀和后缀的比较
+
+通过`hasPrefix(_:)`，`hasSuffix(_:) `检查字符串是否包含特定的字符串前后缀，两个方法参数都为一个字符串并返回布尔值。
+
+下面的例子展示了一组代表莎士比亚罗密欧与朱丽叶前两幕的场景位置的字符串：
+
+```Swift
+let romeoAndJuliet = [
+    "Act 1 Scene 1: Verona, A public place",
+    "Act 1 Scene 2: Capulet's mansion",
+    "Act 1 Scene 3: A room in Capulet's mansion",
+    "Act 1 Scene 4: A street outside Capulet's mansion",
+    "Act 1 Scene 5: The Great Hall in Capulet's mansion",
+    "Act 2 Scene 1: Outside Capulet's mansion",
+    "Act 2 Scene 2: Capulet's orchard",
+    "Act 2 Scene 3: Outside Friar Lawrence's cell",
+    "Act 2 Scene 4: A street in Verona",
+    "Act 2 Scene 5: Capulet's mansion",
+    "Act 2 Scene 6: Friar Lawrence's cell"
+]  
+```
+
+可以使用`hasPrefix(_:)`计算罗密欧与朱丽叶剧本字符串数组中Act 1的条数：
+
+```Swift
+var act1SceneCount = 0
+for scene in romeoAndJuliet {
+    if scene.hasPrefix("Act 1 ") {
+        act1SceneCount += 1
+    }
+}
+print("There are \(act1SceneCount) scenes in Act 1")
+// Prints "There are 5 scenes in Act 1”
+```
+
+同样，使用`hasSuffix（_ :)`方法来计算在Capulet大厦和Friar Lawrence小区或周围发生的场景数量：
+
+```Swift
+var mansionCount = 0
+var cellCount = 0
+for scene in romeoAndJuliet {
+    if scene.hasSuffix("Capulet's mansion") {
+        mansionCount += 1
+    } else if scene.hasSuffix("Friar Lawrence's cell") {
+        cellCount += 1
+    }
+}
+print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
+// Prints "6 mansion scenes; 2 cell scenes"
+```
+
+>注意
+>>`hasPrefix(_:)`和`hasSuffix(_:)`方法会通过正则判等逐字符的对扩展字符群集进行判断，如在[字符和字符串比较](0203-Strings-And-Characters.md#stringAndCharacterEquality)中所表述的。
+
 
 
