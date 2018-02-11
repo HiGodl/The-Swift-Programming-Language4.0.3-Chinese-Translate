@@ -19,6 +19,39 @@ Swift中数组，集合，字典会明确的知道它们能存储什么类型的
 <span id="arrays"></span>
 ####Array
 
+数组可以存储一组有序同类型的值。同一个值可以在数组中的不同位置出现多次。
+
+>注意
+>>Swift中的`Array`类是从Foundation的`NSArray`类中桥接过来的。
+>>更多关于`Array`在Foundation和Cocoa的使用请参考《Using Swift with Cocoa and Objective-C (Swift 4)》中的`Working with Cocoa Data Types`章节。
+
+#####数组类型的简写语法
+
+Swift中数组定义的完整写法为`Array<Element>`，`Element`是数组允许存储的类型。可以简写为`[Element]`。尽管两种写法在功能上是一样的，但是更推荐简写形式，并且在本书中涉及到数组的地方几乎都是简写形式。
+
+#####创建空数组
+
+使用实例化语法创建特定类型的空数组：
+
+```Swift
+var someInts = [Int]()
+print("someInts is of type [Int] with \(someInts.count) items.")
+// Prints "someInts is of type [Int] with 0 items."
+```
+
+注意`someInts`变量可以从实例化方法中推断为`[Int]`类型。
+
+如果上下文中（方法参数或者声明常量或变量时已经指定类型）已经知道数组存储的类型，那么可以通过数组字面量来创建空数组，这样写`[]`（一对空方括号）：
+
+```Swift
+someInts.append(3)
+// someInts now contains 1 value of type Int
+someInts = []
+// someInts is now an empty array, but is still of type [Int]”
+```
+
+
+
 
 <span id="sets"></span>
 ####Sets
