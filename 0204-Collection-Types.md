@@ -59,6 +59,20 @@ var threeDoubles = Array(repeating: 0.0, count: 3)
 // threeDoubles is of type [Double], and equals [0.0, 0.0, 0.0]
 ```
 
+#####通过两个已知数组创建一个新数组
+
+可以通过加法运算符（`+`）将两个已知的并且包含类型相同的数组合并为一个新的数组。新数组的类型可以通过相加的两个数组推断出来：
+
+```Swift
+var anotherThreeDoubles = Array(repeating: 2.5, count: 3)
+// anotherThreeDoubles is of type [Double], and equals [2.5, 2.5, 2.5]
+ 
+var sixDoubles = threeDoubles + anotherThreeDoubles
+// sixDoubles is inferred as [Double], and equals [0.0, 0.0, 0.0, 2.5, 2.5, 2.5]
+```
+
+
+
 
 
 
