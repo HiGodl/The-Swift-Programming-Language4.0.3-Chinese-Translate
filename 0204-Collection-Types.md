@@ -71,6 +71,24 @@ var sixDoubles = threeDoubles + anotherThreeDoubles
 // sixDoubles is inferred as [Double], and equals [0.0, 0.0, 0.0, 2.5, 2.5, 2.5]
 ```
 
+#####通过数组字面量创建数组
+
+可以通过数组的字面量来创建数组，一种通过写明一个或者更多的值作为数组元素的简单表达方式。数组字面量由一组逗号分隔、方括号包裹的值组成：
+
+```Swift
+[value1, value2, value3]
+```
+
+下面的例子创建了一个名为`shoppingList`的数组来存储`String`类型的数据：
+
+```Swift
+var shoppingList: [String] = ["Eggs", "Milk"]
+// shoppingList has been initialized with two initial items
+```
+
+`shoppingList`变量声明为“字符串数组”，写作`[String]`。 由于这个特殊的数组指明了特定的存储类型`String`，所以只允许存储`String`类型的值。在该例中，`shoppingList`由包含两个字符串的数组字面量进行实例化（`Eggs`和`Milk`）， 
+
+
 
 
 
