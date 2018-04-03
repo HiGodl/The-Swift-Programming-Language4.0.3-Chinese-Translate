@@ -50,6 +50,16 @@ someInts = []
 // someInts is now an empty array, but is still of type [Int]”
 ```
 
+##### 创建有默认值的数组
+
+Swift中的`Array`类型提供了一种创建指定长度且元素都为默认值的构造方法。为该构造方法传入两个参数，一个为合适类型的默认值，参数名为`repeating`；并且传入该默认值在数组中重复的次数，也就是数组的size，参数名为`count`：
+
+```Swift
+var threeDoubles = Array(repeating: 0.0, count: 3)
+// threeDoubles is of type [Double], and equals [0.0, 0.0, 0.0]
+```
+
+
 
 
 
