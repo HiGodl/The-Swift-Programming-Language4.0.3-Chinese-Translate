@@ -102,6 +102,63 @@ var shoppingList = ["Eggs", "Milk"]
 因为数组字面量中所有值都为相同类型，Swift可以通过该类型推断出`[String]`为`shoppingList`的正确存储类型。
 
 
+#####数组的访问和修改
+
+可以使用数组的方法和属性或者下标来访问或者修改数组。
+
+使用只读属性`count`来获取数组元素个数：
+```Swift
+print("The shopping list contains \(shoppingList.count) items.")
+// Prints "The shopping list contains 2 items."
+```
+
+使用`isEmpty`属性作为检查数组`count`属性是否为`0`的简写：
+
+```Swift
+if shoppingList.isEmpty {
+    print("The shopping list is empty.")
+} else {
+    print("The shopping list is not empty.")
+}
+// Prints "The shopping list is not empty."
+```
+
+使用`append(_:)`方法向数组末尾添加一个元素：
+
+```Swift
+hoppingList.append("Flour")
+// shoppingList now contains 3 items, and someone is making pancakes
+```
+
+使用加等（`+=`）运算符添加一个或更多的类型符合的元素到数组中：
+
+```Swift
+shoppingList += ["Baking Powder"]
+// shoppingList now contains 4 items
+shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
+// shoppingList now contains 7 items
+```
+
+通过下标取出数组中元素。在数组名之后的方括号中传入要取出的元素的索引值：
+
+```Swift
+var firstItem = shoppingList[0]
+// firstItem is equal to "Eggs"
+```
+
+>注意
+>>数组中第一个元素的索引为`0`，而不是`1`，Swift中的数组索引都是0开始的。
+
+可以通过下标来改变特定索引位置元素的值：
+
+```Swift
+shoppingList[0] = "Six eggs"
+// the first item in the list is now equal to "Six eggs" rather than "Eggs"
+```
+
+
+
+
 
 
 
