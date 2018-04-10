@@ -88,6 +88,19 @@ var shoppingList: [String] = ["Eggs", "Milk"]
 
 `shoppingList`变量声明为“字符串数组”，写作`[String]`。 由于这个特殊的数组指明了特定的存储类型`String`，所以只允许存储`String`类型的值。在该例中，`shoppingList`由包含两个字符串的数组字面量进行实例化（`Eggs`和`Milk`）， 
 
+>注意
+>>由于之后的例子中回向`ShoppingList`添加更多的元素，所以此处`ShoppingList`数组为变量（使用`var`关键字修饰），而不是常量（使用`let`关键字修饰）
+
+在该例子中，数组字面量只包含两个`String`值。符合`shoppingList`声明的类型（只能存储`String`类型的数组），所以该赋值运算作为包含两个元素的`shoppingList`的实例化方法是合法的。
+
+由于类型推断的存在，Swift在使用只包含一种类型的数组字面量来初始化时，不需要在数组名后指定类型。所以`shoppingList`的初始化方法可以简写为：
+
+```Swift
+var shoppingList = ["Eggs", "Milk"]
+```
+
+因为数组字面量中所有值都为相同类型，Swift可以通过该类型推断出`[String]`为`shoppingList`的正确存储类型。
+
 
 
 
