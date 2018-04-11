@@ -208,16 +208,6 @@ let apples = shoppingList.removeLast()
 
 
 
-
-
-
-
-
-
-
-
-
-
 <span id="sets"></span>
 ####Sets
 
