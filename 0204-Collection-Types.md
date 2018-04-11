@@ -156,6 +156,39 @@ shoppingList[0] = "Six eggs"
 // the first item in the list is now equal to "Six eggs" rather than "Eggs"
 ```
 
+在使用数组下标时，要确保指定的索引值存在，如果尝试使用`shoppingList[shoppingList.count] = "Salt"`这种方式在数组末尾添加一个元素会导致运行时错误。
+
+可以通过下标的方式一次性改变数组中多个元素值，甚至可以使用不同长度的数组来替换指定索引范围的值。下例中使用"Bananas","Apples"来替换数组中的"Chocolate Spread","Cheese","Butter"三个元素：
+
+```Swift
+shoppingList[4...6] = ["Bananas", "Apples"]
+// shoppingList now contains 6 items
+```
+
+使用`insert(_:at:)`方法来向数组特定索引位置插入一个值：
+
+```Swift
+shoppingList.insert("Maple Syrup", at: 0)
+// shoppingList now contains 7 items
+// "Maple Syrup" is now the first item in the list
+```
+
+使用索引值`0`作为`insert(_:at:)`的参数，将“Maple Syrup”插入到数组的开头也就是第一个元素的位置
+
+同样的可以使用`remove(at:)`方法来将数组中特定索引位置的值删除，该方法将元素从数组中删除并返回删除的元素（当然如果你并不需要被删除的值可以忽略掉这个方法的返回值）
+
+```Swift
+let mapleSyrup = shoppingList.remove(at: 0)
+// the item that was at index 0 has just been removed
+// shoppingList now contains 6 items, and no Maple Syrup
+// the mapleSyrup constant is now equal to the removed "Maple Syrup" string
+```
+
+>注意
+>>如果你尝试访问超出数组所包含的索引位置，会导致运行时错误。可以通过`count`属性来检查索引是否合法。由于数字的索引为0开始所以最大的合法索引值是`count-1`，但是当`count`为0时（数组为空），没有合法的索引值。
+
+
+
 
 
 
