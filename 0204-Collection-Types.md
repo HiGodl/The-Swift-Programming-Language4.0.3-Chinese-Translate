@@ -187,6 +187,26 @@ let mapleSyrup = shoppingList.remove(at: 0)
 >注意
 >>如果你尝试访问超出数组所包含的索引位置，会导致运行时错误。可以通过`count`属性来检查索引是否合法。由于数字的索引为0开始所以最大的合法索引值是`count-1`，但是当`count`为0时（数组为空），没有合法的索引值。
 
+当元素被移除时会自动重新计算索引值，所以此时索引值为`0`的元素为`Six eggs`：
+
+```Swift
+firstItem = shoppingList[0]
+// firstItem is now equal to "Six eggs"
+```
+
+移除数组中最后一个元素，可以用`removeLast()`方法替换`remove(at:)`这样的话就避免使用`count`属性来查询数组中元素个数。同`remove(at:)`方法一样，`removeLast()`方法也会返回移除的元素值：
+
+```Swift
+let apples = shoppingList.removeLast()
+// the last item in the array has just been removed
+// shoppingList now contains 5 items, and no apples
+// the apples constant is now equal to the removed "Apples" string
+```
+
+
+
+
+
 
 
 
