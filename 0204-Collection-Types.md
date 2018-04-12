@@ -203,13 +203,63 @@ let apples = shoppingList.removeLast()
 // the apples constant is now equal to the removed "Apples" string
 ```
 
+######数组的遍历
 
+可以通过`for-in`循环来完整遍历数组中的元素：
+
+```Swift
+for item in shoppingList {
+    print(item)
+}
+// Six eggs
+// Milk
+// Flour
+// Baking Powder
+// Bananas
+```
+
+如果在遍历数组的时候同时需要使用元素的索引，可以使用数组的`enumerated()`方法来代替数组进行遍历。`enumerated()`方法会将数组的索引值及元素值放在元组中返回。索引从0开始，每个元素间的步长为1；如果需要遍历整个数组，那么元组中的整型值同元素的索引是相等的。可以将元组中的值分解为常量或者变量作为遍历的一部分来使用：
+
+```Swift
+for (index, value) in shoppingList.enumerated() {
+    print("Item \(index + 1): \(value)")
+}
+// Item 1: Six eggs
+// Item 2: Milk
+// Item 3: Flour
+// Item 4: Baking Powder
+// Item 5: Bananas
+```
+
+更多关于`for-in`的信息，请参见[For-in循环](0205-Control-Flow.md#for-inLoops)
 
 
 
 
 <span id="sets"></span>
 ####Sets
+
+*set*用来存储同一类型的一组无序的值。如果元素的索引并不重要或者如要保证每个元素只出现一次，那么可以使用`Set`来代替`Array`。
+
+>注意
+>>Swift中的`Set`类型是从`NSSet`中桥接过来的。
+>>更多关于Foundation和Cocoa中的`Set`信息，请参见*Using Swift with Cocoa and Objective-C (Swift 4).*中的 Working with Cocoa Data Types 章节
+
+#####`Set`类型中的哈希值
+
+存储在set中的值必须是*hashable*的——也就是该类型必须提供一种计算其哈希值的方法。哈希值是一个`Int`类型的值并且元素比较相同的话哈希值也应相同，例如，如果`a==b`，同样`a.hashValue == b.hashValue`。
+
+所有Swift的基本类型（`String`,`Int`,`Double`,`Bool`）都是hashable的。枚举中无关联值的枚举值（如[枚举](0208-Enumerations.md)中所述）默认同样是hashable的
+
+>注意
+>>可以使用自定义并且实现`Hashable`协议的类来作为set值类型或者字典的键类型。实现`Hashable`协议必须提供一个只读并且类型为`Int`属性名为`hashValue`的属性。类型的`hashValue`值在同一程序的不同执行位置或者在不同程序中并不要求必须相同。
+>>由于`Hashable`遵循`Equatable`，实现协议的类型必须实现判等运算符(`==`)。`Equatable`协议要求任何实现`==`的类都要是一个等价关系的实现。也就是，实现`==`必须满足以下三个条件，对于所有值`a`,`b`,`c`：
+>> - a == a (自反性)
+>> - a == b 意味着 b == a （交换性）
+>> - a == b && b == c  （传递性）
+
+>> 更多信息请参见[协议](0221-Protocols.md)章节
+
 
 
 
