@@ -394,7 +394,7 @@ for genre in favoriteGenres.sorted() {
 - 使用`intersection(_:)`方法创建一个两个set的交集
 - 使用`symmetricDifference(_:)`方法创建两个set的对等差分
 - 使用`union(_:)`方法创建两个set的合集
-- 使用`subtracting(_:)`方法创建`a`中出去`b`中元素的集合
+- 使用`subtracting(_:)`方法创建`a`和`b`的差集
 
 ```Swift
 let oddDigits: Set = [1, 3, 5, 7, 9]
