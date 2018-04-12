@@ -285,6 +285,29 @@ letters = []
 // letters is now an empty set, but is still of type Set<Character>
 ```
 
+#####使用数组字面量来创建Set
+可以使用数组字面量来作为简写形式实例化一个包含一个或多个值的Set。
+
+下例中创建了一个名为`favoriteGenres`的储存`String`类型的Set：
+
+```Swift
+var favoriteGenres: Set<String> = ["Rock", "Classical", "Hip hop"]
+// favoriteGenres has been initialized with three initial items
+```
+
+`favoriteGenres`变量声明为”存储`String`类型值的Set“，写作`Set<String>`。由于这个Set已知指定了存储的值得类型为`String`，所以它只允许存储`String`值。这里的`favoriteGenres`Set使用三个`String`值（`Rock`,`Classical`,`Hip hop`）通过数组字面量的方式进行初始化。
+
+>注意
+>>此处的`favoriteGenres`声明为变量（使用`var`关键字标识），而不是常量（使用`let`关键字标识）是由于在之后的例子中会对Set中的元素添加删除等操作。
+
+set类型不能单独从数组字面量中推断出类型，所以需要指定为`Set`类型。然而，由于Swift的类型推断，在通过数组字面量来初始化set时不用明确写出set的具体类型。`favoriteGenres`的初始化可以简写为：
+
+```Swift
+var favoriteGenres: Set = ["Rock", "Classical", "Hip hop"]
+```
+
+由于数组字面量中的值都是同一类型，所以Swift可以推断出`Set<String>`就是`favoriteGenres`的正确类型。
+
 
 
 
