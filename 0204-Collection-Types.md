@@ -263,6 +263,28 @@ for (index, value) in shoppingList.enumerated() {
 #####Set类型语法
 Swift中set的类型写作`Set<Element>`，`Element`是set允许存储的类型。与Array不同的是Set没有简写形式。
 
+#####创建并初始化一个空的Set
+
+可以使用初始化语法来创建一个空的Set：
+
+```Swift
+var letters = Set<Character>()
+print("letters is of type Set<Character> with \(letters.count) items.")
+// Prints "letters is of type Set<Character> with 0 items."
+```
+
+>注意
+>>`letter`的类型通过初始化语法可确定为`Set<Character>`。
+
+或者，如果上下文中已经提供了类型的信息，例如方法的参数或者常量或变量已经指定类型，那么可以通过数组字面量来创建一个空的Set：
+
+```Swift
+letters.insert("a")
+// letters now contains 1 value of type Character
+letters = []
+// letters is now an empty set, but is still of type Set<Character>
+```
+
 
 
 
