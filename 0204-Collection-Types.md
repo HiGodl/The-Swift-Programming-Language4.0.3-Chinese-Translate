@@ -308,6 +308,57 @@ var favoriteGenres: Set = ["Rock", "Classical", "Hip hop"]
 
 由于数组字面量中的值都是同一类型，所以Swift可以推断出`Set<String>`就是`favoriteGenres`的正确类型。
 
+#####Set的访问和操作
+
+可以使用Set的属性和方法来访问和操作Set。
+
+使用只读属性``来获取set中的元素个数：
+
+```Swift
+print("I have \(favoriteGenres.count) favorite music genres.")
+// Prints "I have 3 favorite music genres." 
+```
+
+使用`isEmpty`属性作为检查set`count`属性是否为`0`的简写：
+
+```Swift
+if favoriteGenres.isEmpty {
+    print("As far as music goes, I'm not picky.")
+} else {
+    print("I have particular music preferences.")
+}
+// Prints "I have particular music preferences."
+```
+使用`insert(_:)`方法来向Set中插入一个值：
+
+```Swift
+favoriteGenres.insert("Jazz")
+// favoriteGenres now contains 4 items
+```
+
+使用`remove(_:)`方法来删除Set中的元素，如果删除的元素存在于Set中，则返回删除的元素，否则返回`nil`。可以使用` removeAll()`来清空Set：
+
+```Swift
+if let removedGenre = favoriteGenres.remove("Rock") {
+    print("\(removedGenre)? I'm over it.")
+} else {
+    print("I never much cared for that.")
+}
+// Prints "Rock? I'm over it."
+```
+
+使用`contains(_:)`方法来判断set中是否含有某个特定的元素：
+
+```Swift
+if favoriteGenres.contains("Funk") {
+    print("I get up on the good foot.")
+} else {
+    print("It's too funky in here.")
+}
+// Prints "It's too funky in here."
+```
+
+
 
 
 
