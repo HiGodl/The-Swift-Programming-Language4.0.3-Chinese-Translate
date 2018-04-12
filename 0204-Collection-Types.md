@@ -358,6 +358,32 @@ if favoriteGenres.contains("Funk") {
 // Prints "It's too funky in here."
 ```
 
+#####set的遍历
+
+可以使用`for-in`循环对set进行完整遍历。
+
+```Swift
+for genre in favoriteGenres {
+    print("\(genre)")
+}
+// Jazz
+// Hip hop
+// Classical
+```
+更多关于`for-in`的信息，请参见[For-in循环](0205-Control-Flow.md#for-inLoops)
+
+Swift中`Set`类型是无序的，如果像使用特定的顺序遍历set，可以使用`sorted()`方法。该方法会返回一个包含set中元素的已经通过`<`运算符排过序的数组。
+
+```swift
+for genre in favoriteGenres.sorted() {
+    print("\(genre)")
+}
+// Classical
+// Hip hop
+// Jazz
+```
+
+
 
 
 
