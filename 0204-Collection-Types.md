@@ -383,11 +383,33 @@ for genre in favoriteGenres.sorted() {
 // Jazz
 ```
 
+####执行Set的运算
 
+通过基本的set运算可以更搞笑的对set进行操作，例如将两个set合并，检查两个set有哪些值相同，或者检查两个set是否包含所有、一些、或者没有相同的值。
 
+#####基本的Set操作
 
+下图描述了两个set`a`和`b`——用阴影区域表示的各种集合运算的结果。![](/assets/WX20180412-163219@2x.png)
 
+- 使用`intersection(_:)`方法创建一个两个set的交集
+- 使用`symmetricDifference(_:)`方法创建两个set的对等差分
+- 使用`union(_:)`方法创建两个set的合集
+- 使用`subtracting(_:)`方法创建`a`中出去`b`中元素的集合
 
+```Swift
+let oddDigits: Set = [1, 3, 5, 7, 9]
+let evenDigits: Set = [0, 2, 4, 6, 8]
+let singleDigitPrimeNumbers: Set = [2, 3, 5, 7]
+ 
+oddDigits.union(evenDigits).sorted()
+// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+oddDigits.intersection(evenDigits).sorted()
+// []
+oddDigits.subtracting(singleDigitPrimeNumbers).sorted()
+// [1, 9]
+oddDigits.symmetricDifference(singleDigitPrimeNumbers).sorted()
+// [1, 2, 9]
+```
 
 <span id="dictionaries"></span>
 ####Dictionaries
