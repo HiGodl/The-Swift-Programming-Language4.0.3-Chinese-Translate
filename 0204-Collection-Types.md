@@ -260,6 +260,9 @@ for (index, value) in shoppingList.enumerated() {
 
 >> 更多信息请参见[协议](0221-Protocols.md)章节
 
+#####Set类型语法
+Swift中set的类型写作`Set<Element>`，`Element`是set允许存储的类型。不像Array有简写形式。
+
 
 
 
