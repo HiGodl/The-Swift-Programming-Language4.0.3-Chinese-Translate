@@ -411,5 +411,15 @@ oddDigits.symmetricDifference(singleDigitPrimeNumbers).sorted()
 // [1, 2, 9]
 ```
 
+#####Set的从属关系及判等
+
+下图描述了三个set`a`和`b`——用阴影区域表示各个set公共的元素。Set`a`是set`b`的父集，因为set`a`包含`b`中所有的元素。相反的，set`b`是set`a`的子集，因为所有set`b`中的元素在`a`中都存在。由于set`b`与`a`没有任何相同的元素，所以`b`和`c`是不相交的。
+
+![](/assets/WX20180413-172005@2x.png)
+
+
+
+
+
 <span id="dictionaries"></span>
 ####Dictionaries
