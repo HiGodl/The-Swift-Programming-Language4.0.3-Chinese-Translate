@@ -436,7 +436,5 @@ farmAnimals.isDisjoint(with: cityAnimals)
 // true
 ```
 
-
-
 <span id="dictionaries"></span>
 ####Dictionaries
