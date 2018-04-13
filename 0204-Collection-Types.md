@@ -417,7 +417,24 @@ oddDigits.symmetricDifference(singleDigitPrimeNumbers).sorted()
 
 ![](/assets/WX20180413-172005@2x.png)
 
+- 使用`==`运算符判断两个set是否包含相同的元素。
+- 使用`isSubset(of:)`判断set是否为另一个set的子集
+- 使用`isSuperset(of:)`判断set是否是另一个set的父集
+- 使用`isStrictSubset(of:)`或`isStrictSuperset(of:)`判断一个set是否是另一个set的父集或子集，但两个set不能相等。
+- 使用`isDisjoint(with:)`判断两个set是否不相交
 
+```Swift
+let houseAnimals: Set = ["🐶", "🐱"]
+let farmAnimals: Set = ["🐮", "🐔", "🐑", "🐶", "🐱"]
+let cityAnimals: Set = ["🐦", "🐭"]
+ 
+houseAnimals.isSubset(of: farmAnimals)
+// true
+farmAnimals.isSuperset(of: houseAnimals)
+// true
+farmAnimals.isDisjoint(with: cityAnimals)
+// true
+```
 
 
 
