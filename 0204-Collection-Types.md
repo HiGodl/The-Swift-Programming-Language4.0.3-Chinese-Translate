@@ -439,3 +439,12 @@ farmAnimals.isDisjoint(with: cityAnimals)
 <span id="dictionaries"></span>
 ####Dictionaries
 
+*dictionary*用来存储无序的键值对，其中键的类型要相同，值的类型也要相同。每个值都同一个唯一的键值关联，键可以看做是字典中值的唯一标识符。与数组不同的是，字典并没有特定的顺序。就像我们用字典查找文字的释意一样，我们可以通过字典中的键来查找值。
+
+>注意
+>>Swift中的`Dictionary`类型桥接自Foundation中的`NSDictionary`类。
+>>更多关于`Dictionary`在Foundation和Cocoa中的使用，请参见"*Using Swift with Cocoa and Objective-C (Swift 4).*中的Working with Cocoa Data Types章节"
+
+
+
+
