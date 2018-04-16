@@ -445,6 +445,17 @@ farmAnimals.isDisjoint(with: cityAnimals)
 >>Swift中的`Dictionary`类型桥接自Foundation中的`NSDictionary`类。
 >>更多关于`Dictionary`在Foundation和Cocoa中的使用，请参见"*Using Swift with Cocoa and Objective-C (Swift 4).*中的Working with Cocoa Data Types章节"
 
+#####字典类的简写形式
+
+Swift中的字典类默认写法为`Dictionary<key, value>`，`key`是字典键的类型，`value`是字典值的类型。
+
+> 注意
+>> 同`set`的值类型一样，字典的键类型必须实现`Hashable`协议。
+
+也可以使用简写形式`[Key: value]`来定义字典类型。虽然两种书写形式的作用是一样的，但是在本教程中更推荐使用简写形式来声明字典类型。
+
+
+
 
 
 
