@@ -454,6 +454,26 @@ Swift中的字典类默认写法为`Dictionary<key, value>`，`key`是字典键�
 
 也可以使用简写形式`[Key: value]`来定义字典类型。虽然两种书写形式的作用是一样的，但是在本教程中更推荐使用简写形式来声明字典类型。
 
+##### 创建空字典
+
+同数组一样，可以使用指定类型的初始化语法来创建字典：
+
+```Swift
+var namesOfIntegers = [Int: String]()
+// namesOfIntegers is an empty [Int: String] dictionary
+```
+
+例子中创建了一个类型为`[Int: String]`的字典用来存储整形值及整形值的读法。它的键类型为`Int`，值类型为`String`。
+
+如果字典的类型在上下文中已经提及，那么可以通过空字典的字面量来创建一个空字典，写作`[:]`(方括号中加一个冒号)：
+
+```Swift
+namesOfIntegers[16] = "sixteen"
+// namesOfIntegers now contains 1 key-value pair
+namesOfIntegers = [:]
+// namesOfIntegers is once again an empty dictionary of type [Int: String]
+```
+
 
 
 
