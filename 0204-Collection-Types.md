@@ -598,7 +598,7 @@ for (airportCode, airportName) in airports {
 
 更多关于`for-in`的信息，请参见[For-in循环](0205-Control-Flow.md#for-inLoops)
 
-我们还可以通过`keys`和`values`从字典中取出单独的可遍历的键的组合和值的组合：
+我们还可以通过`keys`和`values`从字典中取出单独的可遍历的键的集合和值的集合：
 
 ```Swift
 for airportCode in airports.keys {
