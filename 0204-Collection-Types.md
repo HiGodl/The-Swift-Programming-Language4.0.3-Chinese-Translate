@@ -506,6 +506,126 @@ var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 由于在字面量中所有的键类型都相同，值的类型也都相同，所以Swift可以得出`airports`的正确类型为`[String: Stirng]`。
 
 
+#####字典的访问和操作
+
+可以使用字典的方法和属性或者下标来访问或者修改字典。
+
+同数组相同，对于`Dictionary`类型可以使用只读的`count`属性来获取元素个数：
+
+```Swift
+print("The airports dictionary contains \(airports.count) items.")
+// Prints "The airports dictionary contains 2 items."
+```
+
+使用`isEmpty`属性作为检查字典`count`属性是否为`0`的简写：
+
+```Swift
+if airports.isEmpty {
+    print("The airports dictionary is empty.")
+} else {
+    print("The airports dictionary is not empty.")
+}
+// Prints "The airports dictionary is not empty." 
+```
+
+可以使用下标语法为字典添加新的元素。使用指定类型的一个新的键值作为字典的下标，并赋予指定类型的值：
+
+```Swift
+airports["LHR"] = "London"
+// the airports dictionary now contains 3 items 
+```
+
+同样的可以使用下标语法修改字典中指定的键对应的值：
+
+```Swift
+airports["LHR"] = "London Heathrow"
+// the value for "LHR" has been changed to "London Heathrow" 
+```
+
+作为下标语法的替代，可以使用字典中的`updateValue(_:forKey:)`方法设置或更新指定键的值。同下标语法一样，如果指定键不存在则设置该键的值，如果指定键存在则更新该键的值。不同的是该方法如果是作为更新键的值使用的话会返回旧值。可以使用这个来检测是不是更新了某个键的值。
+
+`updateValue(_:forKey:)`方法返回一个字典值类型的可选类型值。例如，如果字典存储的值为`String`类型，该方法会返回`String?`类型，或者称作"可选类型`String`"。如果存在旧值则返回旧值，否则返回`nil`：
+
+```Swift
+if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
+    print("The old value for DUB was \(oldValue).")
+}
+// Prints "The old value for DUB was Dublin."
+```
+
+同样可以使用下标语法获取字典中的值。由于下标的键可能是不存在的，所以字典的下标语法返回的是字典中值类型的可选类型。如果字典中包含指定的键，则返回该值的可选类型值，否则返回`nil`：
+
+```Swift
+if let airportName = airports["DUB"] {
+    print("The name of the airport is \(airportName).")
+} else {
+    print("That airport is not in the airports dictionary.")
+}
+// Prints "The name of the airport is Dublin Airport." 
+```
+
+通过给指定键赋值为`nil`的方式将指定键的键值对从字典中移除：
+
+```Swift
+airports["APL"] = "Apple International"
+// "Apple International" is not the real airport for APL, so delete it
+airports["APL"] = nil
+// APL has now been removed from the dictionary 
+```
+
+或者通过`removeValue(forKey:) `方法来实现。该方法将键值对移除并返回移除的值，如果键不存在则返回`nil`：
+
+```Swift
+if let removedValue = airports.removeValue(forKey: "DUB") {
+    print("The removed airport's name is \(removedValue).")
+} else {
+    print("The airports dictionary does not contain a value for DUB.")
+}
+// Prints "The removed airport's name is Dublin Airport." 
+```
+
+#####字典的遍历
+
+可以使用`for-in`循环来对字典中的键值对进行遍历。字典中每个元素会返回一个`（key, value）`的元组，可以将元组中的成员拆分为独立的常量或者变量作为遍历的一部分使用：
+
+```Swift
+for (airportCode, airportName) in airports {
+    print("\(airportCode): \(airportName)")
+}
+// YYZ: Toronto Pearson
+// LHR: London Heathrow 
+```
+
+更多关于`for-in`的信息，请参见[For-in循环](0205-Control-Flow.md#for-inLoops)
+
+我们还可以通过`keys`和`values`从字典中取出单独的可遍历的键的组合和值的组合：
+
+```Swift
+for airportCode in airports.keys {
+    print("Airport code: \(airportCode)")
+}
+// Airport code: YYZ
+// Airport code: LHR
+ 
+for airportName in airports.values {
+    print("Airport name: \(airportName)")
+}
+// Airport name: Toronto Pearson
+// Airport name: London Heathrow 
+```
+
+如果我们在取得字典的键集合或者值集合后想在其中某一个集合上使用`Array`的API，我们可以使用`keys`或`values`属性来初始化一个数组：
+
+```Swift
+let airportCodes = [String](airports.keys)
+// airportCodes is ["YYZ", "LHR"]
+ 
+let airportNames = [String](airports.values)
+// airportNames is ["Toronto Pearson", "London Heathrow"] 
+```
+
+Swift中`Dictionary`并没有定义排序。如果想要使用特定的顺序来遍历键或者值，可以使用`keys`或`values`属性的`sorted()`方法来实现。
+
 
 
 
