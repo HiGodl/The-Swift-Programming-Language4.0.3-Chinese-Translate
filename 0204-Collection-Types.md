@@ -474,6 +474,26 @@ namesOfIntegers = [:]
 // namesOfIntegers is once again an empty dictionary of type [Int: String]
 ```
 
+#####使用字典字面量来创建字典
+可以使用字典字面量来初始化字典，字典字面量看起来同数组字面量几乎一样。字典字面量是`Dictionary`集合键值对的简写形式。
+
+键值对有键和值组成。在字典字面量中，键值对中的键和值由冒号隔开。由方括号包裹，每组键值对间由逗号隔开：
+
+```Swift
+[key1: Value1, key2: Value2, key3: Value3]
+```
+下面例子中创建了一个存储国际机场的名称的字典。在字典中，键是三个字母组成的国际航空协会的代码，值是机场的名称：
+
+```swift
+var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"] 
+```
+
+`airports`字典声明的类型为`[String: String]`，也就是“字典中键的类型为`String`，值的类型为`String`”。
+
+>注意
+>>此处的`airports`声明为变量（使用`var`关键字标识），而不是常量（使用`let`关键字标识）是由于在之后的例子中会对字典中的元素添加删除等操作。
+
+
 
 
 
