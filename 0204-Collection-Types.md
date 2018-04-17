@@ -494,6 +494,17 @@ var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 >>此处的`airports`声明为变量（使用`var`关键字标识），而不是常量（使用`let`关键字标识）是由于在之后的例子中会对字典中的元素添加删除等操作。
 
 
+`airports`字典通过包含两组键值对的字面量进行初始化。第一组的键为"YYZ"值为"Toronto Pearson"。第二组的键为"DUB"值为"Dublin"。
+字典字面量包含两组`String: String`键值对。由于该键值对符合`airports`变量的定义（字典的键类型为`String`，值类型为`String`），所以允许此次赋值，并且作为`airports`初始化并添加两个元素的初始化方法。
+
+同数组一样，如果使用字面量并且字面量的类型已知则不用在声明时写明类型。`airports`可以用简写形式进行初始化：
+
+```Swift
+var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
+```
+
+由于在字面量中所有的键类型都相同，值的类型也都相同，所以Swift可以得出`airports`的正确类型为`[String: Stirng]`。
+
 
 
 
