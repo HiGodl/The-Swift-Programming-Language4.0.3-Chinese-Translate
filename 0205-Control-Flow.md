@@ -8,5 +8,95 @@ Swift的`switch`语句要比其他C类的语言等更强大。case 还可以匹�
 <span id="for-inLoops"></span>
 #### For-In 循环
 
+可以使用`for-in`循环来遍历序列，例如数组中的元素，一定范围的数字，或者字符串中的字符。
+
+下面例子中使用`for-in`来遍历数组中的元素：
+
+```Swift
+let names = ["Anna", "Alex", "Brian", "Jack"]
+for name in names {
+    print("Hello, \(name)!")
+}
+// Hello, Anna!
+// Hello, Alex!
+// Hello, Brian!
+// Hello, Jack! 
+```
+
+也可以用来遍历字典中的键值对。字典中的每个元素在遍历的时候都会返回一个`(key, value)`格式的元组，可以将元祖拆分成指定名称的常量以供`for-in`的方法体使用。在下面例子中，字典的键被拆分为名为`animalName`的常量，值被拆分为名为`legCount`的常量：
+
+```Swift
+let numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
+for (animalName, legCount) in numberOfLegs {
+    print("\(animalName)s have \(legCount) legs")
+}
+// ants have 6 legs
+// spiders have 8 legs
+// cats have 4 legs 
+```
+
+`Dictionary`的内容并不是有序的，所以在遍历的时候并不能保证取回某个元素的顺序。更多关于数组和字典的介绍，请参见[集合类型](0204-Collection-Types.md)
+
+也可以使用`for-in`循环来遍历数值范围。下面的例子用来输出乘 5 乘法表前面一部分内容：
+
+```Swift
+for index in 1...5 {
+    print("\(index) times 5 is \(index * 5)")
+}
+// 1 times 5 is 5
+// 2 times 5 is 10
+// 3 times 5 is 15
+// 4 times 5 is 20
+// 5 times 5 is 25 
+```
+
+例子中用来进行遍历的元素是使用闭区间操作符（...）表示的从1到5的数字区间。`index`被赋值为闭区间中的字一个数字`1`，然后循环中的语句执行一次。在这个例子中，循环体中只包含一个语句，用来输出当前`index`的值对应的乘`5`的乘法表的结果。执行完语句之后，`index`的值就变为闭区间的第二个值`2`，然后`print(_:separator:terminator:)`方法再次执行。该过程会一直运行到闭区间结尾。
+
+上例中，`index`常量会在每次遍历开始时自动赋予新的值。所以，`index`并不需要在使用之前声明。无序使用`let`关键字，循环语句的声明会对其进行隐式声明。
+
+如果在遍历中并不需要序列中的值，那么可以使用`_`代替变量名：
+
+```Swift
+let base = 3
+let power = 10
+var answer = 1
+for _ in 1...power {
+    answer *= base
+}
+print("\(base) to the power of \(power) is \(answer)")
+// Prints "3 to the power of 10 is 59049" 
+```
+
+上面的例子用来计算base的power次幂（在例子中是`3`的`10`次幂），使用`1`到`10`的闭区间来代表10次。在这个计算中，每一次循环并不需要知道计数器的具体值——该循环只需要执行指定的次数就好了。使用`_`可以忽略掉当前的值，并且在每次循环中不提供对当前值得访问。
+
+在某些情景下，可能并不需要使用闭合区间（包含区间两端的值）。例如我们画表盘上的分钟标记。从`0`分钟开始你需要画`60`个分钟标记。半开闭区间`..<`运算符只包含开始值不包含结束值。更多关于区间的说明，请参见[](0202-Basic-Operators.md#rangeOperators)。
+
+```Swift
+let minutes = 60
+for tickMark in 0..<minutes {
+    // render the tick mark each minute (60 times)
+} 
+```
+
+某些用户并不需要在UI上有那么多的分钟标记。他们可能希望每五分钟一个。那么使用`stride(from:to:by:)`可以跳过不需要的标记。
+
+```Swift
+let minuteInterval = 5
+for tickMark in stride(from: 0, to: minutes, by: minuteInterval) {
+    // render the tick mark every 5 minutes (0, 5, 10, 15 ... 45, 50, 55)
+} 
+```
+
+闭合区间和有类似的方法，只是参数名略有不同`stride(from:through:by:)`：
+
+```Swift
+let hours = 12
+let hourInterval = 3
+for tickMark in stride(from: 3, through: hours, by: hourInterval) {
+    // render the tick mark every 3 hours (3, 6, 9, 12)
+} 
+```
+
+
 
 <span id="earlyExit"></span>
