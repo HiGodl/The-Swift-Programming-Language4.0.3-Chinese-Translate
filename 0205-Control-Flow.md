@@ -96,6 +96,15 @@ for tickMark in stride(from: 3, through: hours, by: hourInterval) {
     // render the tick mark every 3 hours (3, 6, 9, 12)
 } 
 ```
+####While 循环
+
+`while`循环用来循环执行一组语句，直到条件为`false`。这类循环适合使用在第一次迭代前，迭代次数未知的情况下。Swift 提供两种while循环形式：
+
+- `while`每次在循环开始时计算条件是否符合；
+- `repeat-while`每次在循环结束时计算条件是否符合
+
+
+
 
 
 
