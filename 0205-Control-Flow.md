@@ -112,13 +112,44 @@ for tickMark in stride(from: 3, through: hours, by: hourInterval) {
 
 游戏的规则如下：
 
-- 游戏版上有25个方格，目标就是到达或者越过标号为25的方格
-- 玩家从游戏版的坐下角也就是0号方格开始
+- 游戏板上有25个方格，目标就是到达或者越过标号为25的方格
+- 玩家从游戏板的左下角开始，开始值为0
 - 每轮开始会掷骰子，并根据骰子的数字按照上图中的轨迹移动。
 - 如果最后一步恰好在梯子的底部，那么就可以直接跳到梯子的顶部。
 - 如果最后一步恰好在蛇头所在的格子中，那么就跳回到蛇尾所在的格子。
 
+游戏板由一组`Int`值表示。大小由常量`finalSquare`表示，该常量用来数组的初始化以及作为胜利的标志位。由于玩家是从游戏板之外开始的，也就是所谓的”0号方格“，所以游戏板会以26个从0开始的`Int`值进行初始化，而不是25个。
 
+```Swift
+let finalSquare = 25
+var board = [Int](repeating: 0, count: finalSquare + 1)
+```
+
+同时一些方格也会设置一些特殊的值来表明蛇和梯子所在的方格。梯子底部的方格会有一个正数来表明要前进的步数。蛇头所在的位置会设置一个负数表明要回退的步数。
+
+```Swift
+board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
+board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08 
+```
+
+3号方格包含了一个梯子底部，该梯子可以让你跳到11号方格。我们用`board[3]`等于`+08`来表示。也就是整数`8`（`3`和`11`的差值）。为了使代码看起来更整齐，我们使用一元加法运算符`+`与一元减法运算符`-`一同使用，小于10的整数由0补齐（虽然代码格式并不是严格要求统一，但是这样做会使得代码更整洁。）
+
+```Swift
+var square = 0
+var diceRoll = 0
+while square < finalSquare {
+    // roll the dice
+    diceRoll += 1
+    if diceRoll == 7 { diceRoll = 1 }
+    // move by the rolled amount
+    square += diceRoll
+    if square < board.count {
+        // if we're still on the board, move up or down for a snake or a ladder
+        square += board[square]
+    }
+}
+print("Game over!")
+```
 
 
 
