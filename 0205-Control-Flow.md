@@ -103,6 +103,9 @@ for tickMark in stride(from: 3, through: hours, by: hourInterval) {
 - `while`每次在循环开始时计算条件是否符合；
 - `repeat-while`每次在循环结束时计算条件是否符合
 
+##### while
+`while`循环有单一的判断条件开始。如果条件为`true`，将会循环执行一段语句，直到条件变为`false`
+
 
 
 
