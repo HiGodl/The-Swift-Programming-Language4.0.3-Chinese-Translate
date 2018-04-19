@@ -151,6 +151,13 @@ while square < finalSquare {
 print("Game over!")
 ```
 
+上面的例子中使用了非常简单地掷骰子的方式。`diceRoll`没有有使用获取随机数的方式，而是从`0`开始，每次加`1`的方式（超过6之后赋值为1）来代表掷骰子的结果。所以`diceRoll`的值为`1,2,3,4,5,6,1,2.....`。
+掷骰子之后玩家会根据`diceRoll`来移动所在位置。当移动完之后超过或等于25，则游戏结束。为了实现游戏场景，代码会检查`square`是否小于`board`的`count`。如果`square`存在，那么就会将其与`board[square]`相加来实现梯子底部上，移蛇头下移
+
+>注意
+>> 如果不检查的话，`board[square]`可能会造成数组越界的运行时错误。
+
+
 
 
 <span id="earlyExit"></span>
