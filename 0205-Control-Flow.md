@@ -163,6 +163,21 @@ print("Game over!")
 
 #####Repeat-While
 
+另一种 `while` 循环也就是 `repeat-while` 循环， 在判断条件之前先执行一次循环体。 然后在继续进行循环直到条件变为 `false`。
+
+>注意
+>> `repeat-while` 同其他语言中的 `do-while` 类似。
+
+下面是 `repeat-while` 表达形式：
+
+```Swift
+repeat {
+    <statements>
+} while <condition>
+``` 
+
+
+
 
 
 <span id="earlyExit"></span>
