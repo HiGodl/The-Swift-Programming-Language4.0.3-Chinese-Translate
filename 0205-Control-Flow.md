@@ -203,6 +203,12 @@ repeat {
 } while square < finalSquare
 print("Game over!") 
 ```
+检查完梯子和蛇之后，掷骰子并根据骰子数向前移动。当前循环结束。
+
+循环条件（`while square < finalSquare`）跟之前的相同。但是在第一次执行结束之前循环条件判断语句并不会执行。对于这款游戏来说 `repeat-while` 比 `while` 循环更合适。 在 `repeat-while` 循环中当 `while` 循环判断条件确认 `square` 在游戏板上时会立即执行 `square += bord[square]`。 这样就可以将 `while` 中的数组越界检查操作移除掉了。
+
+
+
 
 
 
