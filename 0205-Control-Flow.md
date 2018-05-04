@@ -213,6 +213,20 @@ print("Game over!")
 
 Swift提供两种方式给你的代码添加条件分支： `if` 语句和 `switch` 语句。 一般的我们使用 `if` 语句来执行简单的只有少数条件分支的情境。 `switch` 推荐用来处理条件复杂分支过多的情况，对于使用正则表达式来作为判断条件是，`switch`更有优势。
 
+##### if
+
+最简单的形式，`if` 只有一个 `if` 条件。 当条件为 `true` 时执行一段代码。
+
+```Swift
+var temperatureInFahrenheit = 30
+if temperatureInFahrenheit <= 32 {
+    print("It's very cold. Consider wearing a scarf.")
+}
+// Prints "It's very cold. Consider wearing a scarf." 
+```
+
+
+
 
 
 
