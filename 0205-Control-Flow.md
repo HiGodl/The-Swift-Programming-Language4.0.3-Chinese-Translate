@@ -176,6 +176,34 @@ repeat {
 } while <condition>
 ``` 
 
+让我们再次使用`repeat-while`而不是`while`来写*蛇和梯子*这个游戏。`finalSquare`, `board`, `square` 和 `diceRoll` 还是使用 `while` 中相同的方法来初始化。
+
+```Swift
+let finalSquare = 25
+var board = [Int](repeating: 0, count: finalSquare + 1)
+board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
+board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
+var square = 0
+var diceRoll = 0
+```
+
+在这个版本的游戏中，循环中的第一步是检查梯子或者蛇。没有梯子可以直接把玩家带到25号块，也不会通过梯子直接获胜。但是，将检查蛇或梯子放在循环的第一步会更安全。
+
+在游戏开始前，玩家在"0号块"。`board[0]` y永远等于`0`并且没有任何影响。
+
+```Swift
+repeat {
+    // move up or down for a snake or ladder
+    square += board[square]
+    // roll the dice
+    diceRoll += 1
+    if diceRoll == 7 { diceRoll = 1 }
+    // move by the rolled amount
+    square += diceRoll
+} while square < finalSquare
+print("Game over!") 
+```
+
 
 
 
