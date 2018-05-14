@@ -225,6 +225,52 @@ if temperatureInFahrenheit <= 32 {
 // Prints "It's very cold. Consider wearing a scarf." 
 ```
 
+例子中检查温度是否低于32华氏温度（冰点）。 如果是，将会打印信息。否则的话不会打印任何信息，并继续执行 `if` 语句之后的代码。
+
+`if` 语句可以提供另外一组表达，也就是*else子句*，当 `if` 条件为 `false` 的时候执行。 这部分表达通过 `else` 关键字标识。
+
+```Swift
+temperatureInFahrenheit = 40
+if temperatureInFahrenheit <= 32 {
+    print("It's very cold. Consider wearing a scarf.")
+} else {
+    print("It's not that cold. Wear a t-shirt.")
+}
+// Prints "It's not that cold. Wear a t-shirt."
+```
+
+这两个分支总有一个会被执行。 由于温度已经升到 `40` 华氏度以上了，所以当前的温度并不需要提示围上围巾，因此会执行 `else`分支。
+
+可以在 `if` 表达式中添加更多的条件来适应更多的场景。
+
+```Swift
+temperatureInFahrenheit = 90
+if temperatureInFahrenheit <= 32 {
+    print("It's very cold. Consider wearing a scarf.")
+} else if temperatureInFahrenheit >= 86 {
+    print("It's really warm. Don't forget to wear sunscreen.")
+} else {
+    print("It's not that cold. Wear a t-shirt.")
+}
+// Prints "It's really warm. Don't forget to wear sunscreen."
+```
+
+这里我们添加了一个 `if` 条件来对特定的温度条件做出回应。 最后的 `else` 字句仍然保留， 对于不是特别冷也不是特别热的情况做出回应。
+
+最后的 `else` 字句是可选的，并且如果并不需要考虑所有条件的话我们并不非要完成所有条件的判断。
+
+```Swift
+temperatureInFahrenheit = 72
+if temperatureInFahrenheit <= 32 {
+    print("It's very cold. Consider wearing a scarf.")
+} else if temperatureInFahrenheit >= 86 {
+    print("It's really warm. Don't forget to wear sunscreen.")
+} 
+```
+
+当温度不是特别高或特别低的时候 `if` 和 `else if` 都不会执行，也不会有信息打印。
+
+
 
 
 
