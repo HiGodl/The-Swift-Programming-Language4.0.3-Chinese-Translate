@@ -271,6 +271,25 @@ if temperatureInFahrenheit <= 32 {
 当温度不是特别高或特别低的时候 `if` 和 `else if` 都不会执行，也不会有信息打印。
 
 
+#####Switch
+`switch` 表达式通过比较的方式来判断值是否符合一定的形式或者是否同某些值相等。匹配成功后会基于最近的匹配成功值执行一段代码。对于多种情况的判断语句 `swift` 为 `if` 提供了另一种表达形式。
+
+在它的表达格式中，`switch` 会将一个特定的值与一个或多个相同类型的值的比较。
+
+```Swift
+switch some value to consider {
+case value 1:
+    respond to value 1
+case value 2,
+     value 3:
+    respond to value 2 or 3
+default:
+    otherwise, do something else
+} 
+```
+
+
+
 
 
 
