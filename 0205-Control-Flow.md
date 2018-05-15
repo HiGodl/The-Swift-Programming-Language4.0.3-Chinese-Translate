@@ -290,6 +290,27 @@ default:
 
 每个 `switch` 表达式都包括多个可能的 *case*，每个 *case* 都会以 `case` 关键字开头。为了更好的与某一特定值进行比较，Swift提供了多种满足复杂匹配条件的表达方式。这些选项会在本章稍后进行讲解
 
+同 `if` 一样，每个 `case` 都会执行特定的代码分支。`switch` 表达式会决定要执行哪个分支。这个过程就是根据具体需要考虑的值来进行切换。
+
+每个 `switch` 表达式必须是详尽的。也就是每种可能的值都要对应一种 `case`。如果不能提供详尽的 `case` 来覆盖所有情况的话，可以定义一个默认的 `case` 来覆盖没有被具体表述的情况。默认的 `case` 使用 `default` 关键字标识，并且要写在最后。
+
+下面例子中使用`switch` 表达式来检查一个单个小写字符`someCharacter`。
+
+```Swift
+let someCharacter: Character = "z"
+switch someCharacter {
+case "a":
+    print("The first letter of the alphabet")
+case "z":
+    print("The last letter of the alphabet")
+default:
+    print("Some other character")
+}
+// Prints "The last letter of the alphabet" 
+```
+
+
+
 
 
 
