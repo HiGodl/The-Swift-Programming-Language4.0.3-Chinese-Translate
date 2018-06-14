@@ -311,21 +311,36 @@ default:
 
 
 
+`switch`表达式第一个`case`匹配字母表中的第一个字母`a`，第二个`case` 匹配最后一个字母`z`，由于`switch`必须匹配所有可能的字符，但是除了字母表中的字符之外还有很多，所以为了覆盖所有`case` `switch` 表达式在此处使用`default` 来代表所有除了`a`和`z`的所有字符。这保证了`switch`条件的完整性。
+
+######不包含隐式贯穿
+不同于C和Objective-C，Swift中的`switch`表达式并不会在执行完一个case之后继续执行之后的case。在得到第一个匹配的case之后`switch`在执行完case中的语句之后会立即退出并且不需要`break`来控制。这一点使得Swift中的`switch`表达式更加安全，并且不会像C中可能会由于误操作一次执行多个case。
+
+>注意
+>> 尽管`break`在Swift中并不会起什么作用，但是依然可以在case中使用`break`来忽略特定的case以及条件性的提前退出某个case。详细信息请参见 [Switch表达式中的break](0205-Control-Flow.md#breakInASwitchStatement)
+
+每个case体中都必须包含至少一行表达式。下面的写法是错误的：
+
+```Swift
+let anotherCharacter: Character = "a"
+switch anotherCharacter {
+case "a": // Invalid, the case has an empty body
+case "A":
+    print("The letter A")
+default:
+    print("Not the letter A")
+}
+// This will report a compile-time error.
+
+```
 
 
 
-
-
-
-
-
-
-
-
-
-
+<span id="breakInASwitchStatement"></span>
+######Switch表达式中的break
 
 
 
 
 <span id="earlyExit"></span>
+
