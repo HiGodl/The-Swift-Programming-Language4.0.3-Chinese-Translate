@@ -334,12 +334,57 @@ default:
 
 ```
 
+不同于C语言中的`switch`，这样写的话并不会匹配到`a`和`A`，并且由于`case "a"`中并没有包含任何可执行的表达式，会报运行时错误。这项改进可以避免意外的隐式贯穿并且使得意图更加明确。
+
+如果想要使得一个case同事匹配`a`和`A`，需要将两个值包含在一个case中，通过逗号分隔两个值。
+
+```Swift
+let anotherCharacter: Character = "a"
+switch anotherCharacter {
+case "a", "A":
+    print("The letter A")
+default:
+    print("Not the letter A")
+}
+// Prints "The letter A" 
+```
+
+为了使表达更清晰，可以将case分多行书写。更多信息请参见[复合case](0205-Control-Flow.md#compoundCases)
+
+######区间匹配
+
+`switch`的case可以检查值是否在某个区间。下面例子中通过数值区间来为任何大小的值来提供自然语言描述：
+
+```Swift
+let approximateCount = 62
+let countedThings = "moons orbiting Saturn"
+let naturalCount: String
+switch approximateCount {
+case 0:
+    naturalCount = "no"
+case 1..<5:
+    naturalCount = "a few"
+case 5..<12:
+    naturalCount = "several"
+case 12..<100:
+    naturalCount = "dozens of"
+case 100..<1000:
+    naturalCount = "hundreds of"
+default:
+    naturalCount = "many"
+}
+print("There are \(naturalCount) \(countedThings).")
+// Prints "There are dozens of moons orbiting Saturn."
+```
+
+在上面例子中，`approximateCount`通过`switch`表达式来进行评估。每个`case`会将该值于一个区间进行对比。由于该值在12到100之间，`naturalCount`被赋值为`"dozens of"`，执行完之后直接跳出`switch`表达式。
 
 
 <span id="breakInASwitchStatement"></span>
 ######Switch表达式中的break
 
 
+<span id="compoundCases"></span>
 
 
 <span id="earlyExit"></span>
