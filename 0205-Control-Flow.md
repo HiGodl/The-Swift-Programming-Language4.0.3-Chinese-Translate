@@ -529,12 +529,50 @@ print(puzzleOutput)
 上面的代码中当匹配到元音或空格时会执行`continue`关键字，这会使得当前一轮的循环立即结束并执行下一轮循环。
 
 
+###### Break
+
+`break`语句会立即停止并结束整个控制流程。`break`语句可以用在`switch`或者循环语句中。只需要在任何`switch`或循环语句中需要终端执行的部分添加该语句即可。
+
+**循环语句中的Break**
+当使用`break`语句结束循环语句的执行时，代码执行会立即跳转到循环语句之后，任何在该轮循环之后的循环都不会再执行
+
+
 <span id="breakInASwitchStatement"></span>
-###### Switch中的break
+**Switch中的break**
 
+当使用`break`中断`switch`语句时，代码会立即调到`switch`语句之后继续执行。
 
+该操作可以用来忽略掉不做任何操作的case。由于Swift中不允许`switch`包含空的case，所以有时候我们需要使用`break`来忽略掉某些case来使得我们的意图更明确。我们只需在`break`作为case的代码体。当该case匹配到的时候`break`语句会立即结束该`switch`语句的执行并继续执行之后的代码。
 
+> 注意
+> > `switch`的case中只包含注释会造成运行时错误。注释并不是语句，不会使`switch`的case被忽略掉。如果想忽略一定要用`break`。
 
+下例中通过Switch来判断是否一个字符是四中语言中数字的表达方式。为了更简洁，一个`switch`case中包含多个值：
+
+```Swift
+let numberSymbol: Character = "三"  // Chinese symbol for the number 3
+var possibleIntegerValue: Int?
+switch numberSymbol {
+case "1", "١", "一", "๑":
+    possibleIntegerValue = 1
+case "2", "٢", "二", "๒":
+    possibleIntegerValue = 2
+case "3", "٣", "三", "๓":
+    possibleIntegerValue = 3
+case "4", "٤", "四", "๔":
+    possibleIntegerValue = 4
+default:
+    break
+}
+if let integerValue = possibleIntegerValue {
+    print("The integer value of \(numberSymbol) is \(integerValue).")
+} else {
+    print("An integer value could not be found for \(numberSymbol).")
+}
+// Prints "The integer value of 三 is 3."
+```
+
+上例检查`numberSymbol`是否是拉丁、阿拉伯、中文、泰国的数字1-4的字符，当任意一个case匹配之后`possibleIntegerValue`会被赋予合适的值
 
 <span id="earlyExit"></span>
 
