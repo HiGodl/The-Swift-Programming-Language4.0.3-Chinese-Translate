@@ -161,7 +161,7 @@ print("Game over!")
 
 `while`循环比较适合这种场景。因为在`while`循环开始的时候并不知道该游戏的执行次数。而且，该循环一直到某一特定条件才结束。
 
-#####Repeat-While
+##### Repeat-While
 
 另一种 `while` 循环也就是 `repeat-while` 循环， 在判断条件之前先执行一次循环体。 然后在继续进行循环直到条件变为 `false`。
 
@@ -207,7 +207,7 @@ print("Game over!")
 
 循环条件（`while square < finalSquare`）跟之前的相同。但是在第一次执行结束之前循环条件判断语句并不会执行。对于这款游戏来说 `repeat-while` 比 `while` 循环更合适。 在 `repeat-while` 循环中当 `while` 循环判断条件确认 `square` 在游戏板上时会立即执行 `square += bord[square]`。 这样就可以将 `while` 中的数组越界检查操作移除掉了。
 
-####条件控制语句
+#### 条件控制语句
 
 我们在开发中会经常用到根据不同的条件来执行不同代码块的场景。当发生错误的时候你可能需要执行某一段代码，或者当一个值变得太高或者太低时需要有消息提示。 要满足这样的需求就需要将某些代码放在特定的条件来执行。
 
@@ -271,7 +271,7 @@ if temperatureInFahrenheit <= 32 {
 当温度不是特别高或特别低的时候 `if` 和 `else if` 都不会执行，也不会有信息打印。
 
 
-#####Switch
+##### Switch
 `switch` 表达式通过比较的方式来判断值是否符合一定的形式或者是否同某些值相等。匹配成功后会基于最近的匹配成功值执行一段代码。对于多种情况的判断语句 `swift` 为 `if` 提供了另一种表达形式。
 
 在它的表达格式中，`switch` 会将一个特定的值与一个或多个相同类型的值的比较。
@@ -313,7 +313,7 @@ default:
 
 `switch`表达式第一个`case`匹配字母表中的第一个字母`a`，第二个`case` 匹配最后一个字母`z`，由于`switch`必须匹配所有可能的字符，但是除了字母表中的字符之外还有很多，所以为了覆盖所有`case` `switch` 表达式在此处使用`default` 来代表所有除了`a`和`z`的所有字符。这保证了`switch`条件的完整性。
 
-######不包含隐式贯穿
+###### 不包含隐式贯穿
 不同于C和Objective-C，Swift中的`switch`表达式并不会在执行完一个case之后继续执行之后的case。在得到第一个匹配的case之后`switch`在执行完case中的语句之后会立即退出并且不需要`break`来控制。这一点使得Swift中的`switch`表达式更加安全，并且不会像C中可能会由于误操作一次执行多个case。
 
 >注意
@@ -351,7 +351,7 @@ default:
 
 为了使表达更清晰，可以将case分多行书写。更多信息请参见[复合case](0205-Control-Flow.md#compoundCases)
 
-######区间匹配
+###### 区间匹配
 
 `switch`的case可以检查值是否在某个区间。下面例子中通过数值区间来为任何大小的值来提供自然语言描述：
 
@@ -378,8 +378,8 @@ print("There are \(naturalCount) \(countedThings).")
 ```
 
 在上面例子中，`approximateCount`通过`switch`表达式来进行评估。每个`case`会将该值于一个区间进行对比。由于该值在12到100之间，`naturalCount`被赋值为`"dozens of"`，执行完之后直接跳出`switch`表达式。
-
-######元组
+ 
+###### 元组
 可以使用元组在一个`switch`表达式中比较多个值。每个元组中的元素都可以与某一个值或者一个区间进行对比。并且可以通过下划线字符`(_)`（作为通配符），匹配任何可能的值。
 
 下面例子中使用一个简单类型`(Int, Int)`的元组来定义一个`(x, y)`的点，并使用`switch`将点按坐标位置归类：
@@ -407,7 +407,7 @@ default:
 
 与C语言不同的是，Switch中的`switch`允许多个case中包含相同的值。事实上，（0，0）可以匹配该表达式中所有的case，但是，如果多有多个匹配的话，永远会执行第一个匹配的case。（0，0）将会匹配`case (0, 0)`，并且会忽略掉之后的所有case
 
-######值绑定
+###### 值绑定
 如果在case的执行语句中使用匹配的值的话，`switch`可以将值赋给某一临时常量或变量。由于值被绑定到作用域为case体的临时常量或变量，所以这个行为被称作值绑定。
 
 下面例子中使用一个简单类型`(Int, Int)`的元组来定义一个`(x, y)`的点，并使用`switch`将点按坐标位置归类：
@@ -435,7 +435,7 @@ case let (x, y):
 
 这个例子中没有`default`的case。最后一个case `case let (x, y)` 声明了一个可以匹配任意值的元组，元组中包含两个占位符。由于`anotherPoint`永远是两个值得元组，所以这个case可以匹配所有可能的未匹配的值，因此`default`在这里并不需要。
 
-######Where
+###### Where
 
 `switch`还可以使用`where`从句来添加附加条件。
 下例中将（x, y）按下图中的划分分类：
@@ -461,14 +461,46 @@ case let (x, y):
 像之前的例子一样，最后一个case用来匹配其他所有情况，所以并不需要`default`case，`switch`就是合法的。
 
 
+<span id="compoundCases"></span>
+###### 复合case
+`switch`可以组合多个匹配值到一个case中，case值由逗号隔开。一个case中的任何一个值可以匹配上就看作是匹配这个case。如果匹配值过长的话可以写在多行中：
 
+```Swift
+let someCharacter: Character = "e"
+switch someCharacter {
+case "a", "e", "i", "o", "u":
+    print("\(someCharacter) is a vowel")
+case "b", "c", "d", "f", "g", "h", "j", "k", "l", "m",
+     "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z":
+    print("\(someCharacter) is a consonant")
+default:
+    print("\(someCharacter) is not a vowel or a consonant")
+}
+// Prints "e is a vowel" 
+```
+
+例子中`switch`表达式匹配所有英语中小写的元音字母，同样的第二个case匹配英语中所有的小写辅音字母。最后`defalut`用来匹配所有其他字符。
+
+复合case也可以包含值绑定。所有case值需要包含相同的值绑定，并且每个绑定的值必须要有相同的值类型。这样做可以保证不管哪个case值匹配成功在case体中都能正常访问到该绑定的值，并且该绑定的值永远是相同类型。
+
+```Swift
+let stillAnotherPoint = (9, 0)
+switch stillAnotherPoint {
+case (let distance, 0), (0, let distance):
+    print("On an axis, \(distance) from the origin")
+default:
+    print("Not on an axis")
+}
+// Prints "On an axis, 9 from the origin"
+```
+上例中的`case`包含两个匹配值`(let distance, 0)`匹配x轴 `(0, let distance)`匹配y轴。每个匹配值都绑定了`distance`，并且`distance`在两个匹配值中都是`Int`类型——也就是case的代码体中永远可以访问到`distance`的值
 
 
 <span id="breakInASwitchStatement"></span>
-######Switch表达式中的break
+###### Switch表达式中的break
 
 
-<span id="compoundCases"></span>
+
 
 
 <span id="earlyExit"></span>
