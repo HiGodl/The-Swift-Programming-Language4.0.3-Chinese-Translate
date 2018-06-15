@@ -241,7 +241,7 @@ if temperatureInFahrenheit <= 32 {
 
 这两个分支总有一个会被执行。 由于温度已经升到 `40` 华氏度以上了，所以当前的温度并不需要提示围上围巾，因此会执行 `else`分支。
 
-可以在 `if` 表达式中添加更多的条件来适应更多的场景。
+可以在 `if` 语句中添加更多的条件来适应更多的场景。
 
 ```Swift
 temperatureInFahrenheit = 90
@@ -272,7 +272,7 @@ if temperatureInFahrenheit <= 32 {
 
 
 ##### Switch
-`switch` 表达式通过比较的方式来判断值是否符合一定的形式或者是否同某些值相等。匹配成功后会基于最近的匹配成功值执行一段代码。对于多种情况的判断语句 `swift` 为 `if` 提供了另一种表达形式。
+`switch` 语句通过比较的方式来判断值是否符合一定的形式或者是否同某些值相等。匹配成功后会基于最近的匹配成功值执行一段代码。对于多种情况的判断语句 `swift` 为 `if` 提供了另一种表达形式。
 
 在它的表达格式中，`switch` 会将一个特定的值与一个或多个相同类型的值的比较。
 
@@ -288,13 +288,13 @@ default:
 } 
 ```
 
-每个 `switch` 表达式都包括多个可能的 *case*，每个 *case* 都会以 `case` 关键字开头。为了更好的与某一特定值进行比较，Swift提供了多种满足复杂匹配条件的表达方式。这些选项会在本章稍后进行讲解
+每个 `switch` 语句都包括多个可能的 *case*，每个 *case* 都会以 `case` 关键字开头。为了更好的与某一特定值进行比较，Swift提供了多种满足复杂匹配条件的表达方式。这些选项会在本章稍后进行讲解
 
-同 `if` 一样，每个 `case` 都会执行特定的代码分支。`switch` 表达式会决定要执行哪个分支。这个过程就是根据具体需要考虑的值来进行切换。
+同 `if` 一样，每个 `case` 都会执行特定的代码分支。`switch` 语句会决定要执行哪个分支。这个过程就是根据具体需要考虑的值来进行切换。
 
-每个 `switch` 表达式必须是详尽的。也就是每种可能的值都要对应一种 `case`。如果不能提供详尽的 `case` 来覆盖所有情况的话，可以定义一个默认的 `case` 来覆盖没有被具体表述的情况。默认的 `case` 使用 `default` 关键字标识，并且要写在最后。
+每个 `switch` 语句是详尽的。也就是每种可能的值都要对应一种 `case`。如果不能提供详尽的 `case` 来覆盖所有情况的话，可以定义一个默认的 `case` 来覆盖没有被具体表述的情况。默认的 `case` 使用 `default` 关键字标识，并且要写在最后。
 
-下面例子中使用`switch` 表达式来检查一个单个小写字符`someCharacter`。
+下面例子中使用`switch` 语句来检查一个单个小写字符`someCharacter`。
 
 ```Swift
 let someCharacter: Character = "z"
@@ -311,15 +311,15 @@ default:
 
 
 
-`switch`表达式第一个`case`匹配字母表中的第一个字母`a`，第二个`case` 匹配最后一个字母`z`，由于`switch`必须匹配所有可能的字符，但是除了字母表中的字符之外还有很多，所以为了覆盖所有`case` `switch` 表达式在此处使用`default` 来代表所有除了`a`和`z`的所有字符。这保证了`switch`条件的完整性。
+`switch`语句第一个`case`匹配字母表中的第一个字母`a`，第二个`case` 匹配最后一个字母`z`，由于`switch`必须匹配所有可能的字符，但是除了字母表中的字符之外还有很多，所以为了覆盖所有`case` `switch` 语句在此处使用`default` 来代表所有除了`a`和`z`的所有字符。这保证了`switch`条件的完整性。
 
 ###### 不包含隐式贯穿
-不同于C和Objective-C，Swift中的`switch`表达式并不会在执行完一个case之后继续执行之后的case。在得到第一个匹配的case之后`switch`在执行完case中的语句之后会立即退出并且不需要`break`来控制。这一点使得Swift中的`switch`表达式更加安全，并且不会像C中可能会由于误操作一次执行多个case。
+不同于C和Objective-C，Swift中的`switch`语句并不会在执行完一个case之后继续执行之后的case。在得到第一个匹配的case之后`switch`在执行完case中的语句之后会立即退出并且不需要`break`来控制。这一点使得Swift中的`switch`语句更加安全，并且不会像C中可能会由于误操作一次执行多个case。
 
 >注意
->> 尽管`break`在Swift中并不会起什么作用，但是依然可以在case中使用`break`来忽略特定的case以及条件性的提前退出某个case。详细信息请参见 [Switch表达式中的break](0205-Control-Flow.md#breakInASwitchStatement)
+>> 尽管`break`在Swift中并不会起什么作用，但是依然可以在case中使用`break`来忽略特定的case以及条件性的提前退出某个case。详细信息请参见 [Switch语句中的break](0205-Control-Flow.md#breakInASwitchStatement)
 
-每个case体中都必须包含至少一行表达式。下面的写法是错误的：
+每个case体中都必须包含至少一行语句。下面的写法是错误的：
 
 ```Swift
 let anotherCharacter: Character = "a"
@@ -334,7 +334,7 @@ default:
 
 ```
 
-不同于C语言中的`switch`，这样写的话并不会匹配到`a`和`A`，并且由于`case "a"`中并没有包含任何可执行的表达式，会报运行时错误。这项改进可以避免意外的隐式贯穿并且使得意图更加明确。
+不同于C语言中的`switch`，这样写的话并不会匹配到`a`和`A`，并且由于`case "a"`中并没有包含任何可执行的语句，会报运行时错误。这项改进可以避免意外的隐式贯穿并且使得意图更加明确。
 
 如果想要使得一个case同事匹配`a`和`A`，需要将两个值包含在一个case中，通过逗号分隔两个值。
 
@@ -377,10 +377,10 @@ print("There are \(naturalCount) \(countedThings).")
 // Prints "There are dozens of moons orbiting Saturn."
 ```
 
-在上面例子中，`approximateCount`通过`switch`表达式来进行评估。每个`case`会将该值于一个区间进行对比。由于该值在12到100之间，`naturalCount`被赋值为`"dozens of"`，执行完之后直接跳出`switch`表达式。
+在上面例子中，`approximateCount`通过`switch`语句来进行评估。每个`case`会将该值于一个区间进行对比。由于该值在12到100之间，`naturalCount`被赋值为`"dozens of"`，执行完之后直接跳出`switch`语句。
  
 ###### 元组
-可以使用元组在一个`switch`表达式中比较多个值。每个元组中的元素都可以与某一个值或者一个区间进行对比。并且可以通过下划线字符`(_)`（作为通配符），匹配任何可能的值。
+可以使用元组在一个`switch`语句中比较多个值。每个元组中的元素都可以与某一个值或者一个区间进行对比。并且可以通过下划线字符`(_)`（作为通配符），匹配任何可能的值。
 
 下面例子中使用一个简单类型`(Int, Int)`的元组来定义一个`(x, y)`的点，并使用`switch`将点按坐标位置归类：
 
@@ -403,9 +403,9 @@ default:
 
 ![](/assets/WX20180615-110756@2x.png)
 
-`switch`表达式阐明了这个点是在原点（0，0），x轴，y轴，在蓝色方框中还是蓝色方框外。
+`switch`语句阐明了这个点是在原点（0，0），x轴，y轴，在蓝色方框中还是蓝色方框外。
 
-与C语言不同的是，Switch中的`switch`允许多个case中包含相同的值。事实上，（0，0）可以匹配该表达式中所有的case，但是，如果多有多个匹配的话，永远会执行第一个匹配的case。（0，0）将会匹配`case (0, 0)`，并且会忽略掉之后的所有case
+与C语言不同的是，Switch中的`switch`允许多个case中包含相同的值。事实上，（0，0）可以匹配该中所有的case，但是，如果多有多个匹配的话，永远会执行第一个匹配的case。（0，0）将会匹配`case (0, 0)`，并且会忽略掉之后的所有case
 
 ###### 值绑定
 如果在case的执行语句中使用匹配的值的话，`switch`可以将值赋给某一临时常量或变量。由于值被绑定到作用域为case体的临时常量或变量，所以这个行为被称作值绑定。
@@ -427,7 +427,7 @@ case let (x, y):
 
 ![](/assets/WX20180615-133526@2x.png)
 
-该`switch`表达式判断点是在红色的x轴，橙色的y轴或是其他地方。
+该`switch`判断点是在红色的x轴，橙色的y轴或是其他地方。
 
 `switch`的case中声明了`x`和`y`占位符来临时表示元组`anotherPoint`中的一个或两个值。第一个case`case (let x, 0)`，用来匹配`y`值为`0`的元组，并且将`x`的值临时赋给`x`常量。同样的在第二个case中，`case (0, let y)`匹配`x`为`0`的元组，并将`y`赋给临时常量`y`。
 
@@ -454,7 +454,7 @@ case let (x, y):
 ```
 ![](/assets/WX20180615-134959@2x.png)
 
-`switch`表达式用来判断一个点是否在绿色线上也就是`x == y`， 是否在紫色线上`x == -y`， 或者在其他地方。
+`switch`用来判断一个点是否在绿色线上也就是`x == y`， 是否在紫色线上`x == -y`， 或者在其他地方。
 
 `switch`中的左右case都使用占位符`x`和`y`来临时绑定`yetAnotherPoint`中的值。这些常量用来组成`where`从句中的动态筛选条件。`switch`中所有case只有在`where`从句中的判断条件为`true`时才算匹配该case。
 
@@ -479,7 +479,7 @@ default:
 // Prints "e is a vowel" 
 ```
 
-例子中`switch`表达式匹配所有英语中小写的元音字母，同样的第二个case匹配英语中所有的小写辅音字母。最后`defalut`用来匹配所有其他字符。
+例子中`switch`匹配所有英语中小写的元音字母，同样的第二个case匹配英语中所有的小写辅音字母。最后`defalut`用来匹配所有其他字符。
 
 复合case也可以包含值绑定。所有case值需要包含相同的值绑定，并且每个绑定的值必须要有相同的值类型。这样做可以保证不管哪个case值匹配成功在case体中都能正常访问到该绑定的值，并且该绑定的值永远是相同类型。
 
@@ -495,9 +495,42 @@ default:
 ```
 上例中的`case`包含两个匹配值`(let distance, 0)`匹配x轴 `(0, let distance)`匹配y轴。每个匹配值都绑定了`distance`，并且`distance`在两个匹配值中都是`Int`类型——也就是case的代码体中永远可以访问到`distance`的值
 
+##### 控制传递语句
+控制传递语句通过将控制流程从一段代码传递到另一段可以改变代码的执行顺序。Swift有五种控制传递语句：
+
+- continue
+- break
+- fallthrough
+- return
+- throw
+
+`continue`，`break`，`fallthrough`会在下面讲解，`return`会在[Function](0206-Functions.md)中讲解，`throw`会在[函数中错误的传递](0217-Error-Handling.md#propagatingErrorsUsingThrowingFunctions)中讲解
+
+###### Continue
+`contionue`语句会停止当前正在做的事情并继续下一个循环。它会告诉系统"我已经结束了当前一轮的循环"并不会完全退出循环。
+
+下例中移除字符串中所有的元音及空格创建一个隐晦字谜短语：
+
+```Swift
+let puzzleInput = "great minds think alike"
+var puzzleOutput = ""
+let charactersToRemove: [Character] = ["a", "e", "i", "o", "u", " "]
+for character in puzzleInput {
+    if charactersToRemove.contains(character) {
+        continue
+    } else {
+        puzzleOutput.append(character)
+    }
+}
+print(puzzleOutput)
+// Prints "grtmndsthnklk"
+```
+
+上面的代码中当匹配到元音或空格时会执行`continue`关键字，这会使得当前一轮的循环立即结束并执行下一轮循环。
+
 
 <span id="breakInASwitchStatement"></span>
-###### Switch表达式中的break
+###### Switch中的break
 
 
 
