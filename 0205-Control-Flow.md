@@ -379,6 +379,29 @@ print("There are \(naturalCount) \(countedThings).")
 
 在上面例子中，`approximateCount`通过`switch`表达式来进行评估。每个`case`会将该值于一个区间进行对比。由于该值在12到100之间，`naturalCount`被赋值为`"dozens of"`，执行完之后直接跳出`switch`表达式。
 
+######元组
+可以使用元组在一个`switch`表达式中比较多个值。每个元组中的元素都可以与某一个值或者一个区间进行对比。并且可以通过下划线字符`(_)`（作为通配符），匹配任何可能的值。
+
+下面例子中使用一个简单类型`(Int, Int)`的元组来定义一个`(x, y)`的点，并使用`switch`将点按坐标位置归类：
+
+```Swift
+let somePoint = (1, 1)
+switch somePoint {
+case (0, 0):
+    print("\(somePoint) is at the origin")
+case (_, 0):
+    print("\(somePoint) is on the x-axis")
+case (0, _):
+    print("\(somePoint) is on the y-axis")
+case (-2...2, -2...2):
+    print("\(somePoint) is inside the box")
+default:
+    print("\(somePoint) is outside of the box")
+}
+// Prints "(1, 1) is inside the box" 
+```
+
+![](/assets/WX20180615-110756@2x.png)
 
 <span id="breakInASwitchStatement"></span>
 ######Switch表达式中的break
