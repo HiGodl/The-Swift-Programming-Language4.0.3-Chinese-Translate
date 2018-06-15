@@ -435,6 +435,31 @@ case let (x, y):
 
 这个例子中没有`default`的case。最后一个case `case let (x, y)` 声明了一个可以匹配任意值的元组，元组中包含两个占位符。由于`anotherPoint`永远是两个值得元组，所以这个case可以匹配所有可能的未匹配的值，因此`default`在这里并不需要。
 
+######Where
+
+`switch`还可以使用`where`从句来添加附加条件。
+下例中将（x, y）按下图中的划分分类：
+
+```Swift
+let yetAnotherPoint = (1, -1)
+switch yetAnotherPoint {
+case let (x, y) where x == y:
+    print("(\(x), \(y)) is on the line x == y")
+case let (x, y) where x == -y:
+    print("(\(x), \(y)) is on the line x == -y")
+case let (x, y):
+    print("(\(x), \(y)) is just some arbitrary point")
+}
+// Prints "(1, -1) is on the line x == -y" 
+```
+![](/assets/WX20180615-134959@2x.png)
+
+`switch`表达式用来判断一个点是否在绿色线上也就是`x == y`， 是否在紫色线上`x == -y`， 或者在其他地方。
+
+`switch`中的左右case都使用占位符`x`和`y`来临时绑定`yetAnotherPoint`中的值。这些常量用来组成`where`从句中的动态筛选条件。`switch`中所有case只有在`where`从句中的判断条件为`true`时才算匹配该case。
+
+像之前的例子一样，最后一个case用来匹配其他所有情况，所以并不需要`default`case，`switch`就是合法的。
+
 
 
 
