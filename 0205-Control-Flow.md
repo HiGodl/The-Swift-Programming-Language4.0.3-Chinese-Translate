@@ -403,6 +403,42 @@ default:
 
 ![](/assets/WX20180615-110756@2x.png)
 
+`switch`表达式阐明了这个点是在原点（0，0），x轴，y轴，在蓝色方框中还是蓝色方框外。
+
+与C语言不同的是，Switch中的`switch`允许多个case中包含相同的值。事实上，（0，0）可以匹配该表达式中所有的case，但是，如果多有多个匹配的话，永远会执行第一个匹配的case。（0，0）将会匹配`case (0, 0)`，并且会忽略掉之后的所有case
+
+######值绑定
+如果在case的执行语句中使用匹配的值的话，`switch`可以将值赋给某一临时常量或变量。由于值被绑定到作用域为case体的临时常量或变量，所以这个行为被称作值绑定。
+
+下面例子中使用一个简单类型`(Int, Int)`的元组来定义一个`(x, y)`的点，并使用`switch`将点按坐标位置归类：
+
+```Swift
+let anotherPoint = (2, 0)
+switch anotherPoint {
+case (let x, 0):
+    print("on the x-axis with an x value of \(x)")
+case (0, let y):
+    print("on the y-axis with a y value of \(y)")
+case let (x, y):
+    print("somewhere else at (\(x), \(y))")
+}
+// Prints "on the x-axis with an x value of 2" 
+```
+
+![](/assets/WX20180615-133526@2x.png)
+
+该`switch`表达式判断点是在红色的x轴，橙色的y轴或是其他地方。
+
+`switch`的case中声明了`x`和`y`占位符来临时表示元组`anotherPoint`中的一个或两个值。第一个case`case (let x, 0)`，用来匹配`y`值为`0`的元组，并且将`x`的值临时赋给`x`常量。同样的在第二个case中，`case (0, let y)`匹配`x`为`0`的元组，并将`y`赋给临时常量`y`。
+
+当临时常量声明之后，它们可以在case的代码块中使用。这里用来给point分类。
+
+这个例子中没有`default`的case。最后一个case `case let (x, y)` 声明了一个可以匹配任意值的元组，元组中包含两个占位符。由于`anotherPoint`永远是两个值得元组，所以这个case可以匹配所有可能的未匹配的值，因此`default`在这里并不需要。
+
+
+
+
+
 <span id="breakInASwitchStatement"></span>
 ######Switch表达式中的break
 
