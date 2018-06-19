@@ -572,7 +572,11 @@ if let integerValue = possibleIntegerValue {
 // Prints "The integer value of 三 is 3."
 ```
 
-上例检查`numberSymbol`是否是拉丁、阿拉伯、中文、泰国的数字1-4的字符，当任意一个case匹配之后`possibleIntegerValue`会被赋予合适的值
+上例检查`numberSymbol`是否是拉丁、阿拉伯、中文、泰国的数字1-4的字符，当任意一个case匹配之后`possibleIntegerValue`会被赋予合适的值。
+
+当`switch`语句执行完之后，例子中使用可选类型绑定来判断是否有值赋给`possibleIntegerValue`。作为可选类型`possibleIntegerValue`默认初始值为`nil`，所以可选类型绑定只有在`possibleIntegerValue`在`switch`语句的四个case之一中赋予实际的值之后才会成功执行。
+
+由于我们并不能完整的列出所有的`Character`值，所以使用`default`来匹配所有不需要匹配的值。`default`不需要做任何操作，所以将`break`作为其执行体。当匹配到`default`时，`break`语句会结束`switch`语句，代码会从`if let`语句继续执行。
 
 <span id="earlyExit"></span>
 
