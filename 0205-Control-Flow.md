@@ -578,5 +578,35 @@ if let integerValue = possibleIntegerValue {
 
 由于我们并不能完整的列出所有的`Character`值，所以使用`default`来匹配所有不需要匹配的值。`default`不需要做任何操作，所以将`break`作为其执行体。当匹配到`default`时，`break`语句会结束`switch`语句，代码会从`if let`语句继续执行。
 
+
+###### Fallthrough
+
+在Swift中，`switch`语句并不会在case执行结束之后继续执行下一个case（在没有写break的情况下）。也就是当`switch`语句执行完第一个匹配的case体之后会立即退出。相反的，C语言需要在每个case体结束之后明确写上`break`才会避免`switch`case间的贯穿。避免默认的case间贯穿使得Swift相对于C语言更加简洁明确，可以避免错误的`switch`case间的贯穿。
+
+如果需要像C一样的case间贯穿行为，可以在case与case间添加`fallthrough`关键字来实现。下例中使用`fallthrough`来实现数字的文本描述：
+
+```Swift
+let integerToDescribe = 5
+var description = "The number \(integerToDescribe) is"
+switch integerToDescribe {
+case 2, 3, 5, 7, 11, 13, 17, 19:
+    description += " a prime number, and also"
+    fallthrough
+default:
+    description += " an integer."
+}
+print(description)
+// Prints "The number 5 is a prime number, and also an integer."
+```
+
+该例中通过定义一个叫做`description`的`String`变量，并赋予了初始值。然后通过`switch`语句来判断`integerToDescribe`的值。如果`integerToDescribe`是列表中的素数之一的话，该方法就会给`description`添加一些描述文字，来注明这个数字是素数。然后使用`fallthrough`关键字来贯穿到`default` case中。`default` case会添加一些其他的描述，之后`switch`语句结束。
+除非`integerToDescribe`是列表中一直的素数之一，否则是不会匹配到第一个case的。由于并没有其他特殊的case，所以`integerToDescribe`只会被`default`case匹配到。
+
+`switch`语句执行结束之后，数字的表述会通过`print(_:separator:terminator:)`方法打印出来。在该例中，数字`5`会被正确的识别为素数。
+
+>注意
+>> `fallthrough`并不会检查`switch`中要贯穿到的case。像C语言中`switch`的默认行为一样只是直接跳转到下一个case体中继续执行其中的代码
+
+
 <span id="earlyExit"></span>
 
