@@ -607,6 +607,65 @@ print(description)
 >注意
 >> `fallthrough`并不会检查`switch`中要贯穿到的case。像C语言中`switch`的默认行为一样只是直接跳转到下一个case体中继续执行其中的代码
 
+###### 标签语句
+
+在Swift中，可以将控制流程及循环语句进行嵌套来实现复杂的流程结构。然而，循环语句及流程控制语句都可以使用`break`来实现结束执行并提前退出。但是，有些情况下需要明确的写明要使用`break`退出哪个语句。同样的，在循环嵌套中标明`continue`语句具体要影响哪个循环也是非常有用的。
+为了实现这个目标，可以使用*声明标签*来作为循环语句及流程控制的标识。在条件语句中，可以使用`break`加声明标签的方式结束标签语句标明的条件语句。在循环语句中，可以使用`break`或`continue`来结束或继续执行标签语句标明的循环语句。
+
+标签语句的定义方式是在流程控制或循环语句关键字的同一行前加上一个标签，并用冒号隔开。下面是`while`语句的一个例子，其他循环语句及`switch`定义方式是一样的：
+
+```Swift
+lableName: while condition {
+    statements
+}
+```
+
+下例中通过标签化的`break`和`continue`语句来实现本章之前版本的基础上改版的*蛇和梯子*的游戏。这次给游戏添加一个新的规则：
+
+- 必须恰好落在`25`号方块上才算赢。
+
+如果掷得的骰子数会让你移动到25号方块之外的话，必须重新掷，直到恰好到达25号方块为止。
+游戏板子同之前的一样。
+
+![](/assets/WX20180620-111531@2x.png)
+
+
+`finalSquare`、`board`、`square`和`diceRoll`的值与之前声明方式一样：
+
+```Swift
+let finalSquare = 25
+var board = [Int](repeating: 0, count: finalSquare + 1)
+board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
+board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
+var square = 0
+var diceRoll = 0
+```
+
+这个版本的游戏通过`while`循环与`switch`语句来实现游戏的逻辑。`while`循环声明了一个标签为`gameLoop`，来表明该循环是游戏的主线。
+
+`while`循环的条件是`while square != finalSquare`，也就是必须恰好落到25号方块上。
+
+```Swift
+gameLoop: while square != finalSquare {
+    diceRoll += 1
+    if diceRoll == 7 { diceRoll = 1 }
+    switch square + diceRoll {
+    case finalSquare:
+        // diceRoll will move us to the final square, so the game is over
+        break gameLoop
+    case let newSquare where newSquare > finalSquare:
+        // diceRoll will move us beyond the final square, so roll again
+        continue gameLoop
+    default:
+        // this is a valid move, so find out its effect
+        square += diceRoll
+        square += board[square]
+    }
+}
+print("Game over!")
+```
+
+
 
 <span id="earlyExit"></span>
 
