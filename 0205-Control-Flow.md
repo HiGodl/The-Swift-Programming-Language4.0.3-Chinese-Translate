@@ -679,6 +679,37 @@ print("Game over!")
 <span id="earlyExit"></span>
 ###### Early Exit
 
-`guard`语句同`if`语句一样，通过判断一个表达式的布尔值结果来执行对应的语句。
+`guard`语句同`if`语句一样，通过判断一个表达式的布尔值结果来执行对应的语句。使用`guard`语句的话需要条件一定为`true`来保证`guard`语句之后的代码能够执行。与`if`语句不同的是，`guard`语句总有一个`else`分句，`else`语句在条件为`false`的情况下执行：
+
+```Swift
+func greet(person: [String: String]) {
+    guard let name = person["name"] else {
+        return
+    }
+    
+    print("Hello \(name)!")
+    
+    guard let location = person["location"] else {
+        print("I hope the weather is nice near you.")
+        return
+    }
+    
+    print("I hope the weather is nice in \(location).")
+}
+ 
+greet(person: ["name": "John"])
+// Prints "Hello John!"
+// Prints "I hope the weather is nice near you."
+greet(person: ["name": "Jane", "location": "Cupertino"])
+// Prints "Hello Jane!"
+// Prints "I hope the weather is nice in Cupertino." 
+```
+
+如果`guard`的条件符合的话，代码会继续执行`guard`语句之后的代码。任何在`guard`中使用可选类型绑定的常量或者变量，都可以在`guard`语句之后使用。
+
+如果条件不符合，就会执行`else`分句。这个分句必须跳出`guard`语句所在的代码块。可以使用控制跳转语句`return`、`break`、`continue`或者`throw`。或者调用没有返回的函数或方法，如`fatalError(_:file:line:)`。
+
+使用`guard`要比`if`语句易读性更强。它可以避免将通用代码放到其他`else`的代码块中，并且可以让你保留处理违反要求的代码。
+
 
 
