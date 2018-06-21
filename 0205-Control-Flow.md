@@ -711,5 +711,31 @@ greet(person: ["name": "Jane", "location": "Cupertino"])
 
 使用`guard`要比`if`语句易读性更强。它可以避免将通用代码放到其他`else`的代码块中，并且可以让你保留处理违反要求的代码。
 
+##### 检查API可用性
 
+Swift内建支持API可用性检查，用以保证避免在特定的发布版本上误用不可用的API。
+
+编译器会使用SDK信息检查代码中所有的API是否在特定的发布版本中都可用，如果使用了不可用的API，Swift会报编译时错误。
+
+在`if`或`guard`语句中使用可用性条件来有条件地执行代码块，具体取决于您要使用的API在运行时是否可用。 编译器使用可用性条件中的信息验证该代码块中的API是否可用。
+
+```Swift
+if #available(iOS 10, macOS 10.12, *) {
+    // Use iOS 10 APIs on iOS, and use macOS 10.12 APIs on macOS
+} else {
+    // Fall back to earlier iOS and macOS APIs
+} 
+```
+
+上面制定的可用性条件在iOS中，只有iOS 10及以上的系统才会执行`if`分句；在macOS中，只有macOS 10.12及以上才会执行`if`分句。最后一个参数`*`用来制定其他平台的版本，`if`分句只会在指定的最小发布版本及以上的设备上执行。
+
+通常情况下，可用性条件一般会包含一个平台名称及版本的清单。可用平台如`iOS`、`macOS`、`watchOS`、`tvOS`——详细清单请参见[特性](0307-Attributes.md)。除了执行平台的主版本号如iOS8、macOS10.10之外，还可以制定平台的小版本如iOS8.3、macOS10.10.3。
+
+```Swift
+if #available(platform name version, ..., *) {
+    statements to execute if the APIs are available
+} else {
+    fallback statements to execute if the APIs are unavailable
+}
+```
 
