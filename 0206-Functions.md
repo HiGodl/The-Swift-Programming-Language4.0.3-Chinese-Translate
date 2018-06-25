@@ -55,6 +55,20 @@ print(greetAgain(person: "Anna"))
 
 ##### 无参函数
 
+函数并不一定要有传入参数。下例中就是无参的函数，调用时会返回一个简单的字符串信息：
+
+```Swift
+func sayHelloWorld() -> String {
+    return "hello, world"
+}
+print(sayHelloWorld())
+// Prints "hello, world" 
+```
+
+即使不需要参数在函数定义时也需要在函数名后加圆括号。在函数调用的时候同样需要在函数名后加圆括号来调用。
+
+##### 多参函数
+
 <span id="functionArgumentLablesAndParameterNames"></span>
 函数参数标签及参数名
 
