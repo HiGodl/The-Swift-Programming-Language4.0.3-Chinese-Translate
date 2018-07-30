@@ -69,11 +69,104 @@ print(sayHelloWorld())
 
 ##### 多参函数
 
+函数可以有多个输入参数，参数写在函数名后的括号中，用逗号隔开。
+
+下面函数中传入姓名及是否已经作为`greet`的参数传入过，并返回合适的欢迎语：
+
+```Swift
+func greet(person: String, alreadyGreeted: Bool) -> String {
+    if alreadyGreeted {
+        return greetAgain(person: person)
+    } else {
+        return greet(person: person)
+    }
+}
+print(greet(person: "Tim", alreadyGreeted: true))
+// Prints "Hello again, Tim!" 
+```
+
+通过传入一个叫做`person`的`String`参数以及一个叫做`alreadyGreeted`的`Bool`参数调用`greet(person:alreadyGreeted:)`函数。注意这个函数与之前的`greet(person:)`函数是不同的，虽然参数都以`greet`开头，但是`greet(person:alreadyGreeted:)`需要传入两个参数，而`greet(person:)`只需传入一个参数。
+
+##### 无返回值的函数
+
+函数并不一定要定义返回值类型。下例中的`greet(person:)`函数就在其内部打印而不是返回`String`值：
+
+```Swift
+func greet(person: String) {
+    print("Hello, \(person)!")
+}
+greet(person: "Dave")
+// Prints "Hello, Dave!" 
+```
+
+由于函数并不需要返回值，所以在定义时不需要添加返回箭头及返回值类型。
+
+>注意
+>> 严格来说，尽管`greet(person:)`函数没有定义返回值，但其仍然有返回值。没有定义返回值得函数默认返回`Void`类型，是一个简单的空元组，写作`()`
+
+函数的返回值在调用的时候可以忽略：
+```Swift
+func printAndCount(string: String) -> Int {
+    print(string)
+    return string.count
+}
+func printWithoutCounting(string: String) {
+    let _ = printAndCount(string: string)
+}
+printAndCount(string: "hello, world")
+// prints "hello, world" and returns a value of 12
+printWithoutCounting(string: "hello, world")
+// prints "hello, world" but does not return a value 
+```
+
+第一个函数`printAndCount(string:)`打印一个字符串，并且返回字符串中字符个数`Int`类型。第二个函数`printWithoutCounting(string:)`，调用第一个函数但是忽略掉第一个函数的返回值。第二个函数调用的时候仍然打印字符串，但并没有使用其返回值。
+
+>注意
+>> 函数的返回值可以被忽略，但是如果一个函数声明了返回值，那么在函数体中必须要返回对应类型的返回值。如果不返回则会导致编译错误。
+
+<span id="functionsWithMultipleReturnValues"></span>
+##### 多返回值函数
+
+可以通过元组作为函数的返回值以返回一个多返回值的组合类型。
+
+下例中定义了一个叫做`minMax(array:)`的函数，用来查找一个`Int`数组中最大和最小值：
+
+```Swift
+func minMax(array: [Int]) -> (min: Int, max: Int) {
+    var currentMin = array[0]
+    var currentMax = array[0]
+    for value in array[1..<array.count] {
+        if value < currentMin {
+            currentMin = value
+        } else if value > currentMax {
+            currentMax = value
+        }
+    }
+    return (currentMin, currentMax)
+} 
+```
+
+`minMax(array:)`函数返回一个包含两个`Int`值得元组。两个值的标签分别为`min`和`max`，我们可以通过返回值在元组中的名称获取对应的返回值。
+
+函数体通过定义两个临时变量`currentMin`和`currentMax`开始，两个临时变量的初始值为数组中的第一个值。然后函数开始遍历数组中的其他值来和临时变量比较大小，并根据比较结果对两个临时变量重新赋值。最后最大值和最小值通过包含两个`Int`值的元组返回。
+
+由于元组中元素在声明时定义了名称，所以可以通过点语法来获取元组中你的最大值及最小值：
+```Swift
+let bounds = minMax(array: [8, -6, 2, 109, 3, 71])
+print("min is \(bounds.min) and max is \(bounds.max)")
+// Prints "min is -6 and max is 109" 
+```
+
+注意，由于元组元素的名称在方法定义的时候就已经定义好了，所以在方法返回元组之后并不需要对元组中的元素重新命名。
+
+##### 可选元组类型返回值
+
+
+
 <span id="functionArgumentLablesAndParameterNames"></span>
 函数参数标签及参数名
 
-<span id="functionsWithMultipleReturnValues"></span>
-多返回值函数
+
 
 <span id="defaultParameterValues"></span>
 参数默认值
