@@ -151,6 +151,7 @@ func minMax(array: [Int]) -> (min: Int, max: Int) {
 函数体通过定义两个临时变量`currentMin`和`currentMax`开始，两个临时变量的初始值为数组中的第一个值。然后函数开始遍历数组中的其他值来和临时变量比较大小，并根据比较结果对两个临时变量重新赋值。最后最大值和最小值通过包含两个`Int`值的元组返回。
 
 由于元组中元素在声明时定义了名称，所以可以通过点语法来获取元组中你的最大值及最小值：
+
 ```Swift
 let bounds = minMax(array: [8, -6, 2, 109, 3, 71])
 print("min is \(bounds.min) and max is \(bounds.max)")
