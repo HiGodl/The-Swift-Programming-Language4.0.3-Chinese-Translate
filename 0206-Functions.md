@@ -200,6 +200,7 @@ if let bounds = minMax(array: [8, -6, 2, 109, 3, 71]) {
 <span id="functionArgumentLablesAndParameterNames"></span>
 #### 函数参数标签及参数名
 
+每个函数参数都有参数标签及参数名。
 
 
 <span id="defaultParameterValues"></span>
