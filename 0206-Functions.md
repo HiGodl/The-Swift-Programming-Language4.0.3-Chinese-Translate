@@ -164,7 +164,38 @@ print("min is \(bounds.min) and max is \(bounds.max)")
 
 ##### 可选元组类型返回值
 
+如果函数中的元组可能返回一个空元组，可以使用可选元组类型来接收可能为 `nil` 的元组。通过 `(Int, Int)?` 或 `(String, Int, Bool)?` (元组括号后跟问号) 来代表可选元组类型
 
+> 注意
+>> 可选元组类型 `(Int, Int)?` 与包含可选类型值的元组 `(Int?, Int?)` 是不同的。可选元组类型是整个元组都有可能为空，而不是元组中单个的值可能为空。
+
+上面提到的 `minMax(array:)` 函数返回一个包含两个 `Int` 类型值的元组。但是函数对于传入的数组并没有任何安全检查。如果 `array` 参数传入的是一个空数组， `minMax(array:)` 函数在尝试获取 `array[0]` 时会导致运行时错误。
+为了安全的处理空数组，可以将 `minMax(array:)` 的返回值设为可选元组类型，当传入数组为空时返回 `nil`:
+
+```Swift
+func minMax(array: [Int]) -> (min: Int, max: Int)? {
+    if array.isEmpty { return nil }
+    var currentMin = array[0]
+    var currentMax = array[0]
+    for value in array[1..<array.count] {
+        if value < currentMin {
+            currentMin = value
+        } else if value > currentMax {
+            currentMax = value
+        }
+    }
+    return (currentMin, currentMax)
+}
+```
+
+可以使用可选类型绑定来判断 `minMax(array:)` 返回的是一个元组还是 `nil`:
+
+```Swift
+if let bounds = minMax(array: [8, -6, 2, 109, 3, 71]) {
+    print("min is \(bounds.min) and max is \(bounds.max)")
+}
+// Prints "min is -6 and max is 109"
+```
 
 <span id="functionArgumentLablesAndParameterNames"></span>
 函数参数标签及参数名
